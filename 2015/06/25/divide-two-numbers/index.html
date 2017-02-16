@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="###Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
-Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
+<meta name="description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Divide_two_numbers(Leetcode, 2 solutions)">
 <meta property="og:url" content="http://yoursite.com/2015/06/25/divide-two-numbers/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="###Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
-Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
-<meta property="og:updated_time" content="2017-02-15T04:19:16.000Z">
+<meta property="og:description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
+<meta property="og:updated_time" content="2017-02-15T05:41:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Divide_two_numbers(Leetcode, 2 solutions)">
-<meta name="twitter:description" content="###Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.
-Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
+<meta name="twitter:description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
 
 
 
@@ -136,7 +133,7 @@ Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
   <title> Divide_two_numbers(Leetcode, 2 solutions) | Happy Isotope </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -325,9 +322,9 @@ Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
       
 
       
-        <p>###Question:<br>Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.</p>
-<h4 id="Solution-1-Binary-Search-Bit-Manipulation-C"><a href="#Solution-1-Binary-Search-Bit-Manipulation-C" class="headerlink" title="Solution 1: Binary Search + Bit Manipulation (C++)"></a>Solution 1: Binary Search + Bit Manipulation (C++)</h4><h5 id="Time-O-log-n-Test-14-ms"><a href="#Time-O-log-n-Test-14-ms" class="headerlink" title="Time: O(log n)    Test: 14 ms"></a>Time: O(log n)    Test: 14 ms</h5><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int divide(int dividend, int divisor) &#123;</div><div class="line">        long long a = abs((long long)dividend);</div><div class="line">        long long b = abs((long long)divisor);</div><div class="line">        int sign = (dividend &gt; 0 ^ divisor &gt; 0) ? -1 : 1; //Deal with positive or negative</div><div class="line">        long long result = 0;</div><div class="line"></div><div class="line">        while(a &gt;= b)&#123;</div><div class="line">            long long c = b;</div><div class="line">            for(int i = 0;a &gt;= c;++i,c &lt;&lt;= 1)&#123;</div><div class="line">                a -= c;</div><div class="line">                result += 1 &lt;&lt; i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result *= sign;        </div><div class="line">        // If it is overflow, return MAX_INT.</div><div class="line">        if (result &gt; INT_MAX || result &lt; INT_MIN)&#123;</div><div class="line">            result = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <h3 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h3><p>Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.</p>
+<a id="more"></a>
+<h3 id="Solution-1-Binary-Search-Bit-Manipulation-C"><a href="#Solution-1-Binary-Search-Bit-Manipulation-C" class="headerlink" title="Solution 1: Binary Search + Bit Manipulation (C++)"></a>Solution 1: Binary Search + Bit Manipulation (C++)</h3><h5 id="Time-O-log-n-Test-14-ms"><a href="#Time-O-log-n-Test-14-ms" class="headerlink" title="Time: O(log n)    Test: 14 ms"></a>Time: O(log n)    Test: 14 ms</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int divide(int dividend, int divisor) &#123;</div><div class="line">        long long a = abs((long long)dividend);</div><div class="line">        long long b = abs((long long)divisor);</div><div class="line">        int sign = (dividend &gt; 0 ^ divisor &gt; 0) ? -1 : 1; //Deal with positive or negative</div><div class="line">        long long result = 0;</div><div class="line"></div><div class="line">        while(a &gt;= b)&#123;</div><div class="line">            long long c = b;</div><div class="line">            for(int i = 0;a &gt;= c;++i,c &lt;&lt;= 1)&#123;</div><div class="line">                a -= c;</div><div class="line">                result += 1 &lt;&lt; i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result *= sign;        </div><div class="line">        // If it is overflow, return MAX_INT.</div><div class="line">        if (result &gt; INT_MAX || result &lt; INT_MIN)&#123;</div><div class="line">            result = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h4 id="Solution-2-Exponentionalize-C"><a href="#Solution-2-Exponentionalize-C" class="headerlink" title="Solution 2: Exponentionalize (C++)"></a>Solution 2: Exponentionalize (C++)</h4><h5 id="Time-O-log-n-Test-8-ms"><a href="#Time-O-log-n-Test-8-ms" class="headerlink" title="Time: O(log n)  Test: 8 ms"></a>Time: O(log n)  Test: 8 ms</h5><p>This is a smart solution inspired by dimal97psn @ Leetcode. The core idea here is to transfer the division equation:</p>
 <h5 id="a-b-e-lg-a-e-lg-b-e-lg-a-lg-b"><a href="#a-b-e-lg-a-e-lg-b-e-lg-a-lg-b" class="headerlink" title="a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))"></a>a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int divide(int dividend, int divisor) &#123;</div><div class="line">        if(divisor == 0) return INT_MAX;</div><div class="line">        if(dividend == 0) return 0;</div><div class="line">        long long x = (double) exp(log(fabs(dividend)) - log(fabs(divisor)));</div><div class="line">        if((dividend &lt; 0 &amp;&amp; divisor &gt; 0) || (dividend &gt; 0 &amp;&amp; divisor &lt; 0))&#123;</div><div class="line">            x = -x;</div><div class="line">        &#125;</div><div class="line">        if(x &gt; INT_MAX) &#123;</div><div class="line">            x = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        return x;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
@@ -448,7 +445,7 @@ Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -459,7 +456,7 @@ Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -494,7 +491,7 @@ Solution 1: Binary Search + Bit Manipulation (C++)Time: O(log n)    Test: 14">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-1-Binary-Search-Bit-Manipulation-C"><span class="nav-number">1.</span> <span class="nav-text">Solution 1: Binary Search + Bit Manipulation (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-14-ms"><span class="nav-number">1.1.</span> <span class="nav-text">Time: O(log n)    Test: 14 ms</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-2-Exponentionalize-C"><span class="nav-number">2.</span> <span class="nav-text">Solution 2: Exponentionalize (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-8-ms"><span class="nav-number">2.1.</span> <span class="nav-text">Time: O(log n)  Test: 8 ms</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#a-b-e-lg-a-e-lg-b-e-lg-a-lg-b"><span class="nav-number">2.2.</span> <span class="nav-text">a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-Binary-Search-Bit-Manipulation-C"><span class="nav-number">2.</span> <span class="nav-text">Solution 1: Binary Search + Bit Manipulation (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-14-ms"><span class="nav-number">2.0.1.</span> <span class="nav-text">Time: O(log n)    Test: 14 ms</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-2-Exponentionalize-C"><span class="nav-number">2.1.</span> <span class="nav-text">Solution 2: Exponentionalize (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-8-ms"><span class="nav-number">2.1.1.</span> <span class="nav-text">Time: O(log n)  Test: 8 ms</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#a-b-e-lg-a-e-lg-b-e-lg-a-lg-b"><span class="nav-number">2.1.2.</span> <span class="nav-text">a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

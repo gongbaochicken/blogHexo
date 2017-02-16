@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -87,8 +87,7 @@
 
 
 
-<meta name="description" content="####Question List:
-
+<meta name="description" content="Question List:
 Q1: Compare Version Number
 Q2: Valid Palindrome
 Q3: Valid Parentheses
@@ -97,17 +96,15 @@ Q4: Valid Number">
 <meta property="og:title" content="Leetcode String (Part 1)">
 <meta property="og:url" content="http://yoursite.com/2015/06/27/Leetcode_String_1/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="####Question List:
-
+<meta property="og:description" content="Question List:
 Q1: Compare Version Number
 Q2: Valid Palindrome
 Q3: Valid Parentheses
 Q4: Valid Number">
-<meta property="og:updated_time" content="2017-02-15T04:19:26.000Z">
+<meta property="og:updated_time" content="2017-02-15T05:18:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode String (Part 1)">
-<meta name="twitter:description" content="####Question List:
-
+<meta name="twitter:description" content="Question List:
 Q1: Compare Version Number
 Q2: Valid Palindrome
 Q3: Valid Parentheses
@@ -148,7 +145,7 @@ Q4: Valid Number">
   <title> Leetcode String (Part 1) | Happy Isotope </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
 
@@ -337,32 +334,28 @@ Q4: Valid Number">
       
 
       
-        <p>####Question List:</p>
-<ul>
+        <h3 id="Question-List"><a href="#Question-List" class="headerlink" title="Question List:"></a>Question List:</h3><ul>
 <li>Q1: Compare Version Number</li>
 <li>Q2: Valid Palindrome</li>
 <li>Q3: Valid Parentheses</li>
 <li>Q4: Valid Number<a id="more"></a>
 </li>
 </ul>
-<p>###Question 1: Compare Version Number<br>Compare two version numbers version1 and version2.<br>If version1 &gt; version2 return 1, if version1 &lt; version2 return -1, otherwise return 0.</p>
+<h4 id="Question-1-Compare-Version-Number"><a href="#Question-1-Compare-Version-Number" class="headerlink" title="Question 1: Compare Version Number"></a>Question 1: Compare Version Number</h4><p>Compare two version numbers version1 and version2.<br>If version1 &gt; version2 return 1, if version1 &lt; version2 return -1, otherwise return 0.</p>
 <p>You may assume that the version strings are non-empty and contain only digits and the . character.<br>The . character does not represent a decimal point and is used to separate number sequences.<br>For instance, 2.5 is not “two and a half” or “half way to version three”, it is the fifth second-level revision of the second first-level revision.</p>
 <p>Here is an example of version numbers ordering: 0.1 &lt; 1.1 &lt; 1.2 &lt; 13.37</p>
-<p>####My Solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int compareVersion(string version1, string version2) &#123;</div><div class="line">        int pos1 = 0, pos2 = 0, token1, token2;</div><div class="line">        string delimiter = &quot;.&quot;;</div><div class="line">        pos1 = version1.find(delimiter);</div><div class="line">        pos2 = version2.find(delimiter);</div><div class="line">        if(pos1 &gt;=0 ) &#123;</div><div class="line">        	token1 = stoi(version1.substr(0,pos1));</div><div class="line">        &#125;else &#123;</div><div class="line">        	token1 = version1.empty()? 0:stoi(version1);</div><div class="line">        &#125;</div><div class="line">        if(pos2 &gt;=0 ) &#123;</div><div class="line">            token2 = stoi(version2.substr(0,pos2));</div><div class="line">        &#125; else &#123;</div><div class="line">            token2 = version2.empty()? 0:stoi(version2);</div><div class="line">        &#125;</div><div class="line">        int diff = token1 - token2;</div><div class="line">        if(diff == 0)&#123;</div><div class="line">            if(pos1&lt;0 &amp;&amp; pos2&lt;0) return 0;</div><div class="line">            version1 = pos1 &gt;= 0 ? version1.erase(0, pos1 + 1):&quot;0&quot;;</div><div class="line">            version2 = pos2 &gt;= 0 ? version2.erase(0, pos2 + 1):&quot;0&quot;;</div><div class="line">            return compareVersion(version1, version2);</div><div class="line">        &#125;</div><div class="line">        else return diff &gt; 0 ? 1:-1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>###Question 2: Valid Palindrome<br> Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<h4 id="My-Solution"><a href="#My-Solution" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int compareVersion(string version1, string version2) &#123;</div><div class="line">        int pos1 = 0, pos2 = 0, token1, token2;</div><div class="line">        string delimiter = &quot;.&quot;;</div><div class="line">        pos1 = version1.find(delimiter);</div><div class="line">        pos2 = version2.find(delimiter);</div><div class="line">        if(pos1 &gt;=0 ) &#123;</div><div class="line">        	token1 = stoi(version1.substr(0,pos1));</div><div class="line">        &#125;else &#123;</div><div class="line">        	token1 = version1.empty()? 0:stoi(version1);</div><div class="line">        &#125;</div><div class="line">        if(pos2 &gt;=0 ) &#123;</div><div class="line">            token2 = stoi(version2.substr(0,pos2));</div><div class="line">        &#125; else &#123;</div><div class="line">            token2 = version2.empty()? 0:stoi(version2);</div><div class="line">        &#125;</div><div class="line">        int diff = token1 - token2;</div><div class="line">        if(diff == 0)&#123;</div><div class="line">            if(pos1&lt;0 &amp;&amp; pos2&lt;0) return 0;</div><div class="line">            version1 = pos1 &gt;= 0 ? version1.erase(0, pos1 + 1):&quot;0&quot;;</div><div class="line">            version2 = pos2 &gt;= 0 ? version2.erase(0, pos2 + 1):&quot;0&quot;;</div><div class="line">            return compareVersion(version1, version2);</div><div class="line">        &#125;</div><div class="line">        else return diff &gt; 0 ? 1:-1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="Question-2-Valid-Palindrome"><a href="#Question-2-Valid-Palindrome" class="headerlink" title="Question 2: Valid Palindrome"></a>Question 2: Valid Palindrome</h4><p> Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
 <p>For example,<br>“A man, a plan, a canal: Panama” is a palindrome.<br>“race a car” is not a palindrome.</p>
 <p>Note:<br>Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
 <p>For the purpose of this problem, we define empty string as valid palindrome.</p>
-<p>####My Solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">bool isPalindrome(string s) &#123;</div><div class="line">        int start=0;</div><div class="line">        int end=s.size()-1;</div><div class="line">        while(start&lt;end)&#123;</div><div class="line">            if(isalnum(s[start])==false) &#123;start++;continue;&#125;</div><div class="line">            if(isalnum(s[end])==false)&#123;end--;continue;&#125;</div><div class="line">            if(tolower(s[start])!=tolower(s[end]))&#123;</div><div class="line">                return false;</div><div class="line">            &#125;else&#123;</div><div class="line">            start++;</div><div class="line">            end--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>###Question 3: Valid Parentheses<br>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<h4 id="My-Solution-1"><a href="#My-Solution-1" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">bool isPalindrome(string s) &#123;</div><div class="line">        int start=0;</div><div class="line">        int end=s.size()-1;</div><div class="line">        while(start&lt;end)&#123;</div><div class="line">            if(isalnum(s[start])==false) &#123;start++;continue;&#125;</div><div class="line">            if(isalnum(s[end])==false)&#123;end--;continue;&#125;</div><div class="line">            if(tolower(s[start])!=tolower(s[end]))&#123;</div><div class="line">                return false;</div><div class="line">            &#125;else&#123;</div><div class="line">            start++;</div><div class="line">            end--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Question-3-Valid-Parentheses"><a href="#Question-3-Valid-Parentheses" class="headerlink" title="Question 3: Valid Parentheses"></a>Question 3: Valid Parentheses</h4><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
 <p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
-<p>####My Solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">bool isValid(string s) &#123;</div><div class="line">	stack&lt;char&gt; st;</div><div class="line">   	for(int i=0;i&lt;s.size();i++)&#123;</div><div class="line">   		if( s[i]==&apos;(&apos; || s[i]==&apos;&#123;&apos; || s[i]==&apos;[&apos;)&#123;</div><div class="line">   			st.push(s[i]);</div><div class="line">   		&#125;</div><div class="line">      	else&#123;</div><div class="line">     		if(st.empty()) return false;</div><div class="line">        	if ((s[i]==&apos;)&apos;) &amp;&amp; (st.top()!=&apos;(&apos;)) &#123;return false;&#125;</div><div class="line">        	if ((s[i]==&apos;&#123;&apos;) &amp;&amp; (st.top()!=&apos;&#125;&apos;)) &#123;return false;&#125;</div><div class="line">      		if ((s[i]==&apos;[&apos;) &amp;&amp; (st.top()!=&apos;]&apos;)) &#123;return false;&#125;</div><div class="line">        	st.pop();</div><div class="line">     	&#125;</div><div class="line"> 	&#125;</div><div class="line">  	return st.empty();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>###Question 4:Valid Number<br>Validate if a given string is numeric.</p>
+<h4 id="My-Solution-2"><a href="#My-Solution-2" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">bool isValid(string s) &#123;</div><div class="line">	stack&lt;char&gt; st;</div><div class="line">   	for(int i=0;i&lt;s.size();i++)&#123;</div><div class="line">   		if( s[i]==&apos;(&apos; || s[i]==&apos;&#123;&apos; || s[i]==&apos;[&apos;)&#123;</div><div class="line">   			st.push(s[i]);</div><div class="line">   		&#125;</div><div class="line">      	else&#123;</div><div class="line">     		if(st.empty()) return false;</div><div class="line">        	if ((s[i]==&apos;)&apos;) &amp;&amp; (st.top()!=&apos;(&apos;)) &#123;return false;&#125;</div><div class="line">        	if ((s[i]==&apos;&#123;&apos;) &amp;&amp; (st.top()!=&apos;&#125;&apos;)) &#123;return false;&#125;</div><div class="line">      		if ((s[i]==&apos;[&apos;) &amp;&amp; (st.top()!=&apos;]&apos;)) &#123;return false;&#125;</div><div class="line">        	st.pop();</div><div class="line">     	&#125;</div><div class="line"> 	&#125;</div><div class="line">  	return st.empty();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Question-4-Valid-Number"><a href="#Question-4-Valid-Number" class="headerlink" title="Question 4:Valid Number"></a>Question 4:Valid Number</h4><p>Validate if a given string is numeric.</p>
 <p>Some examples: “0” =&gt; true || “ 0.1 “ =&gt; true || “abc” =&gt; false || “1 a” =&gt; false ||  “2e10” =&gt; true</p>
-<p>####My solutions:<br>/*1. skip the leading whitespaces;</p>
+<h4 id="My-solutions"><a href="#My-solutions" class="headerlink" title="My solutions:"></a>My solutions:</h4><p>/*1. skip the leading whitespaces;</p>
 <ol>
 <li>check if the significand is valid. To do so, simply skip the leading sign and count the number of digits and the number of points. A valid significand has no more than one point and at least one digit.</li>
 <li>check if the exponent part is valid. We do this if the significand is followed by ‘e’. Simply skip the leading sign and count the number of digits. A valid exponent contain at least one digit.</li>
@@ -415,8 +408,8 @@ Q4: Valid Number">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/06/github快速使用指南/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/07/11/Bootstrap-basic/" rel="prev" title="Jason聊Bootstrap：第一话">
+                Jason聊Bootstrap：第一话 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,8 +457,17 @@ Q4: Valid Number">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg"
@@ -478,7 +480,7 @@ Q4: Valid Number">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -489,7 +491,7 @@ Q4: Valid Number">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -514,6 +516,22 @@ Q4: Valid Number">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-List"><span class="nav-number">1.</span> <span class="nav-text">Question List:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-1-Compare-Version-Number"><span class="nav-number">1.1.</span> <span class="nav-text">Question 1: Compare Version Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution"><span class="nav-number">1.2.</span> <span class="nav-text">My Solution:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-2-Valid-Palindrome"><span class="nav-number">1.3.</span> <span class="nav-text">Question 2: Valid Palindrome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution-1"><span class="nav-number">1.4.</span> <span class="nav-text">My Solution:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-3-Valid-Parentheses"><span class="nav-number">1.5.</span> <span class="nav-text">Question 3: Valid Parentheses</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution-2"><span class="nav-number">1.6.</span> <span class="nav-text">My Solution:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-4-Valid-Number"><span class="nav-number">1.7.</span> <span class="nav-text">Question 4:Valid Number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#My-solutions"><span class="nav-number">1.8.</span> <span class="nav-text">My solutions:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
