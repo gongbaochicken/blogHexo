@@ -1,0 +1,672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="In some sense, JBPM is simple, because its goal is to offer process management features in a way that both business users and developers like it. Here I will give you a very simple JBPM example with J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A simple example in jbpm">
+<meta property="og:url" content="http://yoursite.com/2015/06/09/A-simple-example-in-jbpm/index.html">
+<meta property="og:site_name" content="Happy Isotope">
+<meta property="og:description" content="In some sense, JBPM is simple, because its goal is to offer process management features in a way that both business users and developers like it. Here I will give you a very simple JBPM example with J">
+<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/blog1.jpg">
+<meta property="og:updated_time" content="2017-02-17T05:57:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A simple example in jbpm">
+<meta name="twitter:description" content="In some sense, JBPM is simple, because its goal is to offer process management features in a way that both business users and developers like it. Here I will give you a very simple JBPM example with J">
+<meta name="twitter:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/blog1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/06/09/A-simple-example-in-jbpm/"/>
+
+
+
+
+
+  <title> A simple example in jbpm | Happy Isotope </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Happy Isotope</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Coding Note</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/09/A-simple-example-in-jbpm/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                A simple example in jbpm
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-09T10:43:24-05:00">
+                2015-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In some sense, JBPM is simple, because its goal is to offer process management features in a way that both business users and developers like it. Here I will give you a very simple JBPM example with Java action codeblock.<br><a id="more"></a></p>
+<h3 id="JPDL"><a href="#JPDL" class="headerlink" title="JPDL"></a>JPDL</h3><p>There is a JBoss jBPM Process Definition Language file, which defines the topology of the application process.</p>
+<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/blog1.jpg" alt="test1.jpdl.xml"></p>
+<p>Suppose one guy(“Tom”) wants to apply for something, he has to submit his application online at the “Apply” task. Then the application form will moves to a certain assignee(Here I name it is “manager”). If the manager says “Yes”, the process moves to the end, and the application successfully ends. If the manager says “No”, the process moves back the “Apply” step, and Tom should apply again (Poor Tom~~).</p>
+<p>Well, that’s the whole process. Simple?</p>
+<p>Next, I will show the xml code of the JPDL file.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">process</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">name</span>=<span class="string">"test1"</span> <span class="attr">xmlns</span>=<span class="string">"http://jbpm.org/4.4/jpdl"</span>&gt;</span>   <span class="tag">&lt;<span class="name">start</span> <span class="attr">g</span>=<span class="string">"126,-12,48,48"</span> <span class="attr">name</span>=<span class="string">"start1"</span>&gt;</span>      <span class="tag">&lt;<span class="name">transition</span> <span class="attr">g</span>=<span class="string">"-47,-17"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">to</span>=<span class="string">"Apply"</span>/&gt;</span>   <span class="tag">&lt;/<span class="name">start</span>&gt;</span>   <span class="tag">&lt;<span class="name">task</span> <span class="attr">assignee</span>=<span class="string">"Tom"</span> <span class="attr">form</span>=<span class="string">"Servlet?opt=toApply"</span> <span class="attr">g</span>=<span class="string">"101,67,92,52"</span> <span class="attr">name</span>=<span class="string">"Apply"</span>&gt;</span>      <span class="tag">&lt;<span class="name">transition</span> <span class="attr">g</span>=<span class="string">"-67,-1"</span> <span class="attr">name</span>=<span class="string">"to check"</span> <span class="attr">to</span>=<span class="string">"check"</span>/&gt;</span>   <span class="tag">&lt;/<span class="name">task</span>&gt;</span>   <span class="tag">&lt;<span class="name">task</span> <span class="attr">assignee</span>=<span class="string">"manager"</span> <span class="attr">form</span>=<span class="string">"Servlet?opt=toManagerApprove"</span> <span class="attr">g</span>=<span class="string">"100,155,92,52"</span> <span class="attr">name</span>=<span class="string">"check"</span>&gt;</span>      <span class="tag">&lt;<span class="name">transition</span> <span class="attr">g</span>=<span class="string">"332,180;331,95:5,-10"</span> <span class="attr">name</span>=<span class="string">"No"</span> <span class="attr">to</span>=<span class="string">"Apply"</span>/&gt;</span>      <span class="tag">&lt;<span class="name">transition</span> <span class="attr">g</span>=<span class="string">"-43,-14"</span> <span class="attr">name</span>=<span class="string">"Yes"</span> <span class="attr">to</span>=<span class="string">"end1"</span>/&gt;</span>   <span class="tag">&lt;/<span class="name">task</span>&gt;</span>   <span class="tag">&lt;<span class="name">end</span> <span class="attr">g</span>=<span class="string">"121,250,48,48"</span> <span class="attr">name</span>=<span class="string">"end1"</span>/&gt;</span><span class="tag">&lt;/<span class="name">process</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><p>Here is the java code that driving the actions of the whole process above. The given code is pretty straightforward. However, the JPDL is more complicated in industry. So you may have more concerns.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.tgb.video;<span class="keyword">import</span> java.util.HashMap;<span class="keyword">import</span> java.util.Iterator;<span class="keyword">import</span> java.util.List;<span class="keyword">import</span> java.util.Map;<span class="keyword">import</span> java.util.Set;<span class="keyword">import</span> org.jbpm.api.Configuration;<span class="keyword">import</span> org.jbpm.api.ExecutionService;<span class="keyword">import</span> org.jbpm.api.HistoryService;<span class="keyword">import</span> org.jbpm.api.IdentityService;<span class="keyword">import</span> org.jbpm.api.ManagementService;<span class="keyword">import</span> org.jbpm.api.ProcessEngine;<span class="keyword">import</span> org.jbpm.api.ProcessInstance;<span class="keyword">import</span> org.jbpm.api.RepositoryService;<span class="keyword">import</span> org.jbpm.api.TaskService;<span class="keyword">import</span> org.jbpm.api.task.Task;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JbpmProcess</span> </span>&#123;</div><div class="line">	<span class="keyword">protected</span> RepositoryService repositoryService;</div><div class="line">	<span class="keyword">protected</span> ExecutionService executionService;</div><div class="line">	<span class="keyword">protected</span> TaskService taskService;</div><div class="line">	<span class="keyword">protected</span> String processInstanceID;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deploy</span><span class="params">()</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		repositoryService = processEngine.getRepositoryService();</div><div class="line">		repositoryService.createDeployment().addResourceFromClasspath(<span class="string">"test1.jpdl.xml"</span>).deploy();	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createInstance</span><span class="params">()</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		executionService = processEngine.getExecutionService();		ProcessInstance processInstance = executionService.startProcessInstanceByKey(<span class="string">"test"</span>);		processInstanceID = processInstance.getId();		System.out.println(<span class="string">"ID:"</span> + processInstanceID);	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getCurrentInstanceID</span><span class="params">()</span></span>&#123;		<span class="keyword">return</span> processInstanceID;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> ProcessInstance <span class="title">getProcessInstanceByTaskId</span><span class="params">(String taskId)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		String executionId = taskService.getTask(taskId).getExecutionId();		<span class="keyword">return</span> (ProcessInstance) executionService.findExecutionById(executionId).getProcessInstance();	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> List&lt;ProcessInstance&gt; <span class="title">getProcesInstanceList</span><span class="params">()</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		List&lt;ProcessInstance&gt; procesInstanceList = processEngine.getExecutionService().createProcessInstanceQuery().list();		<span class="keyword">return</span> procesInstanceList;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getProcessDefinitionForm</span><span class="params">(String taskId)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		Task task = taskService.getTask(taskId);		<span class="keyword">return</span> task.getFormResourceName();	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String  <span class="title">getCurrentActivityName</span><span class="params">(String processID)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		executionService = processEngine.getExecutionService();		String activityName = executionService.createProcessInstanceQuery().processInstanceId(processID).uniqueResult().findActiveActivityNames().toString();		<span class="comment">//System.out.println("current activity: " + activityName);</span>		<span class="keyword">return</span> activityName;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTask</span><span class="params">(String assignee)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		List&lt;Task&gt; tasks = taskService.findPersonalTasks(assignee);		<span class="keyword">if</span>(tasks.size() != <span class="number">0</span>)&#123;			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tasks.size(); i++)&#123;				Task task = tasks.get(i);				System.out.println(<span class="string">"Task Num:"</span> + tasks.size());				System.out.println(<span class="string">"Task:"</span> + task.getActivityName());				System.out.println(<span class="string">"People:"</span> + task.getAssignee() + <span class="string">", Task ID: "</span> + task.getId());			&#125;		&#125;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTaskVariable</span><span class="params">(String TaskID, String TaskUserID, String TaskUserName)</span></span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();		map.put(<span class="string">"TaskUserID"</span>, TaskUserID);		map.put(<span class="string">"TaskUserName"</span>, TaskUserName);		taskService.setVariables(TaskID, map);	&#125;		</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTaskVariableID</span><span class="params">(String TaskID)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		String taskUserID = taskService.getVariable(TaskID, <span class="string">"TaskUserID"</span>).toString();		<span class="comment">//System.out.println("Get Task User ID:  " +  taskUserID)</span>		<span class="keyword">return</span> taskUserID;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTaskVariableName</span><span class="params">(String TaskID)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		String taskUserName = taskService.getVariable(TaskID, <span class="string">"TaskUserName"</span>).toString();		<span class="comment">//System.out.println("Get Task User name:  "+ taskUserName);</span>		<span class="keyword">return</span> taskUserName;	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completeTask</span><span class="params">(String TaskID)</span> </span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		taskService.completeTask(TaskID);	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getProcessInstanceVariable</span><span class="params">(String ProcessID)</span></span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		executionService = processEngine.getExecutionService();		String userID = executionService.getVariable(ProcessID, <span class="string">"UserID"</span>).toString();		String userName = executionService.getVariable(ProcessID, <span class="string">"UserName"</span>).toString();		System.out.println(<span class="string">"Get User ID: "</span> + userID);		System.out.println(<span class="string">"Get User name: "</span>+ userName);	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateVariable</span><span class="params">(String ProcessID, String UserID, String UserName)</span></span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		executionService = processEngine.getExecutionService();		executionService.setVariable(ProcessID, <span class="string">"UserID"</span>, UserID);		executionService.setVariable(ProcessID, <span class="string">"UserName"</span>, UserName);	&#125;</div><div class="line">	<span class="comment">//If Yes, the processInstance moves to the end. If the manager replies "No",  the processInstance goes back to application step  </span>	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveAfterCheck</span><span class="params">(String taskID, String result)</span></span>&#123;		ProcessEngine processEngine = Configuration.getProcessEngine();		taskService = processEngine.getTaskService();		<span class="keyword">if</span>(result.equals(<span class="string">"Yes"</span>))&#123;			<span class="comment">//Go to the end</span>			taskService.completeTask(taskID, <span class="string">"Yes"</span>);		&#125;		<span class="keyword">else</span> <span class="keyword">if</span>(result.equals(<span class="string">"No"</span>))&#123;			<span class="comment">//Feedback</span>			taskService.completeTask(taskID, <span class="string">"No"</span>);		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;			System.out.print(<span class="string">"The result has error."</span>);		&#125;	&#125;	<span class="comment">/*	 * History record is not needed at this time	 *</span></div><div class="line">	 * */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><p>After finishing these steps, you can use JUnit to test your action class. But before that, you need to re-configure the jbpm.hibernate.cfg.xml(import into eclipse).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE hibernate-configuration PUBLIC          &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot;          &quot;http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd&quot;&gt;&lt;hibernate-configuration&gt;  &lt;session-factory&gt;</div><div class="line">     &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQLInnoDBDialect&lt;/property&gt;     &lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;     &lt;property name=&quot;hibernate.connection.url&quot;&gt;jdbc:mysql://127.0.0.1:3306/jbpmtest?useUnicode=true&amp;amp;characterEncoding=UTF-8&lt;/property&gt;     &lt;property name=&quot;hibernate.connection.username&quot;&gt;XXX&lt;/property&gt;     &lt;property name=&quot;hibernate.connection.password&quot;&gt;XXX&lt;/property&gt;     &lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;     &lt;property name=&quot;hibernate.format_sql&quot;&gt;true&lt;/property&gt;</div><div class="line">     &lt;mapping resource=&quot;jbpm.repository.hbm.xml&quot; /&gt;     &lt;mapping resource=&quot;jbpm.execution.hbm.xml&quot; /&gt;     &lt;mapping resource=&quot;jbpm.history.hbm.xml&quot; /&gt;     &lt;mapping resource=&quot;jbpm.task.hbm.xml&quot; /&gt;     &lt;mapping resource=&quot;jbpm.identity.hbm.xml&quot; /&gt;</div><div class="line">  &lt;/session-factory&gt;&lt;/hibernate-configuration&gt;</div></pre></td></tr></table></figure>
+<p>Here, I choose MySQL as the jbpm database, and name &amp; username &amp; password you can set as you wish.</p>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h3><ol>
+<li><p>The first time you deploy the jbpm in your db, there is no table. Therefore, in jbpm.hibernate.cfg.xml, use “create” rather than “update” in the first time. Then you can change back to “update”.</p>
+</li>
+<li><p>If the error is about the sql dialect, change “org.hibernate.dialect.MySQLInnoDBDialect” into “org.hibernate.dialect.MySQLDialect”.</p>
+</li>
+<li><p>Don’t forge to keep your database server on.</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/06/New-Questions-on-Leetcode/" rel="next" title="New Questions on Leetcode">
+                <i class="fa fa-chevron-left"></i> New Questions on Leetcode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/13/Install-Activiti-5-in-Mac/" rel="prev" title="Install Activiti 5 in Mac">
+                Install Activiti 5 in Mac <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg"
+               alt="Zhuo Jia" />
+          <p class="site-author-name" itemprop="name">Zhuo Jia</p>
+          <p class="site-description motion-element" itemprop="description">C++ Developer @SAP Labs</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JPDL"><span class="nav-number">1.</span> <span class="nav-text">JPDL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Code"><span class="nav-number">2.</span> <span class="nav-text">Java Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test"><span class="nav-number">3.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">4.</span> <span class="nav-text">Tips:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhuo Jia</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
