@@ -200,6 +200,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -248,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/jquery-note1/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/04/Online-Judger-System-Note1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhuo Jia">
@@ -273,8 +283,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/01/jquery-note1/" itemprop="url">
-                  jQuery_note1
+                <a class="post-title-link" href="/2017/03/04/Online-Judger-System-Note1/" itemprop="url">
+                  Online Judger Design Note 1
                 </a>
               
             
@@ -290,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T22:58:20-06:00">
-                2017-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-04T21:17:02-06:00">
+                2017-03-04
               </time>
             
 
@@ -300,6 +310,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -327,27 +359,161 @@
 
       
         
-          
-            <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.</p>
-<p>首先一个根本问题就是：jQuery操作的到底是个啥？DOM： Document Object Model.</p>
-<h2 id="引入jQuery："><a href="#引入jQuery：" class="headerlink" title="引入jQuery："></a>引入jQuery：</h2><p>可以通过CDN,或是源文件来引入。<br>在HTML中可以像这样插入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	$(document).ready(function()&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建element</div><div class="line">var div = document.createElement(&quot;div&quot;);</div><div class="line">document.body.appendChild(div);</div><div class="line"></div><div class="line">//创建text</div><div class="line">var div = document.createElement(&quot;div&quot;);</div><div class="line">var txt = document.createTextNode(&quot;DOM&quot;);</div><div class="line">div.appendChild(txt);</div><div class="line">document.body.appendChild(div);</div><div class="line"></div><div class="line">//setAttribute</div><div class="line">div.setAttribute(&quot;title&quot;,&quot;盒子&quot;);</div><div class="line">var $div = $(&quot;&lt;div title=&quot;盒子&quot;&gt;DOM&lt;/div&gt;&quot;);</div><div class="line">$(body).append($div);</div></pre></td></tr></table></figure>
-<h2 id="选择器："><a href="#选择器：" class="headerlink" title="选择器："></a>选择器：</h2><p>以下是常用选择器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;\*&quot;): 所有元素</div><div class="line">$(&quot;#lastname&quot;): id=&quot;lastname&quot; 的元素</div><div class="line">$(&quot;.intro&quot;): 所有 class=&quot;intro&quot; 的元素</div><div class="line">$(&quot;p&quot;): 所有&lt;p&gt;元素</div><div class="line">$(&quot;.intro.demo&quot;): 所有 class=&quot;intro&quot;且 class=&quot;demo&quot; 的元素</div></pre></td></tr></table></figure>
-<p>以下是位置选择器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">:first -----对应方法------&gt; .first()</div><div class="line">:last  ----对应方法------&gt; .last()</div><div class="line">:not(?) ----对应方法------&gt; .not(?)</div><div class="line">:eq(num) ----对应方法------&gt;  .eq(num)</div><div class="line">:gt(num) ----对应方法------&gt;  .gt(num)</div><div class="line">:lt(num) ----对应方法------&gt;  .lt(num)</div></pre></td></tr></table></figure>
-<h2 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.next() 每个选中元素紧邻的下一个元素，可传入selector进行筛选</div><div class="line">.nextAll() 每个选中元素后的所有同辈元素，可传入selector进行筛选</div><div class="line">.nextUntil([selector],[filter]) 每个选中元素之后、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div><div class="line">.prev() 每个选中元素紧邻的上一个元素，可传入selector进行筛选</div><div class="line">.prevAll([selector]) 每个选中元素前的所有同辈元素，可传入selector进行筛选</div><div class="line">.prevUntil([selector],[filter]) 每个选中元素之前、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div></pre></td></tr></table></figure>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>有一些常用的方法，比如添加/删减class, 以此来改变前端属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.addClass();</div><div class="line">.removeClass();</div></pre></td></tr></table></figure>
-<p>show vs hide</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//callback 是动画执行的方法</div><div class="line">show(speed, callback);</div><div class="line"></div><div class="line">//原理将高度，宽度，不透明度改为0.对应show的话，就是从上到下增加高度，从左到右增加宽度，从0-1增加不透明度。</div><div class="line">hide()</div></pre></td></tr></table></figure>
-<p>滑动动画效果<br>slideUp(200), slideDown(100)</p>
-<h2 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.resize()   //当浏览器window的尺寸改变时，window元素上绑定的resize事件将被触发</div><div class="line"></div><div class="line">$(window).resize(function() &#123;</div><div class="line">    $(&apos;body&apos;).prepend(&apos;&lt;div&gt;&apos; + $(window).width() + &apos;&lt;/div&gt;&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">.scroll()  //当用户在元素内执行了滚动操作，就会在这个元素上触发scroll事件。</div><div class="line"></div><div class="line">$(window).scroll(function () &#123;</div><div class="line">    $(&quot;span&quot;).css(&quot;display&quot;, &quot;inline&quot;).fadeOut(&quot;slow&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.ready(handler) //DOM和CSS完全加载后之间handler</div><div class="line">.on(type or events,[selector],[data],handler)   //根据type/events对象的事件绑定多个事件处理程序</div><div class="line">.off(type,[selector],[data],handler)  //解除on给元素绑定的事件处理程序</div><div class="line">.bind(type,[data],handler)   //绑定type事件，并指定事件处理程序handler</div></pre></td></tr></table></figure>
-<h2 id="事件触发："><a href="#事件触发：" class="headerlink" title="事件触发："></a>事件触发：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mouseenter,mouseleave, click</div></pre></td></tr></table></figure>
+          <p>Recently, I am working on a code online judger application as a practice of using full-stack technologies I currently know. This post is development note of this app, including system design, sketch, code implementation, issue/challenges and my solutions.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/04/Online-Judger-System-Note1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/jquery-note1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/01/jquery-note1/" itemprop="url">
+                  jQuery Note 1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T22:58:20-06:00">
+                2017-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/01/jquery-note1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -439,6 +605,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Distributed-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Distributed System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -469,6 +657,157 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/02/14/DNS1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/22/chord，一种p2p分布式哈希算法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/22/chord，一种p2p分布式哈希算法/" itemprop="url">
+                  Distributed System之Chord，一种P2P分布式哈希算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-22T00:27:46-06:00">
+                2016-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Distributed-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Distributed System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这里的Chord不是音乐里面的和弦，而是一个解决P2P分布式查找协议，或者说算法，由MIT的实验室设计的。其项目地址为：</p>
+<blockquote>
+<p><strong><a href="http://pdos.csail.mit.edu/chord/">http://pdos.csail.mit.edu/chord/</a> </strong></p>
+</blockquote>
+<p>在我上学期的课程：研究生分布式系统中，第二个作业就是要求根据Paper，使用C++或者Java实现Chord。在此跟大家一起分享一下。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/01/22/chord，一种p2p分布式哈希算法/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -563,6 +902,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题-面试/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题&面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -691,6 +1052,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -818,6 +1201,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题-面试/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题&面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -948,6 +1353,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1074,6 +1501,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题-面试/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题&面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1199,6 +1648,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1230,258 +1701,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/06/16/Duke/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/16/Outer-Banks/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Zhuo Jia">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Happy Isotope">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/16/Outer-Banks/" itemprop="url">
-                  Outer Banks之旅
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-16T16:23:49-05:00">
-                2015-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Outer Banks是美国北卡州东面的一处海滩。中文翻译叫“外滩”，感觉怪怪的（LOL）。</p>
-<p>该海滩虽然并不像马尔代夫那样的雪白的沙子，名气也不大，但是也有其让人惊艳的地方！我们学校离那里不过2小时车程，于是趁着Spring Break去玩了一下。</p>
-<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/海边小螃蟹.JPG" alt="Crab"><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/06/16/Outer-Banks/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/15/github_for_first_time_user/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Zhuo Jia">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Happy Isotope">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/06/15/github_for_first_time_user/" itemprop="url">
-                  Github for first-time users
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-15T23:44:43-05:00">
-                2015-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文是篇干货，是一个基于linux 命令行操作的github快速使用指南。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/06/15/github_for_first_time_user/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1562,18 +1781,25 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

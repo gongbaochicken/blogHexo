@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Front end,Note," />
 
 
 
@@ -89,13 +89,13 @@
 
 <meta name="description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery_note1">
+<meta property="og:title" content="jQuery Note 1">
 <meta property="og:url" content="http://yoursite.com/2017/03/01/jquery-note1/index.html">
 <meta property="og:site_name" content="Happy Isotope">
 <meta property="og:description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
-<meta property="og:updated_time" content="2017-03-02T05:02:06.000Z">
+<meta property="og:updated_time" content="2017-03-05T03:19:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery_note1">
+<meta name="twitter:title" content="jQuery Note 1">
 <meta name="twitter:description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title> jQuery_note1 | Happy Isotope </title>
+  <title> jQuery Note 1 | Happy Isotope </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -195,6 +195,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -271,7 +281,7 @@
             
             
               
-                jQuery_note1
+                jQuery Note 1
               
             
           </h1>
@@ -296,6 +306,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -322,24 +354,24 @@
       
 
       
-        <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.</p>
+        <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.<br><a id="more"></a></p>
 <p>首先一个根本问题就是：jQuery操作的到底是个啥？DOM： Document Object Model.</p>
 <h2 id="引入jQuery："><a href="#引入jQuery：" class="headerlink" title="引入jQuery："></a>引入jQuery：</h2><p>可以通过CDN,或是源文件来引入。<br>在HTML中可以像这样插入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	$(document).ready(function()&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建element</div><div class="line">var div = document.createElement(&quot;div&quot;);</div><div class="line">document.body.appendChild(div);</div><div class="line"></div><div class="line">//创建text</div><div class="line">var div = document.createElement(&quot;div&quot;);</div><div class="line">var txt = document.createTextNode(&quot;DOM&quot;);</div><div class="line">div.appendChild(txt);</div><div class="line">document.body.appendChild(div);</div><div class="line"></div><div class="line">//setAttribute</div><div class="line">div.setAttribute(&quot;title&quot;,&quot;盒子&quot;);</div><div class="line">var $div = $(&quot;&lt;div title=&quot;盒子&quot;&gt;DOM&lt;/div&gt;&quot;);</div><div class="line">$(body).append($div);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">	$(document).ready(function()&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建element</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//创建text</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="string">"DOM"</span>);</div><div class="line">div.appendChild(txt);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//setAttribute</span></div><div class="line">div.setAttribute(<span class="string">"title"</span>,<span class="string">"盒子"</span>);</div><div class="line"><span class="keyword">var</span> $div = $(<span class="string">"&lt;div title="</span>盒子<span class="string">"&gt;DOM&lt;/div&gt;"</span>);</div><div class="line">$(body).append($div);</div></pre></td></tr></table></figure>
 <h2 id="选择器："><a href="#选择器：" class="headerlink" title="选择器："></a>选择器：</h2><p>以下是常用选择器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;\*&quot;): 所有元素</div><div class="line">$(&quot;#lastname&quot;): id=&quot;lastname&quot; 的元素</div><div class="line">$(&quot;.intro&quot;): 所有 class=&quot;intro&quot; 的元素</div><div class="line">$(&quot;p&quot;): 所有&lt;p&gt;元素</div><div class="line">$(&quot;.intro.demo&quot;): 所有 class=&quot;intro&quot;且 class=&quot;demo&quot; 的元素</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"\*"</span>): 所有元素</div><div class="line">$(<span class="string">"#lastname"</span>): id=<span class="string">"lastname"</span> 的元素</div><div class="line">$(<span class="string">".intro"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span> 的元素</div><div class="line">$(<span class="string">"p"</span>): 所有&lt;p&gt;元素</div><div class="line">$(<span class="string">".intro.demo"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span>且 <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo"</span> 的元素</div></pre></td></tr></table></figure>
 <p>以下是位置选择器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">:first -----对应方法------&gt; .first()</div><div class="line">:last  ----对应方法------&gt; .last()</div><div class="line">:not(?) ----对应方法------&gt; .not(?)</div><div class="line">:eq(num) ----对应方法------&gt;  .eq(num)</div><div class="line">:gt(num) ----对应方法------&gt;  .gt(num)</div><div class="line">:lt(num) ----对应方法------&gt;  .lt(num)</div></pre></td></tr></table></figure>
-<h2 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.next() 每个选中元素紧邻的下一个元素，可传入selector进行筛选</div><div class="line">.nextAll() 每个选中元素后的所有同辈元素，可传入selector进行筛选</div><div class="line">.nextUntil([selector],[filter]) 每个选中元素之后、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div><div class="line">.prev() 每个选中元素紧邻的上一个元素，可传入selector进行筛选</div><div class="line">.prevAll([selector]) 每个选中元素前的所有同辈元素，可传入selector进行筛选</div><div class="line">.prevUntil([selector],[filter]) 每个选中元素之前、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">:first -----对应方法------&gt; .first()</div><div class="line">:last  ----对应方法------&gt; .last()</div><div class="line">:not(?) ----对应方法------&gt; .not(?)</div><div class="line">:eq(num) ----对应方法------&gt;  .eq(num)</div><div class="line">:gt(num) ----对应方法------&gt;  .gt(num)</div><div class="line">:lt(num) ----对应方法------&gt;  .lt(num)</div></pre></td></tr></table></figure>
+<h2 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.next() 每个选中元素紧邻的下一个元素，可传入selector进行筛选</div><div class="line">.nextAll() 每个选中元素后的所有同辈元素，可传入selector进行筛选</div><div class="line">.nextUntil([selector],[filter]) 每个选中元素之后、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div><div class="line">.prev() 每个选中元素紧邻的上一个元素，可传入selector进行筛选</div><div class="line">.prevAll([selector]) 每个选中元素前的所有同辈元素，可传入selector进行筛选</div><div class="line">.prevUntil([selector],[filter]) 每个选中元素之前、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div></pre></td></tr></table></figure>
 <h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>有一些常用的方法，比如添加/删减class, 以此来改变前端属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.addClass();</div><div class="line">.removeClass();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.addClass();</div><div class="line">.removeClass();</div></pre></td></tr></table></figure>
 <p>show vs hide</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//callback 是动画执行的方法</div><div class="line">show(speed, callback);</div><div class="line"></div><div class="line">//原理将高度，宽度，不透明度改为0.对应show的话，就是从上到下增加高度，从左到右增加宽度，从0-1增加不透明度。</div><div class="line">hide()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//callback 是动画执行的方法</span></div><div class="line">show(speed, callback);</div><div class="line"></div><div class="line"><span class="comment">//原理将高度，宽度，不透明度改为0.对应show的话，就是从上到下增加高度，从左到右增加宽度，从0-1增加不透明度。</span></div><div class="line">hide()</div></pre></td></tr></table></figure>
 <p>滑动动画效果<br>slideUp(200), slideDown(100)</p>
-<h2 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.resize()   //当浏览器window的尺寸改变时，window元素上绑定的resize事件将被触发</div><div class="line"></div><div class="line">$(window).resize(function() &#123;</div><div class="line">    $(&apos;body&apos;).prepend(&apos;&lt;div&gt;&apos; + $(window).width() + &apos;&lt;/div&gt;&apos;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">.scroll()  //当用户在元素内执行了滚动操作，就会在这个元素上触发scroll事件。</div><div class="line"></div><div class="line">$(window).scroll(function () &#123;</div><div class="line">    $(&quot;span&quot;).css(&quot;display&quot;, &quot;inline&quot;).fadeOut(&quot;slow&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.ready(handler) //DOM和CSS完全加载后之间handler</div><div class="line">.on(type or events,[selector],[data],handler)   //根据type/events对象的事件绑定多个事件处理程序</div><div class="line">.off(type,[selector],[data],handler)  //解除on给元素绑定的事件处理程序</div><div class="line">.bind(type,[data],handler)   //绑定type事件，并指定事件处理程序handler</div></pre></td></tr></table></figure>
-<h2 id="事件触发："><a href="#事件触发：" class="headerlink" title="事件触发："></a>事件触发：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mouseenter,mouseleave, click</div></pre></td></tr></table></figure>
+<h2 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.resize()   <span class="comment">//当浏览器window的尺寸改变时，window元素上绑定的resize事件将被触发</span></div><div class="line"></div><div class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'body'</span>).prepend(<span class="string">'&lt;div&gt;'</span> + $(<span class="built_in">window</span>).width() + <span class="string">'&lt;/div&gt;'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">.scroll()  <span class="comment">//当用户在元素内执行了滚动操作，就会在这个元素上触发scroll事件。</span></div><div class="line"></div><div class="line">$(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">"span"</span>).css(<span class="string">"display"</span>, <span class="string">"inline"</span>).fadeOut(<span class="string">"slow"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.ready(handler) <span class="comment">//DOM和CSS完全加载后之间handler</span></div><div class="line">.on(type or events,[selector],[data],handler)   <span class="comment">//根据type/events对象的事件绑定多个事件处理程序</span></div><div class="line">.off(type,[selector],[data],handler)  <span class="comment">//解除on给元素绑定的事件处理程序</span></div><div class="line">.bind(type,[data],handler)   <span class="comment">//绑定type事件，并指定事件处理程序handler</span></div></pre></td></tr></table></figure>
+<h2 id="事件触发："><a href="#事件触发：" class="headerlink" title="事件触发："></a>事件触发：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mouseenter,mouseleave, click</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -361,6 +393,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Front-end/" rel="tag"># Front end</a>
+          
+            <a href="/tags/Note/" rel="tag"># Note</a>
+          
+        </div>
+      
 
       
         
@@ -379,6 +419,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/04/Online-Judger-System-Note1/" rel="prev" title="Online Judger Design Note 1">
+                Online Judger Design Note 1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -448,18 +492,25 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
