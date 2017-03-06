@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="刷题总结," />
+  <meta name="keywords" content="Distributed System,Theory," />
 
 
 
@@ -87,24 +87,20 @@
 
 
 
-<meta name="description" content="Question:
-Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
-Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third">
+<meta name="description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Delete Node in a Linked List">
-<meta property="og:url" content="http://yoursite.com/2015/07/24/delete-node-in-a-linked-list/index.html">
+<meta property="og:title" content="Distributed System之Raft">
+<meta property="og:url" content="http://yoursite.com/2015/11/05/raft/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="Question:
-Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
-Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third">
-<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150721-1.jpg">
-<meta property="og:updated_time" content="2017-03-02T06:41:40.000Z">
+<meta property="og:description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
+<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg">
+<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-3.jpg">
+<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-2.jpg">
+<meta property="og:updated_time" content="2017-03-06T04:38:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Delete Node in a Linked List">
-<meta name="twitter:description" content="Question:
-Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
-Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third">
-<meta name="twitter:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150721-1.jpg">
+<meta name="twitter:title" content="Distributed System之Raft">
+<meta name="twitter:description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
+<meta name="twitter:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg">
 
 
 
@@ -132,13 +128,13 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/07/24/delete-node-in-a-linked-list/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/11/05/raft/"/>
 
 
 
 
 
-  <title> Delete Node in a Linked List | Happy Isotope </title>
+  <title> Distributed System之Raft | Happy Isotope </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -265,7 +261,7 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/24/delete-node-in-a-linked-list/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/05/raft/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhuo Jia">
@@ -289,7 +285,7 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
             
             
               
-                Delete Node in a Linked List
+                Distributed System之Raft
               
             
           </h1>
@@ -304,8 +300,8 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-24T00:27:46-05:00">
-                2015-07-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T18:55:43-06:00">
+                2015-11-05
               </time>
             
 
@@ -327,8 +323,8 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷题-面试/" itemprop="url" rel="index">
-                    <span itemprop="name">刷题&面试</span>
+                  <a href="/categories/Distributed-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Distributed System</span>
                   </a>
                 </span>
 
@@ -362,15 +358,38 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
       
 
       
-        <p><strong>Question:</strong></p>
-<p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
-<p>Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.<br><a id="more"></a></p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The tricky thing is that you can’t trace back in a singly linkded list which lacks “prev” link to node of the previous node. Therefore, we hava to come up with a backup solution to achieve the same result without using “previous” links.</p>
-<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150721-1.jpg" alt=""></p>
-<p>The basic idea is that the current node can copy its next node’s value, then delete or jump over the next node. At this time, the returning linked list is the same as we want. The solutions in Java and C++ are pretty similar.</p>
-<h3 id="Code-in-C"><a href="#Code-in-C" class="headerlink" title="Code in C++"></a>Code in C++</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</div><div class="line">        ListNode* next = node-&gt;next;</div><div class="line">        node-&gt;val = next-&gt;val;</div><div class="line">        node-&gt;next = next-&gt;next;</div><div class="line">        <span class="keyword">delete</span> next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="Code-in-Java"><a href="#Code-in-Java" class="headerlink" title="Code in Java"></a>Code in Java</h3><p>Java solution is very simple, because you don’t need to free the node pointer.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</div><div class="line">        node.val = node.next.val;</div><div class="line">        node.next = node.next.next;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have a good understanding of the algorithm. And after that, I just want to write a summary by writing this blog.<br><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg" alt="Raft"><br><a id="more"></a></p>
+<p>Before we talk about Raft, we need to talk a little history about Paxos(1980s), a distributed consensus algorithm. The author of Paxos didn’t take the average IQ of people into account, when he declares that Paxos makes things simple! Oppps. The complexity of Paxos has strongly restricted the development, until Raft showed up.</p>
+<p>Raft was proposed by Diego and John (Stanford), and this algorithm really makes everything understandable. I will say, it is vivid.</p>
+<p>There are 2 kinds of servers in this situations: Naming Server and Storage Server. Naming Server is responsible for sending information between servers, but not process information(Storage Servers do). If there is only one naming server and it dies, every one dies. This is called “Single Point Failure”. So the naming servers are usually redundant. For there servers, there are consensus issues.</p>
+<p>For simplicity, we define three role/status of server: Leader, Follower, Candidate. There is only one valid leader at a time. And the whole process contains two parts: Leader Election and Log Replication.</p>
+<h2 id="Leader-Election"><a href="#Leader-Election" class="headerlink" title="Leader Election"></a>Leader Election</h2><p>Leader will periodically send heartbeat to all followers. If the followers can hear the heartbeat from the leader, then they just stick to the status quo, being followers. Once they can’t receive the heartbeat. Then leader election begins. The amount of time a follower waits until becoming a candidate is the election timeout. The period of sending heartbeat is called heartbeat timeout. In our project, election timeout is set to at least 5 to 10 times heartbeat interval to account for variance in leader replication.</p>
+<p>We can describe the process in the following way:</p>
+<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-3.jpg" alt="Leader Election1"></p>
+<p>First, the ambitious follower turns into a candidate, adds its term by 1, and sends vote request. Here we have 3 situations:</p>
+<p>A. More than 1/2 servers give the vote, and this candidate wins the leader election.</p>
+<p>B. Another server wins the election and becomes the new leader, this candidate will become a follower.</p>
+<p>C. No one wins, so they will wait (sleep for a while) to increase their term and re-elect again.</p>
+<p>During the leader election, the candidate may receive vote request from other servers. If the other server has a higher term, then this candidate will give its vote and becomes a follower, otherwise it refuses the request. (one case in situtation B/A)</p>
+<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-2.jpg" alt="Leader Election1"></p>
+<p>If two candidates has the same votes(which means either of them has a majority votes), they will wait to increase their term and re-elect again. (Situation C)</p>
+<p>We can use randomize the waiting/Sleeping time to reduce the possibility of the occurrence of Situation C.</p>
+<p>We should take care the term. Term changes doesn’t mean that leader changes; but leader changes must cause term increases. For me, I think term is much like a Dynasty (in Chinese we say “Nian Hao”) for a particular king.</p>
+<p>Reviewing Question:</p>
+<p>How does follower determine the candidate is worthy to vote? Compare the Term, bigger term wins. What if the follower and the candidate has the same term? Then compare the index, the bigger index wins.</p>
+<p>Also, we need a FLAG to remember the server has voted for the election or not. In order to have only one leader, everyone has only one chance to vote in every term.</p>
+<h2 id="Log-Replication"><a href="#Log-Replication" class="headerlink" title="Log Replication"></a>Log Replication</h2><p>What is in a Log entry? Things might be different in various industrious situations. In general, one log entry at least has index, term, and certain instructions.</p>
+<p>Leader is responsible for receiving request from the clients. When the leader receives the requests, it will write the log, and sends its log to other servers. When the log is regarded as safely committed, the leader replies the client: blablabla, we did what you need us to do or store.</p>
+<p>How to make the log safely committed? We have 2-phase commit.</p>
+<ul>
+<li>First, the leader should send appending request to others, and collects the votes.</li>
+<li>Once the leader collects joint consensus(votes &gt; 1/2), the leader will transfer to new configuration, commit log, and declare to clients and other servers. Other server will append the commit log.</li>
+</ul>
+<p>The record of the committing is persistent and consistent. There might be some conflicts between logs(Leader dies and recovers as follower later), so the leader will force the follower to clone the committed log to solve this problem. Therefore, a qualified leader should have all committed logs.</p>
+<p>When a new leader is elected, the leader will check the logs in a descending index order, in case of disturbance and loss of necessary logs.</p>
+<h2 id="Other-implement-details"><a href="#Other-implement-details" class="headerlink" title="Other implement details"></a>Other implement details</h2><p>In our project, we use Java to implement the algorithm, use a thread to represent every independent server, and use RPC to send communication information(request, vote, logs) between threads.</p>
+<p>During the learning process, the animation below is very helpful for me to understand the whole process.</p>
+<p><a><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="external">http://thesecretlivesofdata.com/raft/</a></a></p>
 
       
     </div>
@@ -394,7 +413,9 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
       
         <div class="post-tags">
           
-            <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
+            <a href="/tags/Distributed-System/" rel="tag"># Distributed System</a>
+          
+            <a href="/tags/Theory/" rel="tag"># Theory</a>
           
         </div>
       
@@ -407,8 +428,8 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/11/Bootstrap-basic/" rel="next" title="Jason聊Bootstrap：第一话">
-                <i class="fa fa-chevron-left"></i> Jason聊Bootstrap：第一话
+              <a href="/2015/07/24/delete-node-in-a-linked-list/" rel="next" title="Delete Node in a Linked List">
+                <i class="fa fa-chevron-left"></i> Delete Node in a Linked List
               </a>
             
           </div>
@@ -417,8 +438,8 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/05/raft/" rel="prev" title="Distributed System之Raft">
-                Distributed System之Raft <i class="fa fa-chevron-right"></i>
+              <a href="/2016/01/22/chord，一种p2p分布式哈希算法/" rel="prev" title="Distributed System之Chord，一种P2P分布式哈希算法">
+                Distributed System之Chord，一种P2P分布式哈希算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +563,7 @@ Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are gi
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-in-C"><span class="nav-number">2.</span> <span class="nav-text">Code in C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-in-Java"><span class="nav-number">3.</span> <span class="nav-text">Code in Java</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader-Election"><span class="nav-number">1.</span> <span class="nav-text">Leader Election</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-Replication"><span class="nav-number">2.</span> <span class="nav-text">Log Replication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-implement-details"><span class="nav-number">3.</span> <span class="nav-text">Other implement details</span></a></li></ol></div>
             
 
           </div>

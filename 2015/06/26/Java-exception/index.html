@@ -97,7 +97,7 @@
 下面来谈谈Java中的程序异常和异常处理。程序也是生活的体现，99%的程序员都无法保证大型程序完全没有异常。所以，异常处理非常重要。对于异常的处理，可以将异常提示给程序员">
 <meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150620-1.jpg">
 <meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150620-2.jpg">
-<meta property="og:updated_time" content="2017-03-02T06:38:55.000Z">
+<meta property="og:updated_time" content="2017-03-06T04:43:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java exception">
 <meta name="twitter:description" content="异常(Exception)，Ex前缀在中文大义就是排他、否定、外部，从字面上理解Exception就是和常态不一样的情况，也就是通常我们不希望出现的情况。人生之不如意，十之八九，比如吃烧饼烫后脑勺，交卷子的前一秒发现试卷有反面。
@@ -373,11 +373,11 @@
 <ul>
 <li>NullPointerException是空指针异常，典型错误代表例如：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String str = null;</div><div class="line">System.out.print(str.length());</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String str = <span class="keyword">null</span>;</div><div class="line">System.out.print(str.length());</div></pre></td></tr></table></figure>
 <ul>
 <li>ArrayIndexOutOfBoundsException是数组越界，典型错误代表例如：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int[] array = &#123;1, 2, 3&#125;;</div><div class="line">for(int i =0; i &lt;= 3; i++)&#123;</div><div class="line">	System.out.print(array[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt;= <span class="number">3</span>; i++)&#123;</div><div class="line">	System.out.print(array[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>ClassCastException是类型转换，典型错误代表例如：</li>
 </ul>
@@ -385,12 +385,12 @@
 <ul>
 <li>ArithmeticExcetpion是算术异常，典型错误代表例如：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int a = 1;</div><div class="line">int b = 0;</div><div class="line">System.out.print(a/b);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</div><div class="line">System.out.print(a/b);</div></pre></td></tr></table></figure>
 <p>当然，Java有丰富的异常种类，还有其他很多RuntimeException未提及,他们都是由JVM自动抛出的异常。出现这种问题，表示代码本身存在BUG，一般都要细心地查找一下，改进一下代码的逻辑，或者修改一下Corner Case。</p>
 <p>###检查异常<br>对于检查异常，可检测异常经编译器验证，对于声明抛出异常的任何方法，编译器将强制执行处理或声明规则.基本上都是一些比较奇葩的原因，比如SQL异常(sqlExecption)，当你连接JDBC时，不捕捉这个异常，编译器就通不过，不允许编译。又比如文件IO异常。遇到这类异常，需要手动地添加捕获、处理语句。</p>
 <p>##try-catch</p>
 <p>单个的try-catch语句就不想说了，直接上多重try-catch语句，其基本的模板语法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">	//Dangerous Activites</div><div class="line">&#125; catch(Exception A)&#123;</div><div class="line">	//Handler for the situation A</div><div class="line">&#125; catch(Exception B)&#123;</div><div class="line">	//Handler for the situation B</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">	<span class="comment">//Dangerous Activites</span></div><div class="line">&#125; <span class="keyword">catch</span>(Exception A)&#123;</div><div class="line">	<span class="comment">//Handler for the situation A</span></div><div class="line">&#125; <span class="keyword">catch</span>(Exception B)&#123;</div><div class="line">	<span class="comment">//Handler for the situation B</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>try 块：将一个或者多个语句放入 try 时，则表示这些语句可能抛出异常。编译器知道可能要发生异常，于是用一个特殊结构评估块内所有语句。</p>
 <p>catch 块：当问题出现时，一种选择是定义代码块来处理问题，catch块的目的便在于此。catch 块是try块所产生异常的接收者。基本原理是：一旦生成异常，则try块的执行中止，JVM将查找相应的JVM。</p>
 <p>需要注意的是，处理多重异常时应该先处理子类异常，再处理父类异常。这是因为如果catch顺序写反了，编译器会报错，迫使你更正到正确的顺序。</p>
@@ -525,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
