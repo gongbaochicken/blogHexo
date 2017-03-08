@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
+<meta name="description" content="Given a singly linked list, determine if it is a palindrome.Follow up: Could you do it in O(n) time and O(1) space?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Divide_two_numbers(Leetcode, 2 solutions)">
-<meta property="og:url" content="http://yoursite.com/2015/06/25/divide-two-numbers/index.html">
+<meta property="og:title" content="Palindrome LinkedList">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/leetcode-palindrome-linkedList/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
-<meta property="og:updated_time" content="2017-03-06T04:42:30.000Z">
+<meta property="og:description" content="Given a singly linked list, determine if it is a palindrome.Follow up: Could you do it in O(n) time and O(1) space?">
+<meta property="og:updated_time" content="2017-03-08T02:53:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Divide_two_numbers(Leetcode, 2 solutions)">
-<meta name="twitter:description" content="Question:Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.">
+<meta name="twitter:title" content="Palindrome LinkedList">
+<meta name="twitter:description" content="Given a singly linked list, determine if it is a palindrome.Follow up: Could you do it in O(n) time and O(1) space?">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/06/25/divide-two-numbers/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/07/leetcode-palindrome-linkedList/"/>
 
 
 
 
 
-  <title> Divide_two_numbers(Leetcode, 2 solutions) | Happy Isotope </title>
+  <title> Palindrome LinkedList | Happy Isotope </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -257,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/06/25/divide-two-numbers/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/leetcode-palindrome-linkedList/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhuo Jia">
@@ -281,7 +281,7 @@
             
             
               
-                Divide_two_numbers(Leetcode, 2 solutions)
+                Palindrome LinkedList
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-25T23:01:52-05:00">
-                2015-06-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T20:46:48-06:00">
+                2017-03-07
               </time>
             
 
@@ -354,11 +354,18 @@
       
 
       
-        <h3 id="Question"><a href="#Question" class="headerlink" title="Question:"></a>Question:</h3><p>Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT.</p>
-<a id="more"></a>
-<h3 id="Solution-1-Binary-Search-Bit-Manipulation-C"><a href="#Solution-1-Binary-Search-Bit-Manipulation-C" class="headerlink" title="Solution 1: Binary Search + Bit Manipulation (C++)"></a>Solution 1: Binary Search + Bit Manipulation (C++)</h3><h5 id="Time-O-log-n-Test-14-ms"><a href="#Time-O-log-n-Test-14-ms" class="headerlink" title="Time: O(log n)    Test: 14 ms"></a>Time: O(log n)    Test: 14 ms</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="built_in">abs</span>((<span class="keyword">long</span> <span class="keyword">long</span>)dividend);</div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> b = <span class="built_in">abs</span>((<span class="keyword">long</span> <span class="keyword">long</span>)divisor);</div><div class="line">        <span class="keyword">int</span> sign = (dividend &gt; <span class="number">0</span> ^ divisor &gt; <span class="number">0</span>) ? <span class="number">-1</span> : <span class="number">1</span>; <span class="comment">//Deal with positive or negative</span></div><div class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">while</span>(a &gt;= b)&#123;</div><div class="line">            <span class="keyword">long</span> <span class="keyword">long</span> c = b;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;a &gt;= c;++i,c &lt;&lt;= <span class="number">1</span>)&#123;</div><div class="line">                a -= c;</div><div class="line">                result += <span class="number">1</span> &lt;&lt; i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        result *= sign;        </div><div class="line">        <span class="comment">// If it is overflow, return MAX_INT.</span></div><div class="line">        <span class="keyword">if</span> (result &gt; INT_MAX || result &lt; INT_MIN)&#123;</div><div class="line">            result = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h4 id="Solution-2-Exponentionalize-C"><a href="#Solution-2-Exponentionalize-C" class="headerlink" title="Solution 2: Exponentionalize (C++)"></a>Solution 2: Exponentionalize (C++)</h4><h5 id="Time-O-log-n-Test-8-ms"><a href="#Time-O-log-n-Test-8-ms" class="headerlink" title="Time: O(log n)  Test: 8 ms"></a>Time: O(log n)  Test: 8 ms</h5><p>This is a smart solution inspired by dimal97psn @ Leetcode. The core idea here is to transfer the division equation:</p>
-<h5 id="a-b-e-lg-a-e-lg-b-e-lg-a-lg-b"><a href="#a-b-e-lg-a-e-lg-b-e-lg-a-lg-b" class="headerlink" title="a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))"></a>a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int divide(int dividend, int divisor) &#123;</div><div class="line">        if(divisor == 0) return INT_MAX;</div><div class="line">        if(dividend == 0) return 0;</div><div class="line">        long long x = (double) exp(log(fabs(dividend)) - log(fabs(divisor)));</div><div class="line">        if((dividend &lt; 0 &amp;&amp; divisor &gt; 0) || (dividend &gt; 0 &amp;&amp; divisor &lt; 0))&#123;</div><div class="line">            x = -x;</div><div class="line">        &#125;</div><div class="line">        if(x &gt; INT_MAX) &#123;</div><div class="line">            x = INT_MAX;</div><div class="line">        &#125;</div><div class="line">        return x;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <p>Given a singly linked list, determine if it is a palindrome.<br><strong>Follow up: Could you do it in O(n) time and O(1) space?</strong><br><a id="more"></a></p>
+<h3 id="Solution-in-C"><a href="#Solution-in-C" class="headerlink" title="Solution in C++:"></a>Solution in C++:</h3><p>The basic idea to solve this problem is to break this solution into 3 steps:</p>
+<ul>
+<li>Step 1: Find the middle point of the whole linked list.</li>
+<li>Step 2: Reverse the second part of the linked list and do it.</li>
+<li>Step 3: Move and compare the pointer from head and the pointer from the middle until end.</li>
+</ul>
+<p>The fans of Linus may start shouting: “Talk is cheap, show me the code!” Well, the code is simple:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"></div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line"></div><div class="line">        ListNode *fast = head-&gt;next, *slow = head;</div><div class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next != <span class="literal">NULL</span> )&#123;</div><div class="line">            fast = fast-&gt;next-&gt;next;</div><div class="line">            slow = slow-&gt;next;</div><div class="line">        &#125;</div><div class="line">        ListNode *laterList = reverseList(slow-&gt;next);</div><div class="line">        slow-&gt;next = <span class="literal">NULL</span>;</div><div class="line">        <span class="keyword">while</span>(laterList &amp;&amp; head)&#123;</div><div class="line">            <span class="keyword">if</span>(laterList-&gt;val != head-&gt;val)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                laterList = laterList-&gt;next;</div><div class="line">                head = head-&gt;next;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</div><div class="line">            <span class="keyword">return</span> head;</div><div class="line">        &#125;</div><div class="line">        ListNode* dummy = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</div><div class="line">        dummy-&gt;next = head;</div><div class="line">        <span class="keyword">while</span>(head != <span class="literal">NULL</span> &amp;&amp; head-&gt;next != <span class="literal">NULL</span>)&#123;</div><div class="line">            ListNode* next = head-&gt;next-&gt;next;</div><div class="line">            head-&gt;next-&gt;next = dummy-&gt;next;</div><div class="line">            dummy-&gt;next = head-&gt;next;</div><div class="line">            head-&gt;next = next;</div><div class="line">        &#125;</div><div class="line">        ListNode* key = dummy-&gt;next;</div><div class="line">        <span class="keyword">delete</span> dummy;</div><div class="line">        <span class="keyword">return</span> key;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>If you use<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ListNode *fast = head, *slow = head;</div></pre></td></tr></table></figure></p>
+<p>Then the<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ListNode *laterList = reverseList(slow-&gt;next);</div></pre></td></tr></table></figure></p>
+<p>should be modified as<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ListNode *laterList = reverseList(slow);</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -395,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/16/Duke/" rel="next" title="Duke趣事">
-                <i class="fa fa-chevron-left"></i> Duke趣事
+              <a href="/2017/03/04/Online-Judger-System-Note1/" rel="next" title="Online Judger Design Note 1">
+                <i class="fa fa-chevron-left"></i> Online Judger Design Note 1
               </a>
             
           </div>
@@ -404,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/06/26/Java-exception/" rel="prev" title="Java exception">
-                Java exception <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -530,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-Binary-Search-Bit-Manipulation-C"><span class="nav-number">2.</span> <span class="nav-text">Solution 1: Binary Search + Bit Manipulation (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-14-ms"><span class="nav-number">2.0.1.</span> <span class="nav-text">Time: O(log n)    Test: 14 ms</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-2-Exponentionalize-C"><span class="nav-number">2.1.</span> <span class="nav-text">Solution 2: Exponentionalize (C++)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-O-log-n-Test-8-ms"><span class="nav-number">2.1.1.</span> <span class="nav-text">Time: O(log n)  Test: 8 ms</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#a-b-e-lg-a-e-lg-b-e-lg-a-lg-b"><span class="nav-number">2.1.2.</span> <span class="nav-text">a/b = {e^lg(a)} / {e^lg(b)} = e^(lg(a) - lg(b))</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-in-C"><span class="nav-number">1.</span> <span class="nav-text">Solution in C++:</span></a></li></ol></div>
             
 
           </div>
