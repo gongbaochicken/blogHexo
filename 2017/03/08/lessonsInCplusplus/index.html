@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++,SAP HANA," />
 
 
 
@@ -87,15 +87,16 @@
 
 
 
-<meta name="description" content="C++ Developer @SAP Labs">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Happy Isotope">
-<meta property="og:url" content="http://yoursite.com/tags/Tool/index.html">
+<meta name="description" content="As a C++ software developer, I work with our team to deal with a very large scale database project, SAP HANA. HANA is a column-based, in-memory computing database, which is the dominant super star pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lessons I learned in C++ job">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/lessonsInCplusplus/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="C++ Developer @SAP Labs">
+<meta property="og:description" content="As a C++ software developer, I work with our team to deal with a very large scale database project, SAP HANA. HANA is a column-based, in-memory computing database, which is the dominant super star pro">
+<meta property="og:updated_time" content="2017-03-09T05:21:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Happy Isotope">
-<meta name="twitter:description" content="C++ Developer @SAP Labs">
+<meta name="twitter:title" content="Lessons I learned in C++ job">
+<meta name="twitter:description" content="As a C++ software developer, I work with our team to deal with a very large scale database project, SAP HANA. HANA is a column-based, in-memory computing database, which is the dominant super star pro">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Tool/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/08/lessonsInCplusplus/"/>
 
 
 
 
 
-  <title> Tag: Tool | Happy Isotope </title>
+  <title> Lessons I learned in C++ job | Happy Isotope </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -154,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,46 +247,197 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Tool
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/08/lessonsInCplusplus/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Lessons I learned in C++ job
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-08T23:08:34-06:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>As a C++ software developer, I work with our team to deal with a very large scale database project, SAP HANA. HANA is a column-based, in-memory computing database, which is the dominant super star product of SAP. We serve hundreds of companies around the world.</p>
+<p>The following tips for C++ codes is the notes that I learned from my current work as an entry-level C++ engineer.<br><a id="more"></a></p>
+<ol>
+<li>Use parameters with default value if we can, instead of adding a new overload function, which cause verbose.</li>
+<li>When you meet the compile errors “discards qualifiers”, it’s talking about const or volatile.</li>
+<li>If the order does not matter, and basically we only need it for pure lookup-retrieval, use unordered_map to replace map. Since the the unordered map has O(1) lookup performance due to its implementation of hash function. However, when the map is frequently insert/remove, I think that will depends.</li>
+<li>Be careful about double/triple for loops in the industry code, these codes can be optimized in complexity in some cases.</li>
+<li>Keyword static means that this method can be called on the class itself, no instance of that class necessary.</li>
+<li>It is is crucial to know which kind of lock is needed, when there is any necessity to add lock. Ask yourself, is what you need a read lock or write lock? a shared lock or an exclusive lock? This is not only functionality concern, but also some performance concern.</li>
+<li>Use const iterator for representing end().</li>
+<li>Consider of using friend class if you want to call the protected methods of certain class.</li>
+<li>Use inline function in header, if the implementation is really simple.</li>
+<li><p>Have a good habit to define types.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> ltt::pair&lt;<span class="keyword">const</span> <span class="keyword">char</span> *, <span class="keyword">const</span> <span class="keyword">char</span> *&gt; SuggestionListComponentNamePair;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Use reference to avoid unnecessary copy.</p>
+</li>
+<li>Use size_t when return size(), dont’ use int.</li>
+<li>Don’t use Linked List, use vector instead. “Vector is ALWAYS better than list.”, said by Bjarne Stroustrup. I think the main difference is the find insert point(vector uses binary search, linked list uses linear search) and find delete point.</li>
+</ol>
+<p>(–continue)</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2015/06/15/github_for_first_time_user/" itemprop="url">
-              
-                <span itemprop="name">Github for first-time users</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-15T23:44:43-05:00"
-              content="2015-06-15" >
-          06-15
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/SAP-HANA/" rel="tag"># SAP HANA</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/leetcode-palindrome-linkedList/" rel="next" title="Palindrome LinkedList">
+                <i class="fa fa-chevron-left"></i> Palindrome LinkedList
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -293,6 +445,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -468,6 +624,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
