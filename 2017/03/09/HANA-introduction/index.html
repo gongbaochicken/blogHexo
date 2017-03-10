@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Full-stack,Angular2,System Design," />
+  <meta name="keywords" content="SAP HANA," />
 
 
 
@@ -87,21 +87,25 @@
 
 
 
-<meta name="description" content="Recently, I am working on a code online judger application as a practice of using full-stack technologies I currently know. This post is development note of this app, including system design, sketch,">
+<meta name="description" content="I joined SAP Labs about 1 year ago, and one of the reasons is that I think SAP HANA is a powerful data storage platform, which requires strong challenges of back end computer engineering. This post I">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Online Judger Design Note 1">
-<meta property="og:url" content="http://yoursite.com/2017/03/04/Online-Judger-System-Note1/index.html">
+<meta property="og:title" content="Introduction of SAP HANA">
+<meta property="og:url" content="http://yoursite.com/2017/03/09/HANA-introduction/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="Recently, I am working on a code online judger application as a practice of using full-stack technologies I currently know. This post is development note of this app, including system design, sketch,">
-<meta property="og:image" content="https://bittigerimages.s3.amazonaws.com/gitbookImages/CS503/%E8%AF%BE%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,h_227,q_70/v1488432522/Screen_Shot_2017-03-01_at_11.18.46_PM_hhukxp.bmp">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,h_266,q_66,w_629/v1488432522/Screen_Shot_2017-02-27_at_1.01.08_AM_ji8mua.bmp">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1488432577/Screen_Shot_2017-02-26_at_1.07.53_PM_bapnvx.bmp">
-<meta property="og:updated_time" content="2017-03-05T03:20:54.000Z">
+<meta property="og:description" content="I joined SAP Labs about 1 year ago, and one of the reasons is that I think SAP HANA is a powerful data storage platform, which requires strong challenges of back end computer engineering. This post I">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489120995/Screen_Shot_2017-03-09_at_10.16.43_PM_ra8cjq.bmp">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121339/1345039203_7744_hjakht.jpg">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121346/1345049766_6976_oznwqq.jpg">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121040/Screen_Shot_2017-03-09_at_10.31.48_PM_xmq52h.bmp">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489120852/Screen_Shot_2017-03-09_at_10.18.05_PM_pujudi.bmp">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121055/Screen_Shot_2017-03-09_at_10.35.06_PM_setnxt.bmp">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121019/Screen_Shot_2017-03-09_at_10.28.45_PM_ydjdmh.bmp">
+<meta property="og:image" content="https://image.slidesharecdn.com/saphanacloudportal-november2013-131121063933-phpapp01/95/sap-hana-cloud-portal-overview-presentation-6-638.jpg?cb=1385016090">
+<meta property="og:updated_time" content="2017-03-10T05:44:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Online Judger Design Note 1">
-<meta name="twitter:description" content="Recently, I am working on a code online judger application as a practice of using full-stack technologies I currently know. This post is development note of this app, including system design, sketch,">
-<meta name="twitter:image" content="https://bittigerimages.s3.amazonaws.com/gitbookImages/CS503/%E8%AF%BE%E7%A8%8B%E5%9B%BE.png">
+<meta name="twitter:title" content="Introduction of SAP HANA">
+<meta name="twitter:description" content="I joined SAP Labs about 1 year ago, and one of the reasons is that I think SAP HANA is a powerful data storage platform, which requires strong challenges of back end computer engineering. This post I">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1489120995/Screen_Shot_2017-03-09_at_10.16.43_PM_ra8cjq.bmp">
 
 
 
@@ -129,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/04/Online-Judger-System-Note1/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/09/HANA-introduction/"/>
 
 
 
 
 
-  <title> Online Judger Design Note 1 | Happy Isotope </title>
+  <title> Introduction of SAP HANA | Happy Isotope </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -262,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/04/Online-Judger-System-Note1/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/HANA-introduction/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Zhuo Jia">
@@ -286,7 +290,7 @@
             
             
               
-                Online Judger Design Note 1
+                Introduction of SAP HANA
               
             
           </h1>
@@ -301,8 +305,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-04T21:17:02-06:00">
-                2017-03-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T22:50:20-06:00">
+                2017-03-09
               </time>
             
 
@@ -324,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Web</span>
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
                   </a>
                 </span>
 
@@ -359,23 +363,32 @@
       
 
       
-        <p>Recently, I am working on a code online judger application as a practice of using full-stack technologies I currently know. This post is development note of this app, including system design, sketch, code implementation, issue/challenges and my solutions.<br><a id="more"></a></p>
-<h2 id="System-Design"><a href="#System-Design" class="headerlink" title="System Design"></a>System Design</h2><h3 id="Scenario"><a href="#Scenario" class="headerlink" title="Scenario:"></a>Scenario:</h3><p>What I want to build is a collabrative code judger, which can executed the code pieces that users submit, and show the results of comparison.</p>
-<h3 id="Necessary"><a href="#Necessary" class="headerlink" title="Necessary"></a>Necessary</h3><p>I can estimate the data in a very very positive way:<br></p>
-<h4 id="Lookup"><a href="#Lookup" class="headerlink" title="Lookup:"></a>Lookup:</h4><p>Daily active users: 100000<br><br>Active users per second: 100000<em>3(function frequency)/(3600</em>24) = 3.5<br>Peak user per second: 3.5*10 = 35</p>
-<h4 id="Editing"><a href="#Editing" class="headerlink" title="Editing"></a>Editing</h4><p>Average concurrent users: 100000<em>60</em>60/(3600<em>24) = 416<br>QPS: 400</em>50%(function usage)<em>10(function frequency) = 2000<br>Peak Per second: 2000</em>10 = 20000</p>
-<h4 id="Submit-code"><a href="#Submit-code" class="headerlink" title="Submit code"></a>Submit code</h4><p>Per second: 400<em>1%(function usage)</em>1(function frequency) = 4<br>Peak per second = 40</p>
-<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>This is the draft of overview architecture:</p>
-<p><img src="https://bittigerimages.s3.amazonaws.com/gitbookImages/CS503/%E8%AF%BE%E7%A8%8B%E5%9B%BE.png" alt="architecture"></p>
-<h2 id="First-version-of-front-end"><a href="#First-version-of-front-end" class="headerlink" title="First version of front end"></a>First version of front end</h2><p>So I spent a weekend to learn how to use Angular 2 to design the front end part in a draft review. This first version is a just clone the style of Leetcode.</p>
-<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,h_227,q_70/v1488432522/Screen_Shot_2017-03-01_at_11.18.46_PM_hhukxp.bmp" alt="page1"></p>
-<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,h_266,q_66,w_629/v1488432522/Screen_Shot_2017-02-27_at_1.01.08_AM_ji8mua.bmp" alt="page2"></p>
-<ul>
-<li>commit id：805e50198b0796b9cc7036077a743d9674979ee6</li>
-</ul>
-<p>The skills mainly used here are Angular 2, TypeScript, and Bootstrap. I used React.js since 6 months ago, and I feel Angular 2 has more steep learning curve. Many concepts are hard to accept at the first glance.</p>
-<p>However, the data binding part makes me confortable because it supports 2-way data binding. Rather than one-way data flow in React, angular 2 provides more options to do bings. Glad to know that.</p>
-<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1488432577/Screen_Shot_2017-02-26_at_1.07.53_PM_bapnvx.bmp" alt="page2"></p>
+        <p>I joined SAP Labs about 1 year ago, and one of the reasons is that I think SAP HANA is a powerful data storage platform, which requires strong challenges of back end computer engineering. This post I will briefly describe what kind of database HANA is.<br><a id="more"></a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>According to the official description, SAP HANA is an in-memory, column-oriented, relational database management system developed and marketed by SAP SE. Its primary function as database server is to store and retrieve data as requested by the applications. In addition, it performs advanced analytics (predictive analytics, spatial data processing, text analytics, text search, streaming analytics, graph data processing) and includes ETL capabilities as well as an application server. It is very powerful when it works with other SAP enterprise software.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489120995/Screen_Shot_2017-03-09_at_10.16.43_PM_ra8cjq.bmp" alt=""></p>
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features:"></a>Features:</h2><h3 id="1-High-Performance"><a href="#1-High-Performance" class="headerlink" title="1. High Performance"></a>1. High Performance</h3><p>Since SAP HANA uses main memory as data store, you can guess it is fast.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121339/1345039203_7744_hjakht.jpg" alt=""></p>
+<p>According to the above comparison, memory is 10X~100X faster than SSD, flash and disk, so storing data in memory can amazingly accelerate the data retrieve and processing efficiency. Traditional database has the danger of losing data when data is saved in main memory(Power Failure, Reboot), however SAP HANA has a asynchronous savepoint as data persistence to protect the data. Therefore, HANA can safely and easily load the data to CPU cache from the memory, and this can break the bottleneck of traditional disk IO.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121346/1345049766_6976_oznwqq.jpg" alt=""></p>
+<h3 id="2-Hardware"><a href="#2-Hardware" class="headerlink" title="2. Hardware"></a>2. Hardware</h3><p>For high speed processing and big throughput, it is better to choose high-performance multiple-core 64bit linux server. Thanks to the innovations of hardware industry, HANA is able to leverage the capabilities of high-performance hardware to process parallel computing, data partition, and data cleanse.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121040/Screen_Shot_2017-03-09_at_10.31.48_PM_xmq52h.bmp" alt=""></p>
+<p>I use 24-core SUSE linux in SAP labs, and our common performance testing machines are 40-core linux box. But there are plenty of choices in appliances, linux systems, and storage providers.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489120852/Screen_Shot_2017-03-09_at_10.18.05_PM_pujudi.bmp" alt=""></p>
+<h3 id="3-Data-Compression"><a href="#3-Data-Compression" class="headerlink" title="3. Data Compression"></a>3. Data Compression</h3><p>SAP HANA can support both row-based and column-based storage. One of the innovations of SAP HANA is that thanks to column-based storage, the data can be compressed to save storage space and reduce data transmission.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121055/Screen_Shot_2017-03-09_at_10.35.06_PM_setnxt.bmp" alt=""></p>
+<p>This is an interesting topic, and I may have interest to write another post to describe this part soon later.</p>
+<h3 id="4-Minimizing-data-transfer"><a href="#4-Minimizing-data-transfer" class="headerlink" title="4. Minimizing data transfer"></a>4. Minimizing data transfer</h3><p>In traditional database, software or an application will read the data from database, do business logic computing in application layer, and finally save the result back to database.</p>
+<p>HANA, however, can push computing logic to the database, and there is no need to transfer data back and forth. It cuts off a lot of data transfer time and network resource, and reduces delay.</p>
+<h3 id="5-Failure-Tolerance"><a href="#5-Failure-Tolerance" class="headerlink" title="5. Failure Tolerance"></a>5. Failure Tolerance</h3><p>One of the failure protection is that SAP HANA has a asynchronous savepoint as data persistence to protect the data from Power Failure or unexpected reboot.</p>
+<p>Also, it supports multiple tenants and backup servers, which will server as addition replica of master server.</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1489121019/Screen_Shot_2017-03-09_at_10.28.45_PM_ydjdmh.bmp" alt=""></p>
+<h2 id="Who-uses-SAP-HANA"><a href="#Who-uses-SAP-HANA" class="headerlink" title="Who uses SAP HANA?"></a>Who uses SAP HANA?</h2><p>More than 7000 business customers are using SAP HANA， SAP HANA cloud, SAP S/4HANA, and usually they are big companies, including P&amp;G, Shell, T-Mobile, etc.</p>
+<p><img src="https://image.slidesharecdn.com/saphanacloudportal-november2013-131121063933-phpapp01/95/sap-hana-cloud-portal-overview-presentation-6-638.jpg?cb=1385016090" alt=""></p>
+<p>Not the same as Amazon or Google serving personal customers, SAP serves enterprises and it is only shining on the back of stage. But you have to admit that you may indirectly use our product, and you just don’t notice it before. LoL.</p>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>Currently, more and more enterprise customers are cooperating with SAP and using HANA. And SAP and Google just announced strategic partnership of infrastructure-as-a-service to lift enterprise cloud applications to the next level. As a developer of SAP HANA, I feel proud of this promising product.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://www.slideshare.net/SAPTechnology/sap-hana-platform-overview" target="_blank" rel="external">https://www.slideshare.net/SAPTechnology/sap-hana-platform-overview</a></li>
+</ol>
 
       
     </div>
@@ -399,11 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Full-stack/" rel="tag"># Full-stack</a>
-          
-            <a href="/tags/Angular2/" rel="tag"># Angular2</a>
-          
-            <a href="/tags/System-Design/" rel="tag"># System Design</a>
+            <a href="/tags/SAP-HANA/" rel="tag"># SAP HANA</a>
           
         </div>
       
@@ -416,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/01/jquery-note1/" rel="next" title="jQuery Note 1">
-                <i class="fa fa-chevron-left"></i> jQuery Note 1
+              <a href="/2017/03/08/lessonsInCplusplus/" rel="next" title="Lessons I learned in C++ job">
+                <i class="fa fa-chevron-left"></i> Lessons I learned in C++ job
               </a>
             
           </div>
@@ -425,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/07/leetcode-palindrome-linkedList/" rel="prev" title="Palindrome LinkedList">
-                Palindrome LinkedList <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Design"><span class="nav-number">1.</span> <span class="nav-text">System Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario"><span class="nav-number">1.1.</span> <span class="nav-text">Scenario:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Necessary"><span class="nav-number">1.2.</span> <span class="nav-text">Necessary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lookup"><span class="nav-number">1.2.1.</span> <span class="nav-text">Lookup:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Editing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Editing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Submit-code"><span class="nav-number">1.2.3.</span> <span class="nav-text">Submit code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Architecture"><span class="nav-number">2.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-version-of-front-end"><span class="nav-number">3.</span> <span class="nav-text">First version of front end</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Features"><span class="nav-number">2.</span> <span class="nav-text">Features:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-High-Performance"><span class="nav-number">2.1.</span> <span class="nav-text">1. High Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hardware"><span class="nav-number">2.2.</span> <span class="nav-text">2. Hardware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Data-Compression"><span class="nav-number">2.3.</span> <span class="nav-text">3. Data Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Minimizing-data-transfer"><span class="nav-number">2.4.</span> <span class="nav-text">4. Minimizing data transfer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Failure-Tolerance"><span class="nav-number">2.5.</span> <span class="nav-text">5. Failure Tolerance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Who-uses-SAP-HANA"><span class="nav-number">3.</span> <span class="nav-text">Who uses SAP HANA?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future"><span class="nav-number">4.</span> <span class="nav-text">Future</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
