@@ -248,9 +248,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -333,6 +371,11 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">Page View
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -481,7 +524,7 @@
                src="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg"
                alt="Zhuo Jia" />
           <p class="site-author-name" itemprop="name">Zhuo Jia</p>
-          <p class="site-description motion-element" itemprop="description">C++ Developer @SAP Labs</p>
+          <p class="site-description motion-element" itemprop="description">Software Developer @SAP Labs</p>
         </div>
         <nav class="site-state motion-element">
         
@@ -582,7 +625,24 @@
 </div>
 
 
+
         
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
 
         
       </div>
@@ -697,8 +757,36 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
 
 
 </body>
