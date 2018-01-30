@@ -361,27 +361,15 @@
 
       
         
-          
-            <p>本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。</p>
-<p>在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(blocking) 和 非阻塞(Non-blocking)。</p>
-<p>我们来打个比方，加入你叫了一个外卖，你不知道外卖小哥啥时候来，那么你有选择选择，一是无事可干，然后直接去睡觉，等外卖到了快递小哥会打电话通知你（blocking）；二是忙轮询，也就是直接夺命连环call，，每几分钟就给外卖小哥挂一个电话，问问他到了没有(non-blocking)。</p>
-<p>具体结合程序的图看看：<br><img src="https://sfault-image.b0.upaiyun.com/159/375/1593755892-55c466c2b5fc5_articlex" alt="Blocking"><br><img src="https://sfault-image.b0.upaiyun.com/150/522/1505222224-55c466dda9803_articlex" alt="Non-blocking"><br>感觉对于程序来说第一种是优选，因为线程睡觉了，CPU不会消耗资源。但是其实也不合理，因为data不到，就没有办法继续做别的事情，大大减缓了效率，有没有一种颓废萎靡的感觉。第二种的感觉是Nonblocking IO的特点是用户进程需要不断的主动询问kernel数据好了没有，做了一些无用功，浪费了很多资源。Node.js是一种non-blocking的语言，就是因为引擎里面有个Event Loop。</p>
-<h2 id="I-O-Multiplexing"><a href="#I-O-Multiplexing" class="headerlink" title="I/O Multiplexing"></a>I/O Multiplexing</h2><p>这个时候I/O多路复用就排上了用处，有些地方也把这种东西称为Event-Driven I/O。好处是单个process就可以处理多个网络连接的I/O，在某些场合下提高了效率。</p>
-<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/a.png" alt="Alt text"></p>
-<p>它的基本原理就是select，poll，epoll这个function会不断的轮询所负责的所有socket（多个文件描述符），当任意一个socket有数据到达了，就通知用户进程。比如，当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
-<p>仔细观察，这里需要使用两个system call (select 和 recvfrom)，而blocking IO只调用了一个system call (recvfrom)。但是，用select的优势在于它可以同时处理多个connection。</p>
-<p>因此需要记住一个结论：当处理的连接数不太高时， select/epoll的效率并不一定比multithread+blocking IO效率高，因为select/epoll的优势不在处理单个链接或者少量连接上。</p>
-<p>另外在IO multiplexing Model中，实际中，对于每一个socket，一般都设置成为non-blocking，但是，如上图所示，整个用户的process其实是一直被block的。只不过process是被select这个函数block，而不是被socket IO给block。</p>
-<h2 id="Asynchronous-I-O"><a href="#Asynchronous-I-O" class="headerlink" title="Asynchronous I/O"></a>Asynchronous I/O</h2><p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/b.png" alt=""></p>
-<p>用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了，</p>
-<p>这种模式其实在JavaScript处理一些后台耗时比较长的查询、表单和callback的时候很常见。</p>
-<p>比如使用NodeJs读取一个文件，blocking的做法是同步读取：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">const</span> data = fs.readFileSync(<span class="string">'/file.md'</span>); <span class="comment">// blocks here until file is read</span></div><div class="line"><span class="built_in">console</span>.log(data);</div><div class="line"><span class="comment">// moreWork(); will run after console.log</span></div></pre></td></tr></table></figure>
-<p>如果改成异步回调的模式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line">fs.readFile(<span class="string">'/file.md'</span>, (err, data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// moreWork(); will run before console.log</span></div></pre></td></tr></table></figure>
-<p>Node.js底层的I/O是有C++的库libuv搞定的。其实Non-Blocking和Asynchronous概念上有些重复，Stack Overflow上面有个答案回答的很经典：HTTP protocol is synchronous but HTTP implementation using non-blocking IO can be asynchronous. Again a non-blocking API call like read/write/try_lock is synchronous (it immediately gives a response) but “data handling” is asynchronous.</p>
-
-          
+          <p>本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。</p>
+<p>在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(blocking) 和 非阻塞(Non-blocking)。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/LinuxIO/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -501,7 +489,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" rel="gallery_cjd1dazaf001iw8x5mn67vgl4"
+                 href="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" rel="gallery_cjd1f9w2a001hlox5eg4ury96"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" itemprop="contentUrl"/>
               </a>
