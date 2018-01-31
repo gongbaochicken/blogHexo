@@ -1,0 +1,774 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="刷题总结," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Question List:
+Q1: Compare Version Number
+Q2: Valid Palindrome
+Q3: Valid Parentheses
+Q4: Valid Number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode String (Part 1)">
+<meta property="og:url" content="http://www.happyisotope.com/Leetcode_String_1/index.html">
+<meta property="og:site_name" content="Happy Isotope">
+<meta property="og:description" content="Question List:
+Q1: Compare Version Number
+Q2: Valid Palindrome
+Q3: Valid Parentheses
+Q4: Valid Number">
+<meta property="og:updated_time" content="2017-03-06T04:41:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode String (Part 1)">
+<meta name="twitter:description" content="Question List:
+Q1: Compare Version Number
+Q2: Valid Palindrome
+Q3: Valid Parentheses
+Q4: Valid Number">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.happyisotope.com/Leetcode_String_1/"/>
+
+
+
+
+
+  <title> Leetcode String (Part 1) | Happy Isotope </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Happy Isotope</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Zhuo Jia's Blog</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/Leetcode_String_1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Leetcode String (Part 1)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-27T20:38:07-07:00">
+                2015-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/刷题-面试/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题&面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">Page View
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Question-List"><a href="#Question-List" class="headerlink" title="Question List:"></a>Question List:</h3><ul>
+<li>Q1: Compare Version Number</li>
+<li>Q2: Valid Palindrome</li>
+<li>Q3: Valid Parentheses</li>
+<li>Q4: Valid Number<a id="more"></a>
+</li>
+</ul>
+<h3 id="Question-1-Compare-Version-Number"><a href="#Question-1-Compare-Version-Number" class="headerlink" title="Question 1: Compare Version Number"></a>Question 1: Compare Version Number</h3><p>Compare two version numbers version1 and version2.<br>If version1 &gt; version2 return 1, if version1 &lt; version2 return -1, otherwise return 0.</p>
+<p>You may assume that the version strings are non-empty and contain only digits and the . character.<br>The . character does not represent a decimal point and is used to separate number sequences.<br>For instance, 2.5 is not “two and a half” or “half way to version three”, it is the fifth second-level revision of the second first-level revision.</p>
+<p>Here is an example of version numbers ordering: 0.1 &lt; 1.1 &lt; 1.2 &lt; 13.37</p>
+<h4 id="My-Solution"><a href="#My-Solution" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compareVersion</span><span class="params">(<span class="built_in">string</span> version1, <span class="built_in">string</span> version2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> pos1 = <span class="number">0</span>, pos2 = <span class="number">0</span>, token1, token2;</div><div class="line">        <span class="built_in">string</span> delimiter = <span class="string">"."</span>;</div><div class="line">        pos1 = version1.find(delimiter);</div><div class="line">        pos2 = version2.find(delimiter);</div><div class="line">        <span class="keyword">if</span>(pos1 &gt;=<span class="number">0</span> ) &#123;</div><div class="line">        	token1 = stoi(version1.substr(<span class="number">0</span>,pos1));</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">        	token1 = version1.empty()? <span class="number">0</span>:stoi(version1);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(pos2 &gt;=<span class="number">0</span> ) &#123;</div><div class="line">            token2 = stoi(version2.substr(<span class="number">0</span>,pos2));</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            token2 = version2.empty()? <span class="number">0</span>:stoi(version2);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> diff = token1 - token2;</div><div class="line">        <span class="keyword">if</span>(diff == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(pos1&lt;<span class="number">0</span> &amp;&amp; pos2&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            version1 = pos1 &gt;= <span class="number">0</span> ? version1.erase(<span class="number">0</span>, pos1 + <span class="number">1</span>):<span class="string">"0"</span>;</div><div class="line">            version2 = pos2 &gt;= <span class="number">0</span> ? version2.erase(<span class="number">0</span>, pos2 + <span class="number">1</span>):<span class="string">"0"</span>;</div><div class="line">            <span class="keyword">return</span> compareVersion(version1, version2);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> diff &gt; <span class="number">0</span> ? <span class="number">1</span>:<span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="Question-2-Valid-Palindrome"><a href="#Question-2-Valid-Palindrome" class="headerlink" title="Question 2: Valid Palindrome"></a>Question 2: Valid Palindrome</h3><p> Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<p>For example,<br>“A man, a plan, a canal: Panama” is a palindrome.<br>“race a car” is not a palindrome.</p>
+<p>Note:<br>Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<h4 id="My-Solution-1"><a href="#My-Solution-1" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> start=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> end=s.size()<span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>(start&lt;end)&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">isalnum</span>(s[start])==<span class="literal">false</span>) &#123;start++;<span class="keyword">continue</span>;&#125;</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">isalnum</span>(s[end])==<span class="literal">false</span>)&#123;end--;<span class="keyword">continue</span>;&#125;</div><div class="line">            <span class="keyword">if</span>(<span class="built_in">tolower</span>(s[start])!=<span class="built_in">tolower</span>(s[end]))&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">            start++;</div><div class="line">            end--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Question-3-Valid-Parentheses"><a href="#Question-3-Valid-Parentheses" class="headerlink" title="Question 3: Valid Parentheses"></a>Question 3: Valid Parentheses</h3><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid.</p>
+<p>The brackets must close in the correct order, “()” and “()[]{}” are all valid but “(]” and “([)]” are not.</p>
+<h4 id="My-Solution-2"><a href="#My-Solution-2" class="headerlink" title="My Solution:"></a>My Solution:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">	<span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; st;</div><div class="line">   	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)&#123;</div><div class="line">   		<span class="keyword">if</span>( s[i]==<span class="string">'('</span> || s[i]==<span class="string">'&#123;'</span> || s[i]==<span class="string">'['</span>)&#123;</div><div class="line">   			st.push(s[i]);</div><div class="line">   		&#125;</div><div class="line">      	<span class="keyword">else</span>&#123;</div><div class="line">     		<span class="keyword">if</span>(st.empty()) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        	<span class="keyword">if</span> ((s[i]==<span class="string">')'</span>) &amp;&amp; (st.top()!=<span class="string">'('</span>)) &#123;<span class="keyword">return</span> <span class="literal">false</span>;&#125;</div><div class="line">        	<span class="keyword">if</span> ((s[i]==<span class="string">'&#123;'</span>) &amp;&amp; (st.top()!=<span class="string">'&#125;'</span>)) &#123;<span class="keyword">return</span> <span class="literal">false</span>;&#125;</div><div class="line">      		<span class="keyword">if</span> ((s[i]==<span class="string">'['</span>) &amp;&amp; (st.top()!=<span class="string">']'</span>)) &#123;<span class="keyword">return</span> <span class="literal">false</span>;&#125;</div><div class="line">        	st.pop();</div><div class="line">     	&#125;</div><div class="line"> 	&#125;</div><div class="line">  	<span class="keyword">return</span> st.empty();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Question-4-Valid-Number"><a href="#Question-4-Valid-Number" class="headerlink" title="Question 4:Valid Number"></a>Question 4:Valid Number</h3><p>Validate if a given string is numeric.</p>
+<p>Some examples: “0” =&gt; true || “ 0.1 “ =&gt; true || “abc” =&gt; false || “1 a” =&gt; false ||  “2e10” =&gt; true</p>
+<h4 id="My-solutions"><a href="#My-solutions" class="headerlink" title="My solutions:"></a>My solutions:</h4><p>/*1. skip the leading whitespaces;</p>
+<ol>
+<li>check if the significand is valid. To do so, simply skip the leading sign and count the number of digits and the number of points. A valid significand has no more than one point and at least one digit.</li>
+<li>check if the exponent part is valid. We do this if the significand is followed by ‘e’. Simply skip the leading sign and count the number of digits. A valid exponent contain at least one digit.</li>
+<li>skip the trailing whitespaces. We must reach the ending 0 if the string is a valid number.*/</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isNumber</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="comment">// skip the whilespaces</span></div><div class="line">        <span class="keyword">for</span>(; s[i] == <span class="string">' '</span>; i++) &#123;&#125;</div><div class="line">    <span class="comment">// check the significand</span></div><div class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'+'</span> || s[i] == <span class="string">'-'</span>) i++; <span class="comment">// skip the sign if exist</span></div><div class="line">        <span class="keyword">int</span> n_nm, n_pt;</div><div class="line">        <span class="keyword">for</span>(n_nm=<span class="number">0</span>, n_pt=<span class="number">0</span>; (s[i]&lt;=<span class="string">'9'</span> &amp;&amp; s[i]&gt;=<span class="string">'0'</span>) || s[i]==<span class="string">'.'</span>; i++)</div><div class="line">            s[i] == <span class="string">'.'</span> ? n_pt++:n_nm++;       </div><div class="line">        <span class="keyword">if</span>(n_pt&gt;<span class="number">1</span> || n_nm&lt;<span class="number">1</span>) <span class="comment">// no more than one point, at least one digit</span></div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="comment">// check the exponent if exist</span></div><div class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'e'</span>) &#123;</div><div class="line">            i++;</div><div class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'+'</span> || s[i] == <span class="string">'-'</span>) i++; <span class="comment">// skip the sign</span></div><div class="line">            <span class="keyword">int</span> n_nm = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(; s[i]&gt;=<span class="string">'0'</span> &amp;&amp; s[i]&lt;=<span class="string">'9'</span>; i++, n_nm++) &#123;&#125;</div><div class="line">            <span class="keyword">if</span>(n_nm&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="comment">// skip the trailing whitespaces</span></div><div class="line">        <span class="keyword">for</span>(; s[i] == <span class="string">' '</span>; i++) &#123;&#125;</div><div class="line">        <span class="keyword">return</span> s[i]==<span class="number">0</span>;  <span class="comment">// must reach the ending 0 of the string</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/刷题总结/" rel="tag"># 刷题总结</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Java-exception/" rel="next" title="Java exception">
+                <i class="fa fa-chevron-left"></i> Java exception
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Bootstrap-basic/" rel="prev" title="Jason聊Bootstrap：第一话">
+                Jason聊Bootstrap：第一话 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg"
+               alt="Zhuo Jia" />
+          <p class="site-author-name" itemprop="name">Zhuo Jia</p>
+          <p class="site-description motion-element" itemprop="description">Software Developer @SAP Labs</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-List"><span class="nav-number">1.</span> <span class="nav-text">Question List:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-1-Compare-Version-Number"><span class="nav-number">2.</span> <span class="nav-text">Question 1: Compare Version Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution"><span class="nav-number">2.1.</span> <span class="nav-text">My Solution:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-2-Valid-Palindrome"><span class="nav-number">3.</span> <span class="nav-text">Question 2: Valid Palindrome</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution-1"><span class="nav-number">3.1.</span> <span class="nav-text">My Solution:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-3-Valid-Parentheses"><span class="nav-number">4.</span> <span class="nav-text">Question 3: Valid Parentheses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-Solution-2"><span class="nav-number">4.1.</span> <span class="nav-text">My Solution:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-4-Valid-Number"><span class="nav-number">5.</span> <span class="nav-text">Question 4:Valid Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#My-solutions"><span class="nav-number">5.1.</span> <span class="nav-text">My solutions:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhuo Jia</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>

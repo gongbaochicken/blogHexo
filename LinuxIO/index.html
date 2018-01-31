@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,Operating System," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。
+在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux I/O 小结(1)">
+<meta property="og:url" content="http://www.happyisotope.com/LinuxIO/index.html">
+<meta property="og:site_name" content="Happy Isotope">
+<meta property="og:description" content="本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。
+在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/159/375/1593755892-55c466c2b5fc5_articlex">
+<meta property="og:image" content="https://sfault-image.b0.upaiyun.com/150/522/1505222224-55c466dda9803_articlex">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/a.png">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/b.png">
+<meta property="og:updated_time" content="2018-01-30T08:48:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux I/O 小结(1)">
+<meta name="twitter:description" content="本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。
+在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(">
+<meta name="twitter:image" content="https://sfault-image.b0.upaiyun.com/159/375/1593755892-55c466c2b5fc5_articlex">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.happyisotope.com/LinuxIO/"/>
+
+
+
+
+
+  <title> Linux I/O 小结(1) | Happy Isotope </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Happy Isotope</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">Zhuo Jia's Blog</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/LinuxIO/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Zhuo Jia">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Happy Isotope">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Happy Isotope" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux I/O 小结(1)
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T17:54:43-08:00">
+                2018-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">Page View
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。</p>
+<p>在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(blocking) 和 非阻塞(Non-blocking)。<br><a id="more"></a></p>
+<p>我们来打个比方，加入你叫了一个外卖，你不知道外卖小哥啥时候来，那么你有选择选择，一是无事可干，然后直接去睡觉，等外卖到了快递小哥会打电话通知你（blocking）；二是忙轮询，也就是直接夺命连环call，，每几分钟就给外卖小哥挂一个电话，问问他到了没有(non-blocking)。</p>
+<p>具体结合程序的图看看：<br><img src="https://sfault-image.b0.upaiyun.com/159/375/1593755892-55c466c2b5fc5_articlex" alt="Blocking"><br><img src="https://sfault-image.b0.upaiyun.com/150/522/1505222224-55c466dda9803_articlex" alt="Non-blocking"><br>感觉对于程序来说第一种是优选，因为线程睡觉了，CPU不会消耗资源。但是其实也不合理，因为data不到，就没有办法继续做别的事情，大大减缓了效率，有没有一种颓废萎靡的感觉。第二种的感觉是Nonblocking IO的特点是用户进程需要不断的主动询问kernel数据好了没有，做了一些无用功，浪费了很多资源。Node.js是一种non-blocking的语言，就是因为引擎里面有个Event Loop。</p>
+<h2 id="I-O-Multiplexing"><a href="#I-O-Multiplexing" class="headerlink" title="I/O Multiplexing"></a>I/O Multiplexing</h2><p>这个时候I/O多路复用就排上了用处，有些地方也把这种东西称为Event-Driven I/O。好处是单个process就可以处理多个网络连接的I/O，在某些场合下提高了效率。</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/a.png" alt="Alt text"></p>
+<p>它的基本原理就是select，poll，epoll这个function会不断的轮询所负责的所有socket（多个文件描述符），当任意一个socket有数据到达了，就通知用户进程。比如，当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
+<p>仔细观察，这里需要使用两个system call (select 和 recvfrom)，而blocking IO只调用了一个system call (recvfrom)。但是，用select的优势在于它可以同时处理多个connection。</p>
+<p>因此需要记住一个结论：当处理的连接数不太高时， select/epoll的效率并不一定比multithread+blocking IO效率高，因为select/epoll的优势不在处理单个链接或者少量连接上。</p>
+<p>另外在IO multiplexing Model中，实际中，对于每一个socket，一般都设置成为non-blocking，但是，如上图所示，整个用户的process其实是一直被block的。只不过process是被select这个函数block，而不是被socket IO给block。</p>
+<h2 id="Asynchronous-I-O"><a href="#Asynchronous-I-O" class="headerlink" title="Asynchronous I/O"></a>Asynchronous I/O</h2><p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517300881/Blog/b.png" alt=""></p>
+<p>用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了，</p>
+<p>这种模式其实在JavaScript处理一些后台耗时比较长的查询、表单和callback的时候很常见。</p>
+<p>比如使用NodeJs读取一个文件，blocking的做法是同步读取：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">const</span> data = fs.readFileSync(<span class="string">'/file.md'</span>); <span class="comment">// blocks here until file is read</span></div><div class="line"><span class="built_in">console</span>.log(data);</div><div class="line"><span class="comment">// moreWork(); will run after console.log</span></div></pre></td></tr></table></figure>
+<p>如果改成异步回调的模式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line">fs.readFile(<span class="string">'/file.md'</span>, (err, data) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// moreWork(); will run before console.log</span></div></pre></td></tr></table></figure>
+<p>Node.js底层的I/O是有C++的库libuv搞定的。其实Non-Blocking和Asynchronous概念上有些重复，Stack Overflow上面有个答案回答的很经典：HTTP protocol is synchronous but HTTP implementation using non-blocking IO can be asynchronous. Again a non-blocking API call like read/write/try_lock is synchronous (it immediately gives a response) but “data handling” is asynchronous.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Operating-System/" rel="tag"># Operating System</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/lonely/" rel="next" title="越长大越孤单">
+                <i class="fa fa-chevron-left"></i> 越长大越孤单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://res.cloudinary.com/dxdsd8err/image/upload/v1487133227/10753280_pkleyw.jpg"
+               alt="Zhuo Jia" />
+          <p class="site-author-name" itemprop="name">Zhuo Jia</p>
+          <p class="site-description motion-element" itemprop="description">Software Developer @SAP Labs</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-O-Multiplexing"><span class="nav-number">1.</span> <span class="nav-text">I/O Multiplexing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asynchronous-I-O"><span class="nav-number">2.</span> <span class="nav-text">Asynchronous I/O</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhuo Jia</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>
