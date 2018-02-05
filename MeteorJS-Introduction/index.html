@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,24 +95,12 @@
 <meta property="og:url" content="http://www.happyisotope.com/MeteorJS-Introduction/index.html">
 <meta property="og:site_name" content="Happy Isotope">
 <meta property="og:description" content="I would like to share some interesting topics, and this post was originally shared to the SAP internal tech blog in 2017. This post is a brief introduction of Meteor and how we use it to build a simpl">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/12.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/213.jpg.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476683/Blog/3.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476683/Blog/4.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/5.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476683/Blog/6.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_384/v1517477957/Blog/111.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_344/v1517477957/Blog/112.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_710/v1517477956/Blog/113.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517477956/Blog/114.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_533/v1517477957/Blog/115.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_533/v1517477957/Blog/116.png">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517478530/Blog/117.png">
-<meta property="og:updated_time" content="2018-02-01T09:55:30.000Z">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg">
+<meta property="og:updated_time" content="2018-02-05T07:59:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Introduction to Meteor JS">
 <meta name="twitter:description" content="I would like to share some interesting topics, and this post was originally shared to the SAP internal tech blog in 2017. This post is a brief introduction of Meteor and how we use it to build a simpl">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/12.png">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg">
 
 
 
@@ -120,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -348,6 +336,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/MeteorJS-Introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="MeteorJS-Introduction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -373,6 +371,22 @@
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg" rel="gallery_cjd9wicf900126ox5c187s76f"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
         <p>I would like to share some interesting topics, and this post was originally shared to the SAP internal tech blog in 2017. This post is a brief introduction of Meteor and how we use it to build a simple application Tiny URL, like google URL Shortener, in just 20 minutes.<br><a id="more"></a></p>
@@ -388,19 +402,14 @@
 <p>If you are using Windows, please check Meteor official site: <a href="https://www.meteor.com/" target="_blank" rel="external">https://www.meteor.com/</a>.</p>
 <h3 id="Get-Started-with-Client-Rendering"><a href="#Get-Started-with-Client-Rendering" class="headerlink" title="Get Started with Client Rendering"></a>Get Started with Client Rendering</h3><p>We are going to build a very simple Tiny URL web app, which can generate shorter URL like Bitly.com or Google URL Shortener. We will IGNORE the heavy QPS performance, UI design, cache and load balance, etc. and just implement a web app that can support submit a form, save a new URL on URL list board, count click and redirect link.</p>
 <p>After installation, we can quickly kick off with a simple command:</p>
-<pre><code>meteor create tinyURL
-cd tinyURL
-meteor
-</code></pre><p>By running command “meteor” to start proxy, MongoDB, and app, you can check if the skeleton app is running at <a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a>. 3000 is the default port.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">meteor create tinyURL</div><div class="line">cd tinyURL</div><div class="line">meteor</div></pre></td></tr></table></figure>
+<p>By running command “meteor” to start proxy, MongoDB, and app, you can check if the skeleton app is running at <a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a>. 3000 is the default port.</p>
 <p>Now, let’s check the folder structure of the code skeleton.  You can see that client and server code has been well separated and there is a package.json configure file we can take advantage of. </p>
 <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/213.jpg.png" alt=""></p>
 <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476683/Blog/3.png" alt=""></p>
 <p>Then let’s install React, Router, and Bootstrap related packages that we’ll need later by using npm install and meteor add:</p>
-<pre><code>npm i connect-route --save
-npm i react react-dom -–save
-meteor add react-meteor-data
-meteor add bootstrap
-</code></pre><p>Next, let’s write a simple UI board. Create a new folder named “components”, and add the following files about link input and link list components. If you know ReactJS, you may know that link input and link list components are nested in <code>&lt;App&gt;</code> component. Now, we need to modify main.html and main.js.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm i connect-route --save</div><div class="line">npm i react react-dom -–save</div><div class="line">meteor add react-meteor-data</div><div class="line">meteor add bootstrap</div></pre></td></tr></table></figure>
+<p>Next, let’s write a simple UI board. Create a new folder named “components”, and add the following files about link input and link list components. If you know ReactJS, you may know that link input and link list components are nested in <code>&lt;App&gt;</code> component. Now, we need to modify main.html and main.js.</p>
 <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476683/Blog/4.png" alt=""></p>
 <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517476684/Blog/5.png" alt=""></p>
 <p>If we don’t consider the pretty UI, we need to build something like this.</p>
@@ -504,6 +513,13 @@ meteor add bootstrap
           
   <div class="comments" id="comments">
     
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
   </div>
 
 
@@ -542,6 +558,7 @@ meteor add bootstrap
                alt="Zhuo Jia" />
           <p class="site-author-name" itemprop="name">Zhuo Jia</p>
           <p class="site-description motion-element" itemprop="description">Software Developer @SAP Labs</p>
+          <p class="site-description motion-element" itemprop="extradescription">C++ | Golang | Web</p>
         </div>
         <nav class="site-state motion-element">
         
@@ -566,7 +583,7 @@ meteor add bootstrap
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -577,6 +594,17 @@ meteor add bootstrap
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gongbaochicken" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -636,7 +664,7 @@ meteor add bootstrap
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -721,13 +749,6 @@ meteor add bootstrap
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
@@ -747,28 +768,41 @@ meteor add bootstrap
 
   
 
+    <script type="text/javascript">
+      var disqus_shortname = 'happy-isotope';
+      var disqus_identifier = 'MeteorJS-Introduction/';
+
+      var disqus_title = "Introduction to Meteor JS";
 
 
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
 
-	
+      run_disqus_script('count.js');
 
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
 
-
-
-
+    </script>
   
 
 
 
 
 
-  
 
 
-
-
-
-  
 
 
 

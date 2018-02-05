@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -118,7 +118,7 @@ http://pdos.csail.mit.edu/chord/
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -346,6 +346,16 @@ http://pdos.csail.mit.edu/chord/
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/chord，一种p2p分布式哈希算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="chord，一种p2p分布式哈希算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -474,6 +484,13 @@ http://pdos.csail.mit.edu/chord/
           
   <div class="comments" id="comments">
     
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
   </div>
 
 
@@ -512,6 +529,7 @@ http://pdos.csail.mit.edu/chord/
                alt="Zhuo Jia" />
           <p class="site-author-name" itemprop="name">Zhuo Jia</p>
           <p class="site-description motion-element" itemprop="description">Software Developer @SAP Labs</p>
+          <p class="site-description motion-element" itemprop="extradescription">C++ | Golang | Web</p>
         </div>
         <nav class="site-state motion-element">
         
@@ -536,7 +554,7 @@ http://pdos.csail.mit.edu/chord/
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -547,6 +565,17 @@ http://pdos.csail.mit.edu/chord/
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gongbaochicken" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -606,7 +635,7 @@ http://pdos.csail.mit.edu/chord/
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -691,13 +720,6 @@ http://pdos.csail.mit.edu/chord/
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
@@ -717,28 +739,41 @@ http://pdos.csail.mit.edu/chord/
 
   
 
+    <script type="text/javascript">
+      var disqus_shortname = 'happy-isotope';
+      var disqus_identifier = 'chord，一种p2p分布式哈希算法/';
+
+      var disqus_title = "Distributed System之Chord，一种P2P分布式哈希算法";
 
 
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
 
-	
+      run_disqus_script('count.js');
 
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
 
-
-
-
+    </script>
   
 
 
 
 
 
-  
 
 
-
-
-
-  
 
 
 
