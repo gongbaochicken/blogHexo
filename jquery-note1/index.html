@@ -374,7 +374,7 @@
         <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.<br><a id="more"></a></p>
 <p>首先一个根本问题就是：jQuery操作的到底是个啥？DOM： Document Object Model.</p>
 <h2 id="引入jQuery："><a href="#引入jQuery：" class="headerlink" title="引入jQuery："></a>引入jQuery：</h2><p>可以通过CDN,或是源文件来引入。<br>在HTML中可以像这样插入。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">	$(document).ready(function()&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建element</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//创建text</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="string">"DOM"</span>);</div><div class="line">div.appendChild(txt);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//setAttribute</span></div><div class="line">div.setAttribute(<span class="string">"title"</span>,<span class="string">"盒子"</span>);</div><div class="line"><span class="keyword">var</span> $div = $(<span class="string">"&lt;div title="</span>盒子<span class="string">"&gt;DOM&lt;/div&gt;"</span>);</div><div class="line">$(body).append($div);</div></pre></td></tr></table></figure>
 <h2 id="选择器："><a href="#选择器：" class="headerlink" title="选择器："></a>选择器：</h2><p>以下是常用选择器：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"\*"</span>): 所有元素</div><div class="line">$(<span class="string">"#lastname"</span>): id=<span class="string">"lastname"</span> 的元素</div><div class="line">$(<span class="string">".intro"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span> 的元素</div><div class="line">$(<span class="string">"p"</span>): 所有&lt;p&gt;元素</div><div class="line">$(<span class="string">".intro.demo"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span>且 <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo"</span> 的元素</div></pre></td></tr></table></figure>
@@ -535,7 +535,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -554,6 +554,33 @@
                     <i class="fa fa-fw fa-github"></i>
                   
                   GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/zhuo.jia.581" target="_blank" title="Facebook" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/jasonzhuojia" target="_blank" title="LinkedIn" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/yue-fei-37" target="_blank" title="Zhihu" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  Zhihu
                 </a>
               </span>
             
