@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.happyisotope.com/about/index.html</loc>
+    
+    <lastmod>2018-02-26T06:57:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.happyisotope.com/Bootstrap-basic/</loc>
     
     <lastmod>2018-02-26T05:49:20.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://www.happyisotope.com/pyDecorator/</loc>
     
     <lastmod>2018-02-26T05:42:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.happyisotope.com/about/index.html</loc>
-    
-    <lastmod>2018-02-26T05:39:39.000Z</lastmod>
     
   </url>
   
