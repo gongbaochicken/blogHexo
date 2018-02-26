@@ -1523,7 +1523,7 @@ pre .javascript .function {
   }
 }
 .post-button {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 .post-button .btn {
   color: #555;
@@ -1928,7 +1928,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9fffa1;
+  background: #ff6142;
 }
 .links-of-blogroll {
   font-size: 13px;

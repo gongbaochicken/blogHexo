@@ -104,7 +104,7 @@
 <meta property="og:description" content="The decorator in Python is a function that takes another function and EXTENDS the behavior of the latter function without explicitly modifying it. Some other programming languages or frameworks has th">
 <meta property="og:image" content="https://www.quirkybyte.com/wp-content/uploads/2016/11/torin--1024x575.jpg">
 <meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,h_510/v1517992393/Blog/index.jpg">
-<meta property="og:updated_time" content="2018-02-12T07:26:25.000Z">
+<meta property="og:updated_time" content="2018-02-26T05:42:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Decorator">
 <meta name="twitter:description" content="The decorator in Python is a function that takes another function and EXTENDS the behavior of the latter function without explicitly modifying it. Some other programming languages or frameworks has th">
@@ -214,16 +214,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -240,6 +230,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
           </a>
         </li>
       
@@ -281,7 +281,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1518419164/Zhuo3_ipkfhq.jpg">
+      <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -410,7 +410,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Prepare to start calculation</div><div class="line">result: 1  is  1</div><div class="line">result: 2  is  8</div><div class="line">result: 3  is  27</div><div class="line">result: 4  is  64</div><div class="line">result: 5  is  125</div><div class="line">Time is  0.001046895980834961</div></pre></td></tr></table></figure>
 <p>This makes me thinking when should we use class decorator, or method decorator. Here is conclusion: “If you want to keep state in the decorator you should use a class.” Because the state member cannot be modified and kept in a method, please check the Stackoverflow answer <a href="https://stackoverflow.com/questions/4650333/difference-between-decorator-classes-and-decorator-functions" target="_blank" rel="external">here</a>.</p>
 <h3 id="Multiple-Decorator"><a href="#Multiple-Decorator" class="headerlink" title="Multiple Decorator"></a>Multiple Decorator</h3><p>Last topic is the decorator resolution order, which is from outer to the inner.  For example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@dec3</div><div class="line">@dec2</div><div class="line">@dec1</div><div class="line">def f ():</div><div class="line">    pass</div><div class="line">    </div><div class="line">### Equivalent</div><div class="line"></div><div class="line">f = dec3(dec2(dec1(f())))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@dec3</span></div><div class="line"><span class="meta">@dec2</span></div><div class="line"><span class="meta">@dec1</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span> <span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line">    </div><div class="line"><span class="comment">### Equivalent</span></div><div class="line"></div><div class="line">f = dec3(dec2(dec1(f())))</div></pre></td></tr></table></figure>
 <h3 id="Other-reference"><a href="#Other-reference" class="headerlink" title="Other reference:"></a>Other reference:</h3><ul>
 <li>PEP318: <a href="https://www.python.org/dev/peps/pep-0318/" target="_blank" rel="external">https://www.python.org/dev/peps/pep-0318/</a></li>
 </ul>
@@ -553,7 +553,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://res.cloudinary.com/dxdsd8err/image/upload/v1518419164/Zhuo3_ipkfhq.jpg"
+               src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg"
                alt="Zhuo Jia" />
           <p class="site-author-name" itemprop="name">Zhuo Jia</p>
            
