@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Distributed System,Theory," />
+  <meta name="keywords" content="Golang," />
 
 
 
@@ -96,20 +96,16 @@
 
 
 
-<meta name="description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
+<meta name="description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Distributed System之Raft">
-<meta property="og:url" content="http://www.happyisotope.com/raft/index.html">
+<meta property="og:title" content="Golang 101系列基础篇">
+<meta property="og:url" content="http://www.happyisotope.com/golang101_1/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
-<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg">
-<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-3.jpg">
-<meta property="og:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-2.jpg">
-<meta property="og:updated_time" content="2018-01-30T08:19:31.000Z">
+<meta property="og:description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
+<meta property="og:updated_time" content="2018-03-16T07:26:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Distributed System之Raft">
-<meta name="twitter:description" content="Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have">
-<meta name="twitter:image" content="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg">
+<meta name="twitter:title" content="Golang 101系列基础篇">
+<meta name="twitter:description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
 
 
 
@@ -138,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/raft/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/golang101_1/"/>
 
 
 
 
 
-  <title>Distributed System之Raft | Happy Isotope</title>
+  <title>Golang 101系列基础篇 | Happy Isotope</title>
   
 
 
@@ -277,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/raft/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -294,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Distributed System之Raft</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇</h2>
         
 
         <div class="post-meta">
@@ -306,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T18:55:43-08:00">
-                2015-11-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-16T00:12:20-07:00">
+                2018-03-16
               </time>
             
 
@@ -329,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Distributed-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Distributed System</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
 
@@ -347,9 +343,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/raft/#comments" itemprop="discussionUrl">
+                <a href="/golang101_1/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="raft/" itemprop="commentCount"></span>
+                        data-disqus-identifier="golang101_1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,38 +378,18 @@
       
 
       
-        <p>Hi, I am preparing tech interviews these days, and I am reviewing Raft project I did last semester. I gave a short presentation and summary to the interviewers, which was a good way to check if I have a good understanding of the algorithm. And after that, I just want to write a summary by writing this blog.<br><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-5.jpg" alt="Raft"><br><a id="more"></a></p>
-<p>Before we talk about Raft, we need to talk a little history about Paxos(1980s), a distributed consensus algorithm. The author of Paxos didn’t take the average IQ of people into account, when he declares that Paxos makes things simple! Oppps. The complexity of Paxos has strongly restricted the development, until Raft showed up.</p>
-<p>Raft was proposed by Diego and John (Stanford), and this algorithm really makes everything understandable. I will say, it is vivid.</p>
-<p>There are 2 kinds of servers in this situations: Naming Server and Storage Server. Naming Server is responsible for sending information between servers, but not process information(Storage Servers do). If there is only one naming server and it dies, every one dies. This is called “Single Point Failure”. So the naming servers are usually redundant. For there servers, there are consensus issues.</p>
-<p>For simplicity, we define three role/status of server: Leader, Follower, Candidate. There is only one valid leader at a time. And the whole process contains two parts: Leader Election and Log Replication.</p>
-<h2 id="Leader-Election"><a href="#Leader-Election" class="headerlink" title="Leader Election"></a>Leader Election</h2><p>Leader will periodically send heartbeat to all followers. If the followers can hear the heartbeat from the leader, then they just stick to the status quo, being followers. Once they can’t receive the heartbeat. Then leader election begins. The amount of time a follower waits until becoming a candidate is the election timeout. The period of sending heartbeat is called heartbeat timeout. In our project, election timeout is set to at least 5 to 10 times heartbeat interval to account for variance in leader replication.</p>
-<p>We can describe the process in the following way:</p>
-<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-3.jpg" alt="Leader Election1"></p>
-<p>First, the ambitious follower turns into a candidate, adds its term by 1, and sends vote request. Here we have 3 situations:</p>
-<p>A. More than 1/2 servers give the vote, and this candidate wins the leader election.</p>
-<p>B. Another server wins the election and becomes the new leader, this candidate will become a follower.</p>
-<p>C. No one wins, so they will wait (sleep for a while) to increase their term and re-elect again.</p>
-<p>During the leader election, the candidate may receive vote request from other servers. If the other server has a higher term, then this candidate will give its vote and becomes a follower, otherwise it refuses the request. (one case in situtation B/A)</p>
-<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20151005-2.jpg" alt="Leader Election1"></p>
-<p>If two candidates has the same votes(which means either of them has a majority votes), they will wait to increase their term and re-elect again. (Situation C)</p>
-<p>We can use randomize the waiting/Sleeping time to reduce the possibility of the occurrence of Situation C.</p>
-<p>We should take care the term. Term changes doesn’t mean that leader changes; but leader changes must cause term increases. For me, I think term is much like a Dynasty (in Chinese we say “Nian Hao”) for a particular king.</p>
-<p>Reviewing Question:</p>
-<p>How does follower determine the candidate is worthy to vote? Compare the Term, bigger term wins. What if the follower and the candidate has the same term? Then compare the index, the bigger index wins.</p>
-<p>Also, we need a FLAG to remember the server has voted for the election or not. In order to have only one leader, everyone has only one chance to vote in every term.</p>
-<h2 id="Log-Replication"><a href="#Log-Replication" class="headerlink" title="Log Replication"></a>Log Replication</h2><p>What is in a Log entry? Things might be different in various industrious situations. In general, one log entry at least has index, term, and certain instructions.</p>
-<p>Leader is responsible for receiving request from the clients. When the leader receives the requests, it will write the log, and sends its log to other servers. When the log is regarded as safely committed, the leader replies the client: blablabla, we did what you need us to do or store.</p>
-<p>How to make the log safely committed? We have 2-phase commit.</p>
-<ul>
-<li>First, the leader should send appending request to others, and collects the votes.</li>
-<li>Once the leader collects joint consensus(votes &gt; 1/2), the leader will transfer to new configuration, commit log, and declare to clients and other servers. Other server will append the commit log.</li>
-</ul>
-<p>The record of the committing is persistent and consistent. There might be some conflicts between logs(Leader dies and recovers as follower later), so the leader will force the follower to clone the committed log to solve this problem. Therefore, a qualified leader should have all committed logs.</p>
-<p>When a new leader is elected, the leader will check the logs in a descending index order, in case of disturbance and loss of necessary logs.</p>
-<h2 id="Other-implement-details"><a href="#Other-implement-details" class="headerlink" title="Other implement details"></a>Other implement details</h2><p>In our project, we use Java to implement the algorithm, use a thread to represent every independent server, and use RPC to send communication information(request, vote, logs) between threads.</p>
-<p>During the learning process, the animation below is very helpful for me to understand the whole process.</p>
-<p><a><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="external">http://thesecretlivesofdata.com/raft/</a></a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。<br><a id="more"></a></p>
+<p>事实上，在最初的时候，我甚至跟很多人想法不一样。很多人觉得Golang背后有Google，感觉靠山很强，很好棒棒哒，而我反而觉得当一门编程语言被标上Google的标签后，并不见得是一件好事。一旦因为公司政策和方向改变，说不定未来的发展会发生变数。况且以Google一贯的作风（Angular 2，3，4）很难说之后的维护会是怎么样的。在各种中外论坛上，也有很多人对Golang嗤之以鼻，其中最著名的当然是王垠称Golang在设计上很垃圾。</p>
+<p>我在研究过一小段时间后，发现Golang实在亮点突出：简单。想起《神雕侠侣》中的玄铁重剑，<code>“重剑无锋，大巧不工”</code>。也许从大神们的角度和学术的角度来说，Golang有诸多缺点，但是从工程的角度上，它的设计是优秀的：简洁的语法，剔除古怪无用的概念，完整的工具链，强大的社区支持，高性能。</p>
+<p>至少我从C++开始学起入门的经历，我觉得Golang的上手实在轻松，写着写着竟有写Python的感觉，想想学C++的苦，眼泪快掉下来。所以国内现在Golang一片欣欣向荣，老板招了人，即便从来没有写过Go，只要基础不错，稍微培训一下也能干活。国外也有很多公司慢慢开始转移技术栈，或者一些新产品直接基于Golang。我们公司SAP在Big Data Hub这个大部门下的新产品，很多都是基于Go和K8的。</p>
+<p>我觉得需要开一个系列慢慢记录我的学习过程，说是笔记性质的，所以可能有些地方不详细，望谅解。Golang系列的博文，范围从Golang基础，web和Network的应用，著名项目源码和架构解读再到Toy Project的开发。积跬步，至千里。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>安装过程就略了。<br>配置环境，我就直接使用Visual Studio Code和Go的插件，可以自动完成排版，纠错等功能。</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>基本类型主要有<code>string</code>, <code>bool</code>, <code>int(8,16,32或者64位)</code>, <code>float</code>, <code>byte(uint8)</code>, <code>rune(32位)</code>,<code>uint(8,16,32或者64位)</code>，<code>complex32</code>，<code>complex64</code>。</p>
+<p>复合类型，抓哟有<code>struct</code>, <code>slice</code>, <code>union</code>, <code>pointer</code>, <code>map</code>, <code>channel</code>, <code>interface</code>。至于每个复合类型具体是干什么的，我们会一一列出。</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>Go中，字符串相当于只读的byte slice。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="comment">//the way to declare a var, which is suggested in standard</span></div><div class="line">	<span class="keyword">var</span> s1 <span class="keyword">string</span></div><div class="line">	s1 = <span class="string">"Apple"</span></div><div class="line">	fmt.Println(s1) <span class="comment">//"Apple"</span></div><div class="line">	fmt.Println(s1[<span class="number">3</span>], <span class="keyword">string</span>(s1[<span class="number">3</span>]), s1[<span class="number">1</span>:<span class="number">3</span>], s1[<span class="number">1</span>:], s1[:<span class="number">2</span>], <span class="built_in">len</span>(s1))</div><div class="line">	<span class="comment">// 108 l pp pple Ap 5</span></div><div class="line"></div><div class="line">	<span class="comment">//another way to declare</span></div><div class="line">	s2 := <span class="string">"Pear"</span></div><div class="line"></div><div class="line">	<span class="comment">//Concat</span></div><div class="line">	fmt.Println(s1 + <span class="string">" "</span> + s2) <span class="comment">//print concat string "Apple Pear"</span></div><div class="line">	fmt.Println(s1, s2)        <span class="comment">//print with multiple items: "Apple Pear"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更多信息， 请移步：<a href="https://blog.golang.org/strings" target="_blank" rel="external">https://blog.golang.org/strings</a></p>
+<p>##持续更新</p>
 
       
     </div>
@@ -460,9 +436,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Distributed-System/" rel="tag"># Distributed System</a>
-          
-            <a href="/tags/Theory/" rel="tag"># Theory</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -475,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/delete-node-in-a-linked-list/" rel="next" title="Delete Node in a Linked List">
-                <i class="fa fa-chevron-left"></i> Delete Node in a Linked List
+              <a href="/pyDecorator/" rel="next" title="Python Decorator">
+                <i class="fa fa-chevron-left"></i> Python Decorator
               </a>
             
           </div>
@@ -484,10 +458,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/chord，一种p2p分布式哈希算法/" rel="prev" title="Distributed System之Chord，一种P2P分布式哈希算法">
-                Distributed System之Chord，一种P2P分布式哈希算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Leader-Election"><span class="nav-number">1.</span> <span class="nav-text">Leader Election</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-Replication"><span class="nav-number">2.</span> <span class="nav-text">Log Replication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-implement-details"><span class="nav-number">3.</span> <span class="nav-text">Other implement details</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">3.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">3.1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-number">3.2.</span> <span class="nav-text">string</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -845,9 +815,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/raft/';
-          this.page.identifier = 'raft/';
-          this.page.title = 'Distributed System之Raft';
+          this.page.url = 'http://www.happyisotope.com/golang101_1/';
+          this.page.identifier = 'golang101_1/';
+          this.page.title = 'Golang 101系列基础篇';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';
