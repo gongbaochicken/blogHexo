@@ -96,18 +96,19 @@
 
 
 
-<meta name="description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
+<meta name="description" content="前言2017年年底，我才开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，毕竟现代人都需要认识到精力的有限，只不过每个人对这样的犹豫程度不同罢了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang 101系列基础篇">
+<meta property="og:title" content="Golang 101系列基础篇-String, Array, Slice">
 <meta property="og:url" content="http://www.happyisotope.com/golang101_1/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
+<meta property="og:description" content="前言2017年年底，我才开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，毕竟现代人都需要认识到精力的有限，只不过每个人对这样的犹豫程度不同罢了。">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/images2_lcl5sf.png">
 <meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_528/v1521356443/slice_k7ubqc.jpg">
-<meta property="og:updated_time" content="2018-03-19T07:45:15.000Z">
+<meta property="og:updated_time" content="2018-03-20T06:29:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang 101系列基础篇">
-<meta name="twitter:description" content="前言2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_528/v1521356443/slice_k7ubqc.jpg">
+<meta name="twitter:title" content="Golang 101系列基础篇-String, Array, Slice">
+<meta name="twitter:description" content="前言2017年年底，我才开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，毕竟现代人都需要认识到精力的有限，只不过每个人对这样的犹豫程度不同罢了。">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/images2_lcl5sf.png">
 
 
 
@@ -142,7 +143,7 @@
 
 
 
-  <title>Golang 101系列基础篇 | Happy Isotope</title>
+  <title>Golang 101系列基础篇-String, Array, Slice | Happy Isotope</title>
   
 
 
@@ -292,7 +293,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇-String, Array, Slice</h2>
         
 
         <div class="post-meta">
@@ -380,7 +381,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2017年年底，我开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，只是程度不同罢了。<br><a id="more"></a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2017年年底，我才开始正式接触GO语言，这是一个偶尔机会的必然相遇。在最初认识Golang的时候，我开始犯我的老毛病，犹豫这是否是一个值得投入宝贵时间和精力的技术，犹豫学习Golang之后所带给我的好处。其实这种犹豫是大部分人都有的，毕竟现代人都需要认识到精力的有限，只不过每个人对这样的犹豫程度不同罢了。</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/images2_lcl5sf.png" alt=""><br><a id="more"></a></p>
 <p>事实上，在最初的时候，我跟很多人想法不一样。很多人觉得Golang背后有Google，感觉靠山很强，很好棒棒哒，而我反而觉得当一门编程语言被标上Google的标签后，并不见得是一件好事。一旦因为公司政策和方向改变，说不定未来的发展会发生变数。况且以Google一贯的作风（Angular 2，3，4）很难说之后的维护会是怎么样的。在各种中外论坛上，也有很多人对Golang嗤之以鼻，其中最著名的当然是王垠称Golang在设计上很垃圾。</p>
 <p>我在研究过一小段时间后，发现Golang实在亮点突出：简单。想起《神雕侠侣》中的玄铁重剑，<code>“重剑无锋，大巧不工”</code>。也许从大神们的角度和学术的角度来说，Golang有诸多缺点，但是从工程的角度上，它的设计是优秀的：简洁的语法，剔除古怪无用的概念，完整的工具链，强大的社区支持，高性能。</p>
 <p>至少我从C++开始学起入门的经历，我觉得Golang的上手实在轻松，写着写着竟有写Python的感觉，想想学C++的苦，眼泪快掉下来。所以国内现在Golang一片欣欣向荣，老板招了人，即便从来没有写过Go，只要基础不错，稍微培训一下也能干活。国外也有很多公司慢慢开始转移技术栈，或者一些新产品直接基于Golang。我们公司SAP在Big Data Hub这个大部门下的新产品，很多都是基于Go和K8的。</p>
@@ -478,6 +480,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/golang101_2/" rel="prev" title="Golang 101系列基础篇-Map">
+                Golang 101系列基础篇-Map <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -561,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -583,7 +589,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -836,7 +842,7 @@
         var disqus_config = function () {
           this.page.url = 'http://www.happyisotope.com/golang101_1/';
           this.page.identifier = 'golang101_1/';
-          this.page.title = 'Golang 101系列基础篇';
+          this.page.title = 'Golang 101系列基础篇-String, Array, Slice';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';

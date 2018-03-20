@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tutorial,Tool," />
+  <meta name="keywords" content="Golang," />
 
 
 
@@ -96,18 +96,21 @@
 
 
 
-<meta name="description" content="本文是篇干货，是一个基于linux 命令行操作的github快速使用指南。">
+<meta name="description" content="MapGolang中的map是用hashmap来实现的，源码在runtime/hashmap.go。
+map声明的方法主要有两种，一种是直接赋值，预先塞进一些值在Map中，另一种方法是使用make先预留出memory，再一个个的key-value插入map。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github for first-time users">
-<meta property="og:url" content="http://www.happyisotope.com/github_for_first_time_user/index.html">
+<meta property="og:title" content="Golang 101系列基础篇-Map">
+<meta property="og:url" content="http://www.happyisotope.com/golang101_2/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="本文是篇干货，是一个基于linux 命令行操作的github快速使用指南。">
-<meta property="og:image" content="https://kanbanize.com/blog/wp-content/uploads/2014/11/GitHub.jpg">
-<meta property="og:updated_time" content="2018-02-07T09:19:07.000Z">
+<meta property="og:description" content="MapGolang中的map是用hashmap来实现的，源码在runtime/hashmap.go。
+map声明的方法主要有两种，一种是直接赋值，预先塞进一些值在Map中，另一种方法是使用make先预留出memory，再一个个的key-value插入map。">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_500/v1521526971/gopher1_dtlosg.jpg">
+<meta property="og:updated_time" content="2018-03-20T06:26:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github for first-time users">
-<meta name="twitter:description" content="本文是篇干货，是一个基于linux 命令行操作的github快速使用指南。">
-<meta name="twitter:image" content="https://kanbanize.com/blog/wp-content/uploads/2014/11/GitHub.jpg">
+<meta name="twitter:title" content="Golang 101系列基础篇-Map">
+<meta name="twitter:description" content="MapGolang中的map是用hashmap来实现的，源码在runtime/hashmap.go。
+map声明的方法主要有两种，一种是直接赋值，预先塞进一些值在Map中，另一种方法是使用make先预留出memory，再一个个的key-value插入map。">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_500/v1521526971/gopher1_dtlosg.jpg">
 
 
 
@@ -136,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/github_for_first_time_user/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/golang101_2/"/>
 
 
 
 
 
-  <title>Github for first-time users | Happy Isotope</title>
+  <title>Golang 101系列基础篇-Map | Happy Isotope</title>
   
 
 
@@ -275,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/github_for_first_time_user/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -292,7 +295,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Github for first-time users</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇-Map</h2>
         
 
         <div class="post-meta">
@@ -304,8 +307,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-15T23:44:43-07:00">
-                2015-06-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T08:13:20-07:00">
+                2018-03-20
               </time>
             
 
@@ -327,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tool/" itemprop="url" rel="index">
-                    <span itemprop="name">Tool</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
 
@@ -345,9 +348,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/github_for_first_time_user/#comments" itemprop="discussionUrl">
+                <a href="/golang101_2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="github_for_first_time_user/" itemprop="commentCount"></span>
+                        data-disqus-identifier="golang101_2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,43 +381,19 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://kanbanize.com/blog/wp-content/uploads/2014/11/GitHub.jpg" rel="gallery_cjez9lxzn001avtx590e0441l"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://kanbanize.com/blog/wp-content/uploads/2014/11/GitHub.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <p>本文是篇干货，是一个基于linux 命令行操作的github快速使用指南。<br><a id="more"></a></p>
-<p>GitHub是一个基于Git版本控制工具的免费远程仓库。你可以将个人的开源项目，放到GitHub上分享给世界各地的程序员。同时，GitHub还是一个开源协作社区，通过GitHub，既可以让别人参与你的开源项目，也可以参与别人的开源项目。</p>
-<p>在GitHub出现以前，让广大码农群众参与一个开源项目比较困难。当时参与群众也仅限于报个bug，即使能改掉bug，也只能把diff文件用邮件发过去，很不方便。但是在GitHub横空出世之后，利用Git极其强大的Clone克隆和Fork分支功能，广大码农群众真正可以第一次自由参与各种开源项目了。开源运动进入了一个新的高潮。因此，Github被戏称为“世界上最大的同性交友网站”.</p>
-<p>喵~~你懂的。Bazinga.</p>
-<h2 id="浏览器端"><a href="#浏览器端" class="headerlink" title="浏览器端"></a>浏览器端</h2><p>请首先登录到 github.com，点击Create Repository按钮。</p>
-<p><img src="http://7xjjbh.com1.z0.glb.clouddn.com/QQ20150708-4.jpg" alt=""></p>
-<p>在添加repo名字之后，可点击创建按钮，进入下一步。同时，我建议对于正式一点的项目，添加一个ReadMe，这是对于你代码用户和读者的尊重；添加一个License，可以基本保护你的代码不被商业滥用，保障了自己的合法权益。多种License的试用范围有所区别，你可以自行查询，建议一般使用MIT License，比较试用。至于是否添加.gitignore，就看你是否需要，这个文件的作用是过滤出一些你不想commit的文件类型，比如你make之后的.c~， README~文件。</p>
-<p>在下一步中，Github会给出如下所示操作代码提示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">touch README.md</div><div class="line">git init</div><div class="line">git add README.md</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/zxdong262/paper-slider.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
-<p>linux 命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//建立目录</div><div class="line">mkdir paper-slider</div><div class="line">cd paper-slider</div><div class="line">//初始化 git</div><div class="line">git init</div><div class="line">//设置 git 用户名 邮箱地址（通常应该跟github注册邮箱一致）</div><div class="line">//全局设置</div><div class="line">git config --global user.name &quot;yourname&quot;</div><div class="line">git config --global user.email &quot;your-email-address&quot;</div><div class="line">//也可以给当前repo 单独设置</div><div class="line">git config user.name &quot;yourname&quot;</div><div class="line">git config user.email &quot;your-email-address&quot;</div></pre></td></tr></table></figure>
-<p>然后使用gedit, bluefish 或者 emacs 等任意工具在 paper-slider 目录创建 readme.md, markdown 基本语法请自行Google或者百度一下，然后哇塞，你就都知道了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># paper-slider</div><div class="line">a &quot;paper slider&quot; plugin for zepto and jQuery.</div><div class="line">## demo</div><div class="line">todo</div><div class="line">## license</div><div class="line">whatever</div></pre></td></tr></table></figure>
-<h2 id="提交文件入库的步骤"><a href="#提交文件入库的步骤" class="headerlink" title="提交文件入库的步骤"></a>提交文件入库的步骤</h2><p>简要来讲，就是首先通过Add,然后commit，最后再push，就可以讲一个文件，或者多个文件PUSH入仓库。下面以一个readme为例，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git add readme.md</div><div class="line">git commit -m &apos;init&apos;</div><div class="line">git remote add origin https://github.com/zxdong262/paper-slider.git</div><div class="line">git push -u origin master</div><div class="line">//然后输入用户名密码</div></pre></td></tr></table></figure>
-<p>如果要需要给自己的Project写一个更加详细的说明，可以使用gihub-pages,那就</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git push origin master:gh-pages</div><div class="line">//然后输入用户名密码</div></pre></td></tr></table></figure>
-<p>这样就创建了gh-pages分支，之后就可以通过 <a href="http://zxdong262.github.io/paper-slider/" target="_blank" rel="external">http://zxdong262.github.io/paper-slider/</a> 访问你的文件，这样github就可以作为网站甚至是cdn.<br>到此就可以认为初始化完成，以后可以继续提交文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git add file1-to-commit</div><div class="line">git add file2-to-commit</div><div class="line">git add file3-to-commit</div><div class="line">git commit -m &apos;commit note&apos;</div><div class="line">git push origin master</div><div class="line">git push origin master:gh-pages</div><div class="line">//然后输入用户名密码</div></pre></td></tr></table></figure>
+        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_500/v1521526971/gopher1_dtlosg.jpg" alt=""></p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Golang中的map是用hashmap来实现的，源码在runtime/hashmap.go。</p>
+<p>map声明的方法主要有两种，一种是直接赋值，预先塞进一些值在Map中，另一种方法是使用make先预留出memory，再一个个的key-value插入map。</p>
+<a id="more"></a>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This is wrong way to assign after 'declare' like this, which cause panic: assignment to entry in nil map</span></div><div class="line"><span class="comment">// var m1 map[int]string</span></div><div class="line"><span class="comment">// m1[2] = "Jeff"</span></div><div class="line"></div><div class="line"><span class="comment">//Method 1</span></div><div class="line">m1 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>&#123;<span class="number">2</span>: <span class="string">"Jeff"</span>, <span class="number">4</span>: <span class="string">"Gao"</span>&#125;</div><div class="line"></div><div class="line"><span class="comment">//Method 2, equivalent to m := map[int]string&#123;&#125;</span></div><div class="line">m2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)</div><div class="line">m2[<span class="number">2</span>] = <span class="string">"Jeff"</span></div><div class="line">m2[<span class="number">4</span>] = <span class="string">"Gao"</span></div></pre></td></tr></table></figure>
+<p>map的用法也相对比较简单，主要就是查询，插入和删除K-V值，具体如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">m1 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>&#123;<span class="number">2</span>: <span class="string">"Jeff"</span>, <span class="number">4</span>: <span class="string">"Gao"</span>&#125;</div><div class="line"></div><div class="line"><span class="comment">//Retrive</span></div><div class="line">employee1 := m1[<span class="number">2</span>]</div><div class="line">fmt.Println(employee1) <span class="comment">//"Jeff"</span></div><div class="line">employee2 := m1[<span class="number">3</span>]</div><div class="line">fmt.Println(employee2) <span class="comment">//nil, because its k-v pair doesn't exist</span></div><div class="line"></div><div class="line"><span class="comment">//Iterate</span></div><div class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> m1 &#123;</div><div class="line">	fmt.Println(<span class="string">"key = "</span>, k, <span class="string">"value = "</span>, v)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Delete</span></div><div class="line"><span class="built_in">delete</span>(m1, <span class="number">2</span>)</div><div class="line">fmt.Println(m1[<span class="number">2</span>])   <span class="comment">//nil</span></div><div class="line">fmt.Println(<span class="built_in">len</span>(m1)) <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>其中delete是内置的函数，用来从map中删除key。如果map本身是空的或者无需要删除的key，那么就直接退出什么都不做。</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set?"></a>Set?</h2><p>细心的你，一定很快会发现，在Golang的标准库里面没有set这种数据结构的，这让很多人感觉不太适应。Golang不支持set, 主要理由是Golang没有泛型。</p>
+<p>好吧，那么怎么表示set这种数据结构的呢？答案是用map来代替, 要点是key-value中的value使用bool值代表key是否存在：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">s := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">bool</span>)</div><div class="line">s[<span class="string">"John"</span>] = <span class="literal">true</span></div><div class="line">s[<span class="string">"Sam"</span>] = <span class="literal">true</span></div><div class="line">fmt.Println(s[<span class="string">"John"</span>]) <span class="comment">//true</span></div><div class="line">fmt.Println(s[<span class="string">"Sam"</span>])  <span class="comment">//true</span></div><div class="line">fmt.Println(s[<span class="string">"Kim"</span>])  <span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="built_in">delete</span>(s, <span class="string">"Sam"</span>)</div><div class="line">fmt.Println(s[<span class="string">"Sam"</span>]) <span class="comment">//false</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -461,9 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
-          
-            <a href="/tags/Tool/" rel="tag"># Tool</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -476,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Install-Activiti-5-in-Mac/" rel="next" title="Install Activiti 5 in Mac">
-                <i class="fa fa-chevron-left"></i> Install Activiti 5 in Mac
+              <a href="/golang101_1/" rel="next" title="Golang 101系列基础篇-String, Array, Slice">
+                <i class="fa fa-chevron-left"></i> Golang 101系列基础篇-String, Array, Slice
               </a>
             
           </div>
@@ -485,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Outer-Banks/" rel="prev" title="Outer Banks之旅">
-                Outer Banks之旅 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -676,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器端"><span class="nav-number">1.</span> <span class="nav-text">浏览器端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交文件入库的步骤"><span class="nav-number">2.</span> <span class="nav-text">提交文件入库的步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">1.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">2.</span> <span class="nav-text">Set?</span></a></li></ol></div>
             
 
           </div>
@@ -846,9 +819,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/github_for_first_time_user/';
-          this.page.identifier = 'github_for_first_time_user/';
-          this.page.title = 'Github for first-time users';
+          this.page.url = 'http://www.happyisotope.com/golang101_2/';
+          this.page.identifier = 'golang101_2/';
+          this.page.title = 'Golang 101系列基础篇-Map';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';
