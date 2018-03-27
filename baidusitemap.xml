@@ -4,11 +4,31 @@
 
     
   <url>
-    <loc>http://www.happyisotope.com/golang101_3/</loc>
-    <lastmod>2018-03-24T06:51:38.000Z</lastmod>
+    <loc>http://www.happyisotope.com/golang101_4/</loc>
+    <lastmod>2018-03-27T06:48:44.000Z</lastmod>
     <data>
         <display>
-        <title>Golang 101系列基础篇-Go Struct和Interface</title>
+        <title>Golang 101系列基础篇 - Useful functions</title>
+        <pubTime>2018-03-27T04:09:15.000Z</pubTime>
+        
+        <tag>Golang</tag>
+         
+         
+           
+             
+              <breadCrumb title="Golang" url="http://www.happyisotope.com/categories/Golang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.happyisotope.com/golang101_3/</loc>
+    <lastmod>2018-03-25T01:54:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>Golang 101系列基础篇-Struct和Interface</title>
         <pubTime>2018-03-24T04:09:15.000Z</pubTime>
         
         <tag>Golang</tag>
