@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Front end,Note," />
+  <meta name="keywords" content="Golang," />
 
 
 
@@ -96,18 +96,25 @@
 
 
 
-<meta name="description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
+<meta name="description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery Note 1">
-<meta property="og:url" content="http://www.happyisotope.com/jquery-note1/index.html">
+<meta property="og:title" content="Golang 101系列网络篇 - TCP Server">
+<meta property="og:url" content="http://www.happyisotope.com/Golang_And_TCP_Server/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
-<meta property="og:image" content="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/07c/2b7/12c91c5.jpg">
-<meta property="og:updated_time" content="2018-02-07T09:17:22.000Z">
+<meta property="og:description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/de4daf20b7e43fc4bca3450d86a1a32c_alreuy.png">
+<meta property="og:image" content="http://7.blog.xuite.net/7/e/c/d/12333836/blog_143465/txt/16475480/0.jpg">
+<meta property="og:updated_time" content="2018-03-28T06:56:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery Note 1">
-<meta name="twitter:description" content="Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about">
-<meta name="twitter:image" content="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/07c/2b7/12c91c5.jpg">
+<meta name="twitter:title" content="Golang 101系列网络篇 - TCP Server">
+<meta name="twitter:description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/de4daf20b7e43fc4bca3450d86a1a32c_alreuy.png">
 
 
 
@@ -136,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/jquery-note1/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/Golang_And_TCP_Server/"/>
 
 
 
 
 
-  <title>jQuery Note 1 | Happy Isotope</title>
+  <title>Golang 101系列网络篇 - TCP Server | Happy Isotope</title>
   
 
 
@@ -275,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/jquery-note1/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/Golang_And_TCP_Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -292,7 +299,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">jQuery Note 1</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列网络篇 - TCP Server</h2>
         
 
         <div class="post-meta">
@@ -304,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T22:58:20-08:00">
-                2017-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-27T23:09:15-07:00">
+                2018-03-27
               </time>
             
 
@@ -327,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Web</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
 
@@ -345,9 +352,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/jquery-note1/#comments" itemprop="discussionUrl">
+                <a href="/Golang_And_TCP_Server/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="jquery-note1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="Golang_And_TCP_Server/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,43 +385,27 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/07c/2b7/12c91c5.jpg" rel="gallery_cjfaqfl0m0019ecx5rocvtd2r"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/p/4/005/07c/2b7/12c91c5.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <p>Disclaimer: This is my private note for learning jQuery, and they are useful so I prefer to write them down. Most of them are what I encountered during building some projects. I am a new learner about jQuery, so maybe this is useless to you, my dear readers.<br><a id="more"></a></p>
-<p>首先一个根本问题就是：jQuery操作的到底是个啥？DOM： Document Object Model.</p>
-<h2 id="引入jQuery："><a href="#引入jQuery：" class="headerlink" title="引入jQuery："></a>引入jQuery：</h2><p>可以通过CDN,或是源文件来引入。<br>在HTML中可以像这样插入。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		...</div><div class="line">	&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建element</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//创建text</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="string">"DOM"</span>);</div><div class="line">div.appendChild(txt);</div><div class="line"><span class="built_in">document</span>.body.appendChild(div);</div><div class="line"></div><div class="line"><span class="comment">//setAttribute</span></div><div class="line">div.setAttribute(<span class="string">"title"</span>,<span class="string">"盒子"</span>);</div><div class="line"><span class="keyword">var</span> $div = $(<span class="string">"&lt;div title="</span>盒子<span class="string">"&gt;DOM&lt;/div&gt;"</span>);</div><div class="line">$(body).append($div);</div></pre></td></tr></table></figure>
-<h2 id="选择器："><a href="#选择器：" class="headerlink" title="选择器："></a>选择器：</h2><p>以下是常用选择器：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"\*"</span>): 所有元素</div><div class="line">$(<span class="string">"#lastname"</span>): id=<span class="string">"lastname"</span> 的元素</div><div class="line">$(<span class="string">".intro"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span> 的元素</div><div class="line">$(<span class="string">"p"</span>): 所有&lt;p&gt;元素</div><div class="line">$(<span class="string">".intro.demo"</span>): 所有 <span class="class"><span class="keyword">class</span></span>=<span class="string">"intro"</span>且 <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo"</span> 的元素</div></pre></td></tr></table></figure>
-<p>以下是位置选择器：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">:first -----对应方法------&gt; .first()</div><div class="line">:last  ----对应方法------&gt; .last()</div><div class="line">:not(?) ----对应方法------&gt; .not(?)</div><div class="line">:eq(num) ----对应方法------&gt;  .eq(num)</div><div class="line">:gt(num) ----对应方法------&gt;  .gt(num)</div><div class="line">:lt(num) ----对应方法------&gt;  .lt(num)</div></pre></td></tr></table></figure>
-<h2 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.next() 每个选中元素紧邻的下一个元素，可传入selector进行筛选</div><div class="line">.nextAll() 每个选中元素后的所有同辈元素，可传入selector进行筛选</div><div class="line">.nextUntil([selector],[filter]) 每个选中元素之后、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div><div class="line">.prev() 每个选中元素紧邻的上一个元素，可传入selector进行筛选</div><div class="line">.prevAll([selector]) 每个选中元素前的所有同辈元素，可传入selector进行筛选</div><div class="line">.prevUntil([selector],[filter]) 每个选中元素之前、直至但不包含第一个和selector匹配的元素，可传入filter进行筛选</div></pre></td></tr></table></figure>
-<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><p>有一些常用的方法，比如添加/删减class, 以此来改变前端属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.addClass();</div><div class="line">.removeClass();</div></pre></td></tr></table></figure>
-<p>show vs hide</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//callback 是动画执行的方法</span></div><div class="line">show(speed, callback);</div><div class="line"></div><div class="line"><span class="comment">//原理将高度，宽度，不透明度改为0.对应show的话，就是从上到下增加高度，从左到右增加宽度，从0-1增加不透明度。</span></div><div class="line">hide()</div></pre></td></tr></table></figure>
-<p>滑动动画效果<br>slideUp(200), slideDown(100)</p>
-<h2 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.resize()   <span class="comment">//当浏览器window的尺寸改变时，window元素上绑定的resize事件将被触发</span></div><div class="line"></div><div class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'body'</span>).prepend(<span class="string">'&lt;div&gt;'</span> + $(<span class="built_in">window</span>).width() + <span class="string">'&lt;/div&gt;'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line">.scroll()  <span class="comment">//当用户在元素内执行了滚动操作，就会在这个元素上触发scroll事件。</span></div><div class="line"></div><div class="line">$(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">"span"</span>).css(<span class="string">"display"</span>, <span class="string">"inline"</span>).fadeOut(<span class="string">"slow"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.ready(handler) <span class="comment">//DOM和CSS完全加载后之间handler</span></div><div class="line">.on(type or events,[selector],[data],handler)   <span class="comment">//根据type/events对象的事件绑定多个事件处理程序</span></div><div class="line">.off(type,[selector],[data],handler)  <span class="comment">//解除on给元素绑定的事件处理程序</span></div><div class="line">.bind(type,[data],handler)   <span class="comment">//绑定type事件，并指定事件处理程序handler</span></div></pre></td></tr></table></figure>
-<h2 id="事件触发："><a href="#事件触发：" class="headerlink" title="事件触发："></a>事件触发：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mouseenter,mouseleave, click</div></pre></td></tr></table></figure>
-
+        <p>本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/de4daf20b7e43fc4bca3450d86a1a32c_alreuy.png" alt=""></p>
+<h2 id="TCP简述"><a href="#TCP简述" class="headerlink" title="TCP简述"></a>TCP简述</h2><p>TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到ACK之后，明白了Server已经接受了自己的请求，然后发送一个ACK回去，告知Server，“我知道你接受我了，我们可以开始传输数据了。”至此，TCP三次握手完成。</p>
+<a id="more"></a>
+<p><img src="http://7.blog.xuite.net/7/e/c/d/12333836/blog_143465/txt/16475480/0.jpg" alt=""></p>
+<p>TCP通过传输序列有序的数据并附加ACK的方式，来保证其稳定性，来防止连接过程中发生丢包。除此之外，有一些有名的TCP改进机制，比如TCP-Reno，这个以后有机会再重新开一篇文章详细聊。</p>
+<h4 id="题外话：TCP-vs-UDP"><a href="#题外话：TCP-vs-UDP" class="headerlink" title="题外话：TCP vs UDP"></a>题外话：TCP vs UDP</h4><p>直接搬出学校的笔记 2333：</p>
+<ul>
+<li>TCP is connection-oriented protocol(3-Way handshake), UDP is connection less (multicast).</li>
+<li>TCP is reliable, delivery guaranteed(resend), UDP is unreliable.</li>
+<li>TCP is ordered (has sequence), UDP may not in the order.</li>
+<li>TCP is slow and heavy weight(20 bytes header), UDP is fast and light-weight (8 b header).</li>
+<li>TCP has flow control and congestion control.</li>
+<li>TCP is used by HTTP, HTTPS, FTP, SMP； UDP is used by DHCP, DNS, NFS…</li>
+</ul>
+<h2 id="Golang的网络编程理念"><a href="#Golang的网络编程理念" class="headerlink" title="Golang的网络编程理念"></a>Golang的网络编程理念</h2><p>以前在学校做Project的时候，遇到用C++写TCP的时候有时还挺头痛的，体验不好。使用Golang写TCP/IP层，相比C++，简直不要简单太多。难能可贵的是在简单的同时，Golang还保持着不俗的性能。</p>
+<h2 id="Golang下写TCP-Server"><a href="#Golang下写TCP-Server" class="headerlink" title="Golang下写TCP Server"></a>Golang下写TCP Server</h2><p>基于Golang的I/O机制和并发原语的原生支持，再加上对网络API的封装，我们可以比较轻松地实现一个高效的服务端或者客户端程序。一般的实现就是调用net.Listen(“tcp4”, address)得到一个net.Listener,然后无限循环调用net.Listener.Accept，之后就可以得到一个net.Conn，可以调用net.Conn的接口设置发送和接收缓冲区大小，可以设置KEEPALIVE等。因为TCP的双工特性，所以可以针对一个net.Conn可以专门启动一个goroutine去无限循环接收对端发来的数据，然后解包等。</p>
+<h3 id="Echo-Server"><a href="#Echo-Server" class="headerlink" title="Echo Server"></a>Echo Server</h3><p>我们下面来写一个简单的回音服务器（Echo Server），就是client发送一个信息，server稍微处理一下，就把原信息返回来给client。整个过程是，Server在监听，拿到监听到的信息后，通过写网络文件传回给Client，然后继续监听接下来的信息。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"bufio"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"net"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="comment">//Server gets a listener, listening to localhost:8080</span></div><div class="line">	li, err := net.Listen(<span class="string">"tcp"</span>, <span class="string">":8080"</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Panic(err)</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//Don't forget to close later, otherwise resourse will leak.</span></div><div class="line">	<span class="keyword">defer</span> li.Close()</div><div class="line"></div><div class="line">	<span class="comment">//Keep listening</span></div><div class="line">	<span class="keyword">for</span> &#123;</div><div class="line">		<span class="comment">//Listener accepts the request, and build the connection</span></div><div class="line">		conn, err := li.Accept()</div><div class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">			log.Panic(err)</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//Do the job.</span></div><div class="line">		<span class="keyword">go</span> handle(conn)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">(conn net.Conn)</span></span> &#123;</div><div class="line">	<span class="keyword">defer</span> conn.Close()</div><div class="line"></div><div class="line">	<span class="comment">//returns a new Scanner to read from connection io.Reader.</span></div><div class="line">	scanner := bufio.NewScanner(conn)</div><div class="line">	<span class="comment">//Scan will get next token, which will then be available through the Bytes or Text method.</span></div><div class="line">	<span class="keyword">for</span> scanner.Scan() &#123;</div><div class="line">		<span class="comment">//Get most recent token generated by a call to Scan</span></div><div class="line">		ln := scanner.Text()</div><div class="line">		<span class="comment">//Server prints the info from the connection</span></div><div class="line">		fmt.Println(ln)</div><div class="line">		<span class="comment">//Write back to connection:</span></div><div class="line">		fmt.Fprintf(conn, <span class="string">"I heard you said: %s\n"</span>, ln)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -460,9 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Front-end/" rel="tag"># Front end</a>
-          
-            <a href="/tags/Note/" rel="tag"># Note</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -475,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/DNS1/" rel="next" title="Distributed System之DNS">
-                <i class="fa fa-chevron-left"></i> Distributed System之DNS
+              <a href="/golang101_4/" rel="next" title="Golang 101系列基础篇 - Useful functions">
+                <i class="fa fa-chevron-left"></i> Golang 101系列基础篇 - Useful functions
               </a>
             
           </div>
@@ -484,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Online-Judger-System-Note1/" rel="prev" title="Online Judger Design Note 1">
-                Online Judger Design Note 1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入jQuery："><span class="nav-number">1.</span> <span class="nav-text">引入jQuery：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">2.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器："><span class="nav-number">3.</span> <span class="nav-text">选择器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历操作"><span class="nav-number">4.</span> <span class="nav-text">遍历操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods"><span class="nav-number">5.</span> <span class="nav-text">Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器事件"><span class="nav-number">6.</span> <span class="nav-text">浏览器事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件绑定"><span class="nav-number">7.</span> <span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件触发："><span class="nav-number">8.</span> <span class="nav-text">事件触发：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP简述"><span class="nav-number">1.</span> <span class="nav-text">TCP简述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话：TCP-vs-UDP"><span class="nav-number">1.0.1.</span> <span class="nav-text">题外话：TCP vs UDP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang的网络编程理念"><span class="nav-number">2.</span> <span class="nav-text">Golang的网络编程理念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang下写TCP-Server"><span class="nav-number">3.</span> <span class="nav-text">Golang下写TCP Server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Echo-Server"><span class="nav-number">3.1.</span> <span class="nav-text">Echo Server</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -845,9 +830,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/jquery-note1/';
-          this.page.identifier = 'jquery-note1/';
-          this.page.title = 'jQuery Note 1';
+          this.page.url = 'http://www.happyisotope.com/Golang_And_TCP_Server/';
+          this.page.identifier = 'Golang_And_TCP_Server/';
+          this.page.title = 'Golang 101系列网络篇 - TCP Server';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';
