@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Life,情感杂货铺," />
+  <meta name="keywords" content="Golang," />
 
 
 
@@ -96,27 +96,25 @@
 
 
 
-<meta name="description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
+<meta name="description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="越长大越孤单">
-<meta property="og:url" content="http://www.happyisotope.com/lonely/index.html">
+<meta property="og:title" content="Golang 101系列网络篇 - TCP Server">
+<meta property="og:url" content="http://www.happyisotope.com/golang101_TCP_Server/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg">
-<meta property="og:updated_time" content="2018-02-07T08:39:58.000Z">
+<meta property="og:description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg">
+<meta property="og:image" content="http://7.blog.xuite.net/7/e/c/d/12333836/blog_143465/txt/16475480/0.jpg">
+<meta property="og:updated_time" content="2018-03-29T06:08:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="越长大越孤单">
-<meta name="twitter:description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg">
+<meta name="twitter:title" content="Golang 101系列网络篇 - TCP Server">
+<meta name="twitter:description" content="本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。
+
+TCP简述TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg">
 
 
 
@@ -145,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/lonely/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/golang101_TCP_Server/"/>
 
 
 
 
 
-  <title>越长大越孤单 | Happy Isotope</title>
+  <title>Golang 101系列网络篇 - TCP Server | Happy Isotope</title>
   
 
 
@@ -284,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/lonely/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_TCP_Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -301,7 +299,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">越长大越孤单</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列网络篇 - TCP Server</h2>
         
 
         <div class="post-meta">
@@ -313,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T23:40:38-07:00">
-                2017-03-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-27T23:09:15-07:00">
+                2018-03-27
               </time>
             
 
@@ -336,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
 
@@ -354,9 +352,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/lonely/#comments" itemprop="discussionUrl">
+                <a href="/golang101_TCP_Server/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="lonely/" itemprop="commentCount"></span>
+                        data-disqus-identifier="golang101_TCP_Server/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,31 +385,27 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" rel="gallery_cjfc45xma0027t4x5cgefa05t"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <p>从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。</p>
-<p>除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。</p>
-<p>我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。</p>
-<p>我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还学会了画地为牢，给自己和他人贴标签，党同伐异。自以为自己独特有个性，有魅力，却又沦为一介俗人。</p>
-<p>我们急于像世人展示，却发现无人问津，</p>
-<p>越长大越孤单，像小王子，一个人在B612星球等待日落的瞬间。</p>
-
+        <p>本文将从回顾TCP的基本概念出发，到了解Golang下网络Socket编程的理念，再到使用Golang搭建几个简单的TCP Server Demo。</p>
+<p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg" alt=""></p>
+<h2 id="TCP简述"><a href="#TCP简述" class="headerlink" title="TCP简述"></a>TCP简述</h2><p>TCP位于传输层，在TCP/IP五层协议中，处于网络层之上，应用层之下。具体来看，TCP链接是一个典型的C-S模型，也就是客户端(Client)-服务端(Server)模型。客户端发出连接请求，服务端接受请求，并返回一个ACK，客服端收到ACK之后，明白了Server已经接受了自己的请求，然后发送一个ACK回去，告知Server，“我知道你接受我了，我们可以开始传输数据了。”至此，TCP三次握手完成。</p>
+<a id="more"></a>
+<p><img src="http://7.blog.xuite.net/7/e/c/d/12333836/blog_143465/txt/16475480/0.jpg" alt=""></p>
+<p>TCP通过传输序列有序的数据并附加ACK的方式，来保证其稳定性，来防止连接过程中发生丢包。除此之外，有一些有名的TCP改进机制，比如TCP-Reno，这个以后有机会再重新开一篇文章详细聊。</p>
+<h4 id="题外话：TCP-vs-UDP"><a href="#题外话：TCP-vs-UDP" class="headerlink" title="题外话：TCP vs UDP"></a>题外话：TCP vs UDP</h4><p>直接搬出学校的笔记 2333：</p>
+<ul>
+<li>TCP is connection-oriented protocol(3-Way handshake), UDP is connection less (multicast).</li>
+<li>TCP is reliable, delivery guaranteed(resend), UDP is unreliable.</li>
+<li>TCP is ordered (has sequence), UDP may not in the order.</li>
+<li>TCP is slow and heavy weight(20 bytes header), UDP is fast and light-weight (8 b header).</li>
+<li>TCP has flow control and congestion control.</li>
+<li>TCP is used by HTTP, HTTPS, FTP, SMP； UDP is used by DHCP, DNS, NFS…</li>
+</ul>
+<h2 id="Golang的网络编程理念"><a href="#Golang的网络编程理念" class="headerlink" title="Golang的网络编程理念"></a>Golang的网络编程理念</h2><p>以前在学校做Project的时候，遇到用C++写TCP的时候有时还挺头痛的，体验不好。使用Golang写TCP/IP层，相比C++，简直不要简单太多。难能可贵的是在简单的同时，Golang还保持着不俗的性能。</p>
+<h2 id="Golang下写TCP-Server"><a href="#Golang下写TCP-Server" class="headerlink" title="Golang下写TCP Server"></a>Golang下写TCP Server</h2><p>基于Golang的I/O机制和并发原语的原生支持，再加上对网络API的封装，我们可以比较轻松地实现一个高效的服务端或者客户端程序。一般的实现就是调用net.Listen(“tcp4”, address)得到一个net.Listener,然后无限循环调用net.Listener.Accept，之后就可以得到一个net.Conn，可以调用net.Conn的接口设置发送和接收缓冲区大小，可以设置KEEPALIVE等。因为TCP的双工特性，所以可以针对一个net.Conn可以专门启动一个goroutine去无限循环接收对端发来的数据，然后解包等。</p>
+<h3 id="Echo-Server"><a href="#Echo-Server" class="headerlink" title="Echo Server"></a>Echo Server</h3><p>我们下面来写一个简单的回音服务器（Echo Server），就是client发送一个信息，server稍微处理一下，就把原信息返回来给client。整个过程是，Server在监听，拿到监听到的信息后，通过写网络文件传回给Client，然后继续监听接下来的信息。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"bufio"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"net"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="comment">//Server gets a listener, listening to localhost:8080</span></div><div class="line">	li, err := net.Listen(<span class="string">"tcp"</span>, <span class="string">":8080"</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Panic(err)</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//Don't forget to close later, otherwise resourse will leak.</span></div><div class="line">	<span class="keyword">defer</span> li.Close()</div><div class="line"></div><div class="line">	<span class="comment">//Keep listening</span></div><div class="line">	<span class="keyword">for</span> &#123;</div><div class="line">		<span class="comment">//Listener accepts the request, and build the connection</span></div><div class="line">		conn, err := li.Accept()</div><div class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">			log.Panic(err)</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//Do the job.</span></div><div class="line">		<span class="keyword">go</span> handle(conn)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">handle</span><span class="params">(conn net.Conn)</span></span> &#123;</div><div class="line">	<span class="keyword">defer</span> conn.Close()</div><div class="line"></div><div class="line">	<span class="comment">//returns a new Scanner to read from connection io.Reader.</span></div><div class="line">	scanner := bufio.NewScanner(conn)</div><div class="line">	<span class="comment">//Scan will get next token, which will then be available through the Bytes or Text method.</span></div><div class="line">	<span class="keyword">for</span> scanner.Scan() &#123;</div><div class="line">		<span class="comment">//Get most recent token generated by a call to Scan</span></div><div class="line">		ln := scanner.Text()</div><div class="line">		<span class="comment">//Server prints the info from the connection</span></div><div class="line">		fmt.Println(ln)</div><div class="line">		<span class="comment">//Write back to connection:</span></div><div class="line">		fmt.Fprintf(conn, <span class="string">"I heard you said: %s\n"</span>, ln)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -457,9 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Life/" rel="tag"># Life</a>
-          
-            <a href="/tags/情感杂货铺/" rel="tag"># 情感杂货铺</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -472,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HANA-introduction/" rel="next" title="Introduction of SAP HANA">
-                <i class="fa fa-chevron-left"></i> Introduction of SAP HANA
+              <a href="/golang101_4/" rel="next" title="Golang 101系列基础篇 - Useful functions">
+                <i class="fa fa-chevron-left"></i> Golang 101系列基础篇 - Useful functions
               </a>
             
           </div>
@@ -482,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/LinuxIO/" rel="prev" title="Linux I/O 小结(1)">
-                Linux I/O 小结(1) <i class="fa fa-chevron-right"></i>
+              <a href="/golang101_routine/" rel="prev" title="Golang 101系列基础篇 - 初识Goroutine">
+                Golang 101系列基础篇 - 初识Goroutine <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -543,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg"
@@ -653,6 +654,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP简述"><span class="nav-number">1.</span> <span class="nav-text">TCP简述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题外话：TCP-vs-UDP"><span class="nav-number">1.0.1.</span> <span class="nav-text">题外话：TCP vs UDP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang的网络编程理念"><span class="nav-number">2.</span> <span class="nav-text">Golang的网络编程理念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang下写TCP-Server"><span class="nav-number">3.</span> <span class="nav-text">Golang下写TCP Server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Echo-Server"><span class="nav-number">3.1.</span> <span class="nav-text">Echo Server</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -817,9 +834,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/lonely/';
-          this.page.identifier = 'lonely/';
-          this.page.title = '越长大越孤单';
+          this.page.url = 'http://www.happyisotope.com/golang101_TCP_Server/';
+          this.page.identifier = 'golang101_TCP_Server/';
+          this.page.title = 'Golang 101系列网络篇 - TCP Server';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';

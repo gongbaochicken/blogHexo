@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Life,情感杂货铺," />
+  <meta name="keywords" content="Golang," />
 
 
 
@@ -96,27 +96,19 @@
 
 
 
-<meta name="description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
+<meta name="description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="越长大越孤单">
-<meta property="og:url" content="http://www.happyisotope.com/lonely/index.html">
+<meta property="og:title" content="Golang 101系列基础篇 - 初识Goroutine">
+<meta property="og:url" content="http://www.happyisotope.com/golang101_routine/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg">
-<meta property="og:updated_time" content="2018-02-07T08:39:58.000Z">
+<meta property="og:description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_948/v1522302921/1.pic_xsnlt0.jpg">
+<meta property="og:updated_time" content="2018-03-29T06:03:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="越长大越孤单">
-<meta name="twitter:description" content="从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。
-除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。
-我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。
-我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg">
+<meta name="twitter:title" content="Golang 101系列基础篇 - 初识Goroutine">
+<meta name="twitter:description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg">
 
 
 
@@ -145,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/lonely/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/golang101_routine/"/>
 
 
 
 
 
-  <title>越长大越孤单 | Happy Isotope</title>
+  <title>Golang 101系列基础篇 - 初识Goroutine | Happy Isotope</title>
   
 
 
@@ -284,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/lonely/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_routine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -301,7 +293,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">越长大越孤单</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇 - 初识Goroutine</h2>
         
 
         <div class="post-meta">
@@ -313,8 +305,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T23:40:38-07:00">
-                2017-03-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T23:00:00-07:00">
+                2018-03-28
               </time>
             
 
@@ -336,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
                   </a>
                 </span>
 
@@ -354,9 +346,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/lonely/#comments" itemprop="discussionUrl">
+                <a href="/golang101_routine/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="lonely/" itemprop="commentCount"></span>
+                        data-disqus-identifier="golang101_routine/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,30 +379,30 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" rel="gallery_cjfc45xma0027t4x5cgefa05t"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_504/v1517279073/Blog/how-to-stop-feeling-lonely-what-to-do-when-you-feel-lonely-1200x654.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <p>从某一天我意识到，越长大，越孤独。懂得越多，懂你的就越少。</p>
-<p>除非你是连体儿，否则永远孤独。这想法打破了我拥有很多很多朋友的幻想。</p>
-<p>我们与朋友有了各自的生活，逐渐少了联系，没有了信件和明信片，没有了电话粥。一切都是缓缓地变化。路走多了，人就散了。</p>
-<p>我想，人大多都怕孤独，却又随着岁月将自己陷入孤独。因为从某一天起，我们发现我们和朋友学会了嫉妒和猜忌，学会了骄傲和冷漠，学会了奉承和掩饰。不仅如此，我们还学会了画地为牢，给自己和他人贴标签，党同伐异。自以为自己独特有个性，有魅力，却又沦为一介俗人。</p>
-<p>我们急于像世人展示，却发现无人问津，</p>
-<p>越长大越孤单，像小王子，一个人在B612星球等待日落的瞬间。</p>
+        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg" alt=""></p>
+<p>本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。<br><a id="more"></a></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>在Golang中，Goroutine相当于是一个轻量级的线程（协程），就是一些函数，可以同时运行（Concurrency）。当我们使用go这个关键词来运行一个Goroutine的时候，程序为他专门在Heap专门开辟一片2Kb空间（一般线程大概1Mb）,因此在程序中可以使用大量goroutine（前提是你知道你在做什么），来提高运行效率，充分利用资源。</p>
+<p>同时，这也体现其最大的优势：在并发开发中实现对线程池的动态扩展，不会由于某个任务的阻塞而导致死锁。因为当某个goroutine被阻塞，runtime会重新开始一个线程来处理其他goroutine，直到阻塞消失。</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>下面给一个很常见的例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	fmt.Println(<span class="string">"End"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我的目的是在主程序里面启动两个goroutine,同时分别执行打印对应的字符串，每个goroutine打印四次。</p>
+<p>但是结果只出现了“End”，这是为什么呢?因为在两个goroutine在运行的时候，main已经运行结束了，整个程序也就终止了，所以goroutine的内容什么也没有打印出来。</p>
+<p>这个很好办，我们让主程序先休息一下，等等goroutine再结束。同时为了看到goroutine的交叉结果（Interleaving）, 我们让goroutine在每次打印前也稍微缓一缓。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		time.Sleep(<span class="number">10</span> * time.Millisecond)</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	time.Sleep(<span class="number">100</span> * time.Millisecond)</div><div class="line">	fmt.Println(<span class="string">"End"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在某次运行后，我得到了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">End</div></pre></td></tr></table></figure>
+<p>很显然，goroutine相互之间出现了interleaving.符合我们对多线程的一般认知。</p>
+<h2 id="WaitGroup"><a href="#WaitGroup" class="headerlink" title="WaitGroup"></a>WaitGroup</h2><p>上面这个例子，通过主程序sleep的方法等待两个goroutine的执行结果，未免显得太Naive。这里我们可以引入一个更优雅的方式，使用WaitGroup。</p>
+<p>WaitGroup属于sync这个包，这个包顾名思义，就是提供synchronization基本件的一个包。这里面有Mutex, lock, condition, WaitGroup, 读写锁等等，都是比较底层的部件。</p>
+<p><a href="https://golang.org/pkg/sync/#WaitGroup" target="_blank" rel="external">WaitGroup</a>是主程序用来等待goroutine执行完毕的。通过使用Add来添加需要等待goroutine的个数，通过Wait来进行阻塞等待goroutine完事，goroutine通过Done来通知主程序说我完事儿了。</p>
+<p>于是上面的那个例子，可以进化为:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> wg sync.WaitGroup</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">defer</span> wg.Done() <span class="comment">//Delta-1</span></div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		time.Sleep(<span class="number">100</span> * time.Millisecond)</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	wg.Wait() <span class="comment">//Delta = 2, so need to wait 2 goroutines to finish.</span></div><div class="line"></div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Yeah"</span>)</div><div class="line">	wg.Wait()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>某次运行的结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Yeah</div><div class="line">Yeah</div><div class="line">Yeah</div><div class="line">Yeah</div></pre></td></tr></table></figure></p>
+<p>可以看到say(“Hi”)和say(“Hola”)被添加进了第一次wg,所以wait阻塞结束是在两者都交叉运行完了之后，再继续往下执行say(“Yeah”)。所以我们会看到Hi, Hola交叉运行，而Yeah是单独连续print的。</p>
+<p>可以看到WaitGroup相当于是内部有个计数器delta, Add是+1， Done是-1,当Delta重新回到0时，Wait结束。按照我的理解，画个草图相当于这样：<br><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_948/v1522302921/1.pic_xsnlt0.jpg" alt=""></p>
+<p>后面我们结合上面的例子结构再讨论讨论lock, mutex相关的内容，预告里面还有channel，之后可能会深入分析一下routine源码和scheduler。</p>
 
       
     </div>
@@ -457,9 +449,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Life/" rel="tag"># Life</a>
-          
-            <a href="/tags/情感杂货铺/" rel="tag"># 情感杂货铺</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -472,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HANA-introduction/" rel="next" title="Introduction of SAP HANA">
-                <i class="fa fa-chevron-left"></i> Introduction of SAP HANA
+              <a href="/golang101_TCP_Server/" rel="next" title="Golang 101系列网络篇 - TCP Server">
+                <i class="fa fa-chevron-left"></i> Golang 101系列网络篇 - TCP Server
               </a>
             
           </div>
@@ -481,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/LinuxIO/" rel="prev" title="Linux I/O 小结(1)">
-                Linux I/O 小结(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,8 +529,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg"
@@ -653,6 +648,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WaitGroup"><span class="nav-number">3.</span> <span class="nav-text">WaitGroup</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -817,9 +828,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/lonely/';
-          this.page.identifier = 'lonely/';
-          this.page.title = '越长大越孤单';
+          this.page.url = 'http://www.happyisotope.com/golang101_routine/';
+          this.page.identifier = 'golang101_routine/';
+          this.page.title = 'Golang 101系列基础篇 - 初识Goroutine';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';
