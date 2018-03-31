@@ -4,13 +4,37 @@
 
     
   <url>
+    <loc>http://www.happyisotope.com/golang101_channel/</loc>
+    <lastmod>2018-03-31T06:42:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>Golang 101系列网络篇 - 初识Channel</title>
+        <pubTime>2018-03-31T06:42:15.000Z</pubTime>
+        
+        <tag>Network</tag>
+         
+        <tag>Golang</tag>
+         
+         
+           
+             
+              <breadCrumb title="Golang" url="http://www.happyisotope.com/categories/Golang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.happyisotope.com/golang101_TCP_Server/</loc>
-    <lastmod>2018-03-29T06:08:33.000Z</lastmod>
+    <lastmod>2018-03-30T06:08:21.000Z</lastmod>
     <data>
         <display>
         <title>Golang 101系列网络篇 - TCP Server</title>
         <pubTime>2018-03-28T06:09:15.000Z</pubTime>
         
+        <tag>Network</tag>
+         
         <tag>Golang</tag>
          
          

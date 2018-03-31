@@ -80,7 +80,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Golang," />
+  <meta name="keywords" content="Network,Golang," />
 
 
 
@@ -96,19 +96,18 @@
 
 
 
-<meta name="description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
+<meta name="description" content="之前我们初次聊了一下goroutine,本文来聊聊相关的channel这个神奇的东西。channel主要用于多协程同步的情况，提供了一个交流机制，方便goroutine之间相互沟通。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Golang 101系列基础篇 - 初识Goroutine">
-<meta property="og:url" content="http://www.happyisotope.com/golang101_routine/index.html">
+<meta property="og:title" content="Golang 101系列网络篇 - 初识Channel">
+<meta property="og:url" content="http://www.happyisotope.com/golang101_channel/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_948/v1522302921/1.pic_xsnlt0.jpg">
-<meta property="og:updated_time" content="2018-03-29T06:03:26.000Z">
+<meta property="og:description" content="之前我们初次聊了一下goroutine,本文来聊聊相关的channel这个神奇的东西。channel主要用于多协程同步的情况，提供了一个交流机制，方便goroutine之间相互沟通。">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg">
+<meta property="og:updated_time" content="2018-03-31T06:42:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Golang 101系列基础篇 - 初识Goroutine">
-<meta name="twitter:description" content="本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg">
+<meta name="twitter:title" content="Golang 101系列网络篇 - 初识Channel">
+<meta name="twitter:description" content="之前我们初次聊了一下goroutine,本文来聊聊相关的channel这个神奇的东西。channel主要用于多协程同步的情况，提供了一个交流机制，方便goroutine之间相互沟通。">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg">
 
 
 
@@ -137,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://www.happyisotope.com/golang101_routine/"/>
+  <link rel="canonical" href="http://www.happyisotope.com/golang101_channel/"/>
 
 
 
 
 
-  <title>Golang 101系列基础篇 - 初识Goroutine | Happy Isotope</title>
+  <title>Golang 101系列网络篇 - 初识Channel | Happy Isotope</title>
   
 
 
@@ -276,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_routine/">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_channel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhuo Jia">
@@ -293,7 +292,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Golang 101系列基础篇 - 初识Goroutine</h2>
+          <h2 class="post-title" itemprop="name headline">Golang 101系列网络篇 - 初识Channel</h2>
         
 
         <div class="post-meta">
@@ -305,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-28T23:00:00-07:00">
-                2018-03-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-30T23:42:15-07:00">
+                2018-03-30
               </time>
             
 
@@ -346,9 +345,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/golang101_routine/#comments" itemprop="discussionUrl">
+                <a href="/golang101_channel/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="golang101_routine/" itemprop="commentCount"></span>
+                        data-disqus-identifier="golang101_channel/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,28 +380,24 @@
       
 
       
-        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303339/gophercomplex1_duq7fh.jpg" alt=""></p>
-<p>本文终于来到了多线程的一个主题：Goroutine。在Golang中，Goroutine相当于是一个轻量级的线程，context switch的代价小。我们来看看Goroutine的特点和基本使用，在后期的文章和学习中，我再继续探讨更深入的内容。<br><a id="more"></a></p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>在Golang中，Goroutine相当于是一个轻量级的线程（协程），就是一些函数，可以同时运行（Concurrency）。当我们使用go这个关键词来运行一个Goroutine的时候，程序为他专门在Heap专门开辟一片2Kb空间（一般线程大概1Mb）,因此在程序中可以使用大量goroutine（前提是你知道你在做什么），来提高运行效率，充分利用资源。</p>
-<p>同时，这也体现其最大的优势：在并发开发中实现对线程池的动态扩展，不会由于某个任务的阻塞而导致死锁。因为当某个goroutine被阻塞，runtime会重新开始一个线程来处理其他goroutine，直到阻塞消失。</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>下面给一个很常见的例子：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	fmt.Println(<span class="string">"End"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我的目的是在主程序里面启动两个goroutine,同时分别执行打印对应的字符串，每个goroutine打印四次。</p>
-<p>但是结果只出现了“End”，这是为什么呢?因为在两个goroutine在运行的时候，main已经运行结束了，整个程序也就终止了，所以goroutine的内容什么也没有打印出来。</p>
-<p>这个很好办，我们让主程序先休息一下，等等goroutine再结束。同时为了看到goroutine的交叉结果（Interleaving）, 我们让goroutine在每次打印前也稍微缓一缓。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"time"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		time.Sleep(<span class="number">10</span> * time.Millisecond)</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	time.Sleep(<span class="number">100</span> * time.Millisecond)</div><div class="line">	fmt.Println(<span class="string">"End"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在某次运行后，我得到了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">End</div></pre></td></tr></table></figure>
-<p>很显然，goroutine相互之间出现了interleaving.符合我们对多线程的一般认知。</p>
-<h2 id="WaitGroup"><a href="#WaitGroup" class="headerlink" title="WaitGroup"></a>WaitGroup</h2><p>上面这个例子，通过主程序sleep的方法等待两个goroutine的执行结果，未免显得太Naive。这里我们可以引入一个更优雅的方式，使用WaitGroup。</p>
-<p>WaitGroup属于sync这个包，这个包顾名思义，就是提供synchronization基本件的一个包。这里面有Mutex, lock, condition, WaitGroup, 读写锁等等，都是比较底层的部件。</p>
-<p><a href="https://golang.org/pkg/sync/#WaitGroup" target="_blank" rel="external">WaitGroup</a>是主程序用来等待goroutine执行完毕的。通过使用Add来添加需要等待goroutine的个数，通过Wait来进行阻塞等待goroutine完事，goroutine通过Done来通知主程序说我完事儿了。</p>
-<p>于是上面的那个例子，可以进化为:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> wg sync.WaitGroup</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">defer</span> wg.Done() <span class="comment">//Delta-1</span></div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</div><div class="line">		time.Sleep(<span class="number">100</span> * time.Millisecond)</div><div class="line">		fmt.Println(s)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hi"</span>)</div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Hola"</span>)</div><div class="line">	wg.Wait() <span class="comment">//Delta = 2, so need to wait 2 goroutines to finish.</span></div><div class="line"></div><div class="line">	wg.Add(<span class="number">1</span>)</div><div class="line">	<span class="keyword">go</span> say(<span class="string">"Yeah"</span>)</div><div class="line">	wg.Wait()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>某次运行的结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Hola</div><div class="line">Hi</div><div class="line">Hi</div><div class="line">Hola</div><div class="line">Yeah</div><div class="line">Yeah</div><div class="line">Yeah</div><div class="line">Yeah</div></pre></td></tr></table></figure></p>
-<p>可以看到say(“Hi”)和say(“Hola”)被添加进了第一次wg,所以wait阻塞结束是在两者都交叉运行完了之后，再继续往下执行say(“Yeah”)。所以我们会看到Hi, Hola交叉运行，而Yeah是单独连续print的。</p>
-<p>可以看到WaitGroup相当于是内部有个计数器delta, Add是+1， Done是-1,当Delta重新回到0时，Wait结束。按照我的理解，画个草图相当于这样：<br><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_948/v1522302921/1.pic_xsnlt0.jpg" alt=""></p>
-<p>后面我们结合上面的例子结构再讨论讨论lock, mutex相关的内容，预告里面还有channel，之后可能会深入分析一下routine源码和scheduler。</p>
+        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522303664/index_ifnqdy.jpg" alt=""></p>
+<p>之前我们初次聊了一下<a href="https://happyisotope.herokuapp.com/golang101_routine" target="_blank" rel="external">goroutine</a>,本文来聊聊相关的channel这个神奇的东西。channel主要用于多协程同步的情况，提供了一个交流机制，方便goroutine之间相互沟通。<br><a id="more"></a></p>
+<h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>channel分三种，双向，只读，只写。他们的声明方式都是通过make来声明的，具体语法分别是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ch0 := make(chan int, 3)//双向, buffered</div><div class="line">ch1 := make(chan int)//双向, unbuffered</div><div class="line"></div><div class="line">ch2 := make(&lt;-chan int) //只读，且读出来的是int</div><div class="line"></div><div class="line">ch3 := make(chan-&lt; int) //只写，且直往里面写int</div><div class="line">ch4 := make(chan&lt;- chan int) //只写，且直往里面写另一个int的channel</div></pre></td></tr></table></figure>
+<p>当make的时候，在Heap上面分配了一个结构体的空间，并返回指向它的指针。所以其实得到的channel其实是<b>指针</b>，这也就是解释了为什么可以在函数间轻松地传来传去，而不需要指明使用指针，因为本身它就是指针。</p>
+<p>如果声明时，指明了箭头，那么就代表要么只读，要么只写，具体看箭头方向是指向channel，还是从channel指出。同时箭头，本身也代表了读写操作。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ch &lt;- <span class="literal">true</span> <span class="comment">//写值</span></div><div class="line">isDead := &lt;-ch <span class="comment">//读值并赋值</span></div></pre></td></tr></table></figure>
+<h2 id="Buffered-Channel"><a href="#Buffered-Channel" class="headerlink" title="Buffered Channel"></a>Buffered Channel</h2><p>在探讨channel之前，我们需要了解他的结构。以buffer channel为例子，它的结构体内有一个buffer队列Q，大小为buffer size, 有一个锁，还有一些Index。</p>
+<p>每当只定了channel的size， 也就同时指定了buffer queue的size。当传入channel的个数超过队列size时，会block掉当前goroutine，直到有receiver来接收channel里面的信息，每接收一个信息，channel就会pop出该信息，然后被阻塞的goroutine即可继续运行（channel内信息数量没有超过size）。看一个例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	message := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>, <span class="number">2</span>) <span class="comment">// no buffer</span></div><div class="line">	count := <span class="number">4</span></div><div class="line"></div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</div><div class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; count; i++ &#123;</div><div class="line">			fmt.Println(<span class="string">"Send message"</span>)</div><div class="line">			message &lt;- fmt.Sprintf(<span class="string">"Message %d"</span>, i)</div><div class="line">		&#125;</div><div class="line">	&#125;()</div><div class="line"></div><div class="line">	time.Sleep(time.Second * <span class="number">5</span>)</div><div class="line"></div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; count; i++ &#123;</div><div class="line">		fmt.Println(&lt;-message)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果有可能会出现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Send message</div><div class="line">Send message</div><div class="line">Send message</div><div class="line">Message 0</div><div class="line">Message 1</div><div class="line">Message 2</div><div class="line">Send message</div><div class="line">Message 3</div></pre></td></tr></table></figure></p>
+<p>首先往channel里面扔了3个message，还没到主进程读取，主进程在睡觉。当第四个message传入channel时，整个goroutine被堵塞，正好又恰逢主程序刚刚醒了，于是输出channel里面已有的Message内容。同时channel里面buffer空了出来，整个routine可以继续下去，channel可以接收第四个message，之后再主进程读取打印。</p>
+<p>如果主进程需要从channel输出的信息个数大于我们从goroutine中往channel扔进去的信息个数呢？这时会出现deadlock！</p>
+<h2 id="一个死锁的例子"><a href="#一个死锁的例子" class="headerlink" title="一个死锁的例子"></a>一个死锁的例子</h2><p>还有一个初学者常会误会导致的死锁问题。我们来看一个例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</div><div class="line"></div><div class="line">	ch &lt;- <span class="number">999</span> <span class="comment">// write to a channel</span></div><div class="line">	fmt.Println(&lt;-ch)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当运行时，我们会得到”fatal error: all goroutines are asleep - deadlock!”这么一个死锁错误。原因是因为整个主程序都是单线程，当写入channel时，必须要有一个接收方在另一个协程，不然会一直block。</p>
+<p>为了让程序work,我们可以直接在goroutine里面写，在主程序中接收：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</div><div class="line"></div><div class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</div><div class="line">		ch &lt;- <span class="number">999</span> <span class="comment">// write to a channel</span></div><div class="line">	&#125;()</div><div class="line"></div><div class="line">	<span class="built_in">println</span>(&lt;-ch) <span class="comment">// read from a channel</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样就可以通过了。</p>
 
       
     </div>
@@ -449,6 +444,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Network/" rel="tag"># Network</a>
+          
             <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
@@ -462,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/golang101_TCP_Server/" rel="next" title="Golang 101系列网络篇 - TCP Server">
-                <i class="fa fa-chevron-left"></i> Golang 101系列网络篇 - TCP Server
+              <a href="/golang101_routine/" rel="next" title="Golang 101系列基础篇 - 初识Goroutine">
+                <i class="fa fa-chevron-left"></i> Golang 101系列基础篇 - 初识Goroutine
               </a>
             
           </div>
@@ -471,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/golang101_channel/" rel="prev" title="Golang 101系列网络篇 - 初识Channel">
-                Golang 101系列网络篇 - 初识Channel <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WaitGroup"><span class="nav-number">3.</span> <span class="nav-text">WaitGroup</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffered-Channel"><span class="nav-number">2.</span> <span class="nav-text">Buffered Channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个死锁的例子"><span class="nav-number">3.</span> <span class="nav-text">一个死锁的例子</span></a></li></ol></div>
             
 
           </div>
@@ -832,9 +825,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.happyisotope.com/golang101_routine/';
-          this.page.identifier = 'golang101_routine/';
-          this.page.title = 'Golang 101系列基础篇 - 初识Goroutine';
+          this.page.url = 'http://www.happyisotope.com/golang101_channel/';
+          this.page.identifier = 'golang101_channel/';
+          this.page.title = 'Golang 101系列网络篇 - 初识Channel';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://happy-isotope.disqus.com/embed.js';
