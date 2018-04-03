@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。">
+<meta name="description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。是的，就像Go创始人之一Rob Pike描述的朴素真理一样，空的接口啥都没有说。Hhhhhh.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Golang 101系列基础篇-Struct和Interface">
 <meta property="og:url" content="http://www.happyisotope.com/golang101_3/index.html">
 <meta property="og:site_name" content="Happy Isotope">
-<meta property="og:description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/go_thamizh_xzamcq.png">
-<meta property="og:updated_time" content="2018-03-25T01:54:08.000Z">
+<meta property="og:description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。是的，就像Go创始人之一Rob Pike描述的朴素真理一样，空的接口啥都没有说。Hhhhhh.">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522650631/1.pic_enaskv.jpg">
+<meta property="og:updated_time" content="2018-04-02T06:32:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang 101系列基础篇-Struct和Interface">
-<meta name="twitter:description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/go_thamizh_xzamcq.png">
+<meta name="twitter:description" content="这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。是的，就像Go创始人之一Rob Pike描述的朴素真理一样，空的接口啥都没有说。Hhhhhh.">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522650631/1.pic_enaskv.jpg">
 
 
 
@@ -380,8 +380,8 @@
       
 
       
-        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1521526970/go_thamizh_xzamcq.png" alt=""></p>
-<p>这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。<br><a id="more"></a></p>
+        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522650631/1.pic_enaskv.jpg" alt=""></p>
+<p>这篇Blog里面我们来聊一聊Golang的结构体和接口(Interface)。前者跟C系的编程语言比较接近比较好理解，后者接口被称为Golang里面一个很精妙的设计，所以比较奇特。是的，就像Go创始人之一Rob Pike描述的朴素真理一样，空的接口啥都没有说。Hhhhhh.<br><a id="more"></a></p>
 <h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><p>结构体定义了成员，让各个成员组成一个有机的、可以更好被理解的数据对象结构。比如，一个立方体拥有长、宽、高三个变量，那么通过关键词type……struct 可以定义为如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">type</span> Cube <span class="keyword">struct</span>&#123;</div><div class="line">	l <span class="keyword">float64</span></div><div class="line">	w <span class="keyword">float64</span></div><div class="line">	h <span class="keyword">float64</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//or a collapse way:</span></div><div class="line"><span class="keyword">type</span> Cube <span class="keyword">struct</span>&#123;</div><div class="line">	l, w, h <span class="keyword">float64</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>使用的时候也是挺简单：</p>
