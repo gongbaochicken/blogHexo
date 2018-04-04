@@ -749,6 +749,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_RabbitMQ/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhuo Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy Isotope">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/golang101_RabbitMQ/" itemprop="url">RabbitMQ和Golang</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-27T23:09:15-07:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/golang101_RabbitMQ/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="golang101_RabbitMQ/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522740717/rabbitmq_ezbhgc.png" alt=""></p>
+<p>在微服务称霸的今日，Message Broker和消息队列被各大公司广泛应用于业务解耦、可靠投递、广播等等。主流的消息队列有Kafka, ActiveMQ, RabbitMQ, RocketMQ, NSQ等等。本期主要总结一些RabbitMQ的一些基本理论和Golang的基本操作。</p>
+<p>我最早接触RabbitMQ其实使用的是CloudAMQP，一套RabbitMQ云服务。云服务的好处是它帮你做好了host等工作，你只需要掌握相关API，并专注于自己的业务逻辑即可，使用非常方便。当时我使用它（同时使用的Python和Pika）的目的是，将短时间大量产生的消息，存入消息队列，等待某些服务从队列中Consume，这样一来可以解耦不同的服务，二来可以为消耗方减缓系统压力。</p>
+<p>CloudAMQP是基于RabbitMQ的, 而RabbitMQ则是基于AMQP(Advanced Message Queuing Protocol)，一套由Chase银行制定和研发的国际化信息通道传递的标准。这套标准设计了关于消息队列的安全、可靠性、交互性等等一些基本特质，是消息队列的一个重要里程碑。CloudAMQP可以在之后专门再总结一下，本文还是专注于RabbitMQ和Golang。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/golang101_RabbitMQ/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/golang101_4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1645,7 +1805,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg" rel="gallery_cjfhv21c6000qkex58m1hmyn1"
+                 href="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg" rel="gallery_cjfkqr7x2000wajx5go18fk1g"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517817511/Blog/1.pic.jpg" itemprop="contentUrl"/>
               </a>
@@ -1700,185 +1860,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.happyisotope.com/LinuxIO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhuo Jia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_749/v1519622156/NewSelf_h9lvpg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Happy Isotope">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/LinuxIO/" itemprop="url">Linux I/O 小结(1)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T17:54:43-08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/LinuxIO/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="LinuxIO/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://res.cloudinary.com/dxdsd8err/image/upload/v1517994287/Blog/182900550.jpg" rel="gallery_cjfhv21c3000ikex5hcu9hjpn"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1517994287/Blog/182900550.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
-      
-        
-          <p>本文主要是总结一下Linux下的网络I/O模式，但是展开也会加入一些在Web环境下的想法。</p>
-<p>在Linux中，所有的文件、Socket、pipe等进行I/O操作的对象，都可以称之为流。在网络编程中，流的I/O和I/O复用（I/O multiplexing）也是被大量使用的。在很多情况下，我们需要从Stream流中读取数据，但是Stream中还没有数据，应该等待。至于，等待的方式，大体分为两种：阻塞(blocking) 和 非阻塞(Non-blocking)。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/LinuxIO/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1925,7 +1911,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1947,7 +1933,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

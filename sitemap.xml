@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.happyisotope.com/golang101_RabbitMQ/</loc>
+    
+    <lastmod>2018-04-04T06:58:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.happyisotope.com/golang101_channel/</loc>
     
     <lastmod>2018-04-03T06:57:02.000Z</lastmod>
