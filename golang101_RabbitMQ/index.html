@@ -104,15 +104,16 @@
 <meta property="og:site_name" content="Happy Isotope">
 <meta property="og:description" content="在微服务称霸的今日，Message Broker和消息队列被各大公司广泛应用于业务解耦、可靠投递、广播等等。主流的消息队列有Kafka, ActiveMQ, RabbitMQ, RocketMQ, NSQ等等。本期主要总结一些RabbitMQ的一些基本理论和Golang的基本操作。
 我最早接触RabbitMQ其实使用的是CloudAMQP，一套RabbitMQ云服务。云服务的好处是它帮你做好了h">
-<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522740717/rabbitmq_ezbhgc.png">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_517/v1522740717/rabbitmq_ezbhgc.png">
 <meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522740717/camqp_ymawip.png">
 <meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522743577/64.pic_jqexc7.jpg">
-<meta property="og:updated_time" content="2018-04-04T06:58:17.000Z">
+<meta property="og:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_1208/v1522825653/1.pic_m080sq.jpg">
+<meta property="og:updated_time" content="2018-04-04T07:18:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ和Golang">
 <meta name="twitter:description" content="在微服务称霸的今日，Message Broker和消息队列被各大公司广泛应用于业务解耦、可靠投递、广播等等。主流的消息队列有Kafka, ActiveMQ, RabbitMQ, RocketMQ, NSQ等等。本期主要总结一些RabbitMQ的一些基本理论和Golang的基本操作。
 我最早接触RabbitMQ其实使用的是CloudAMQP，一套RabbitMQ云服务。云服务的好处是它帮你做好了h">
-<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/v1522740717/rabbitmq_ezbhgc.png">
+<meta name="twitter:image" content="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_517/v1522740717/rabbitmq_ezbhgc.png">
 
 
 
@@ -309,8 +310,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-27T23:09:15-07:00">
-                2018-03-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-03T11:09:15-07:00">
+                2018-04-03
               </time>
             
 
@@ -385,7 +386,7 @@
       
 
       
-        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522740717/rabbitmq_ezbhgc.png" alt=""></p>
+        <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_517/v1522740717/rabbitmq_ezbhgc.png" alt=""></p>
 <p>在微服务称霸的今日，Message Broker和消息队列被各大公司广泛应用于业务解耦、可靠投递、广播等等。主流的消息队列有Kafka, ActiveMQ, RabbitMQ, RocketMQ, NSQ等等。本期主要总结一些RabbitMQ的一些基本理论和Golang的基本操作。</p>
 <p>我最早接触RabbitMQ其实使用的是CloudAMQP，一套RabbitMQ云服务。云服务的好处是它帮你做好了host等工作，你只需要掌握相关API，并专注于自己的业务逻辑即可，使用非常方便。当时我使用它（同时使用的Python和Pika）的目的是，将短时间大量产生的消息，存入消息队列，等待某些服务从队列中Consume，这样一来可以解耦不同的服务，二来可以为消耗方减缓系统压力。</p>
 <p>CloudAMQP是基于RabbitMQ的, 而RabbitMQ则是基于AMQP(Advanced Message Queuing Protocol)，一套由Chase银行制定和研发的国际化信息通道传递的标准。这套标准设计了关于消息队列的安全、可靠性、交互性等等一些基本特质，是消息队列的一个重要里程碑。CloudAMQP可以在之后专门再总结一下，本文还是专注于RabbitMQ和Golang。<br><a id="more"></a></p>
@@ -413,6 +414,12 @@
 <p>成功之后，找到安装目录下的sbin文件夹（比如我的位置在：/usr/local/Cellar/rabbitmq/3.7.4/sbin）。启动server之后，默认是运行在<a href="http://localhost:15672/。" target="_blank" rel="external">http://localhost:15672/。</a></p>
 <p>通过浏览器，你会进入登陆界面，默认用户名和密码都是guest。成功登陆之后，你会看到整个RabbitMQ的管理界面，里面你可以看到所选的exchange模式，channel具体的内容等等。</p>
 <p><img src="http://res.cloudinary.com/dxdsd8err/image/upload/v1522743577/64.pic_jqexc7.jpg" alt=""></p>
+<h2 id="Go的第一个例子"><a href="#Go的第一个例子" class="headerlink" title="Go的第一个例子"></a>Go的第一个例子</h2><p>第一次使用Golang来操作RabbitMQ，有点小激动，哈哈。直接研究了一个官方例子，并附上一些必要的注解。这个是非常基础的例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"log"</span></div><div class="line"></div><div class="line">	<span class="string">"github.com/streadway/amqp"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment">//Helper dealing with error message</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">failOnError</span><span class="params">(err error, msg <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Fatalf(<span class="string">"%s: %s"</span>, msg, err)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="comment">//Dial creates a connection</span></div><div class="line">	conn, err := amqp.Dial(<span class="string">"amqp://guest:guest@localhost:5672/"</span>)</div><div class="line">	failOnError(err, <span class="string">"Failed to connect to RabbitMQ"</span>)</div><div class="line">	<span class="keyword">defer</span> conn.Close()</div><div class="line"></div><div class="line">	<span class="comment">//conn.Channel creates a new channel, which may create multiple queues later</span></div><div class="line">	ch, err := conn.Channel()</div><div class="line">	failOnError(err, <span class="string">"Failed to open a channel"</span>)</div><div class="line">	<span class="keyword">defer</span> ch.Close()</div><div class="line"></div><div class="line">	<span class="comment">//Make a new queue, with name as "New Queue" and durable.</span></div><div class="line">	q, err := ch.QueueDeclare(</div><div class="line">		<span class="string">"New Queue"</span>, <span class="comment">// name</span></div><div class="line">		<span class="literal">true</span>,        <span class="comment">// durable</span></div><div class="line">		<span class="literal">false</span>,       <span class="comment">// delete when unused</span></div><div class="line">		<span class="literal">false</span>,       <span class="comment">// exclusive</span></div><div class="line">		<span class="literal">false</span>,       <span class="comment">// no-wait</span></div><div class="line">		<span class="literal">nil</span>,         <span class="comment">// arguments</span></div><div class="line">	)</div><div class="line">	failOnError(err, <span class="string">"Failed to declare a queue"</span>)</div><div class="line">	log.Println(<span class="string">"Now we create a new queue:"</span>, q.Name)</div><div class="line"></div><div class="line">	<span class="comment">//Publish sends a Publishing from the client to an exchange on the server.</span></div><div class="line">	body := <span class="string">"hello2"</span></div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ &#123;</div><div class="line">		err = ch.Publish(</div><div class="line">			<span class="string">""</span>,     <span class="comment">// exchange</span></div><div class="line">			q.Name, <span class="comment">// routing key</span></div><div class="line">			<span class="literal">false</span>,  <span class="comment">// mandatory</span></div><div class="line">			<span class="literal">false</span>,  <span class="comment">// immediate</span></div><div class="line">			amqp.Publishing&#123;</div><div class="line">				ContentType: <span class="string">"text/plain"</span>,</div><div class="line">				Body:        []<span class="keyword">byte</span>(body),</div><div class="line">			&#125;)</div><div class="line">		log.Printf(<span class="string">" [x] Sent %s"</span>, body)</div><div class="line">		failOnError(err, <span class="string">"Failed to publish a message"</span>)</div><div class="line">	&#125;</div><div class="line">	log.Println(<span class="string">"Now we have"</span>, q.Messages, <span class="string">"messages in our queue."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中Queue比较简单,只有三个成员。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Queue <span class="keyword">struct</span> &#123;</div><div class="line">    Name      <span class="keyword">string</span> <span class="comment">// server confirmed or generated name</span></div><div class="line">    Messages  <span class="keyword">int</span>    <span class="comment">// count of messages not awaiting acknowledgment</span></div><div class="line">    Consumers <span class="keyword">int</span>    <span class="comment">// number of consumers receiving deliveries</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>得到的log结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jiazhuos-MBP:rabbitMQ jiazhuo$ go run main.go</div><div class="line">2018/04/03 23:51:16 Now we create a new queue: New Queue</div><div class="line">2018/04/03 23:51:16  [x] Sent hello2</div><div class="line">2018/04/03 23:51:16  [x] Sent hello2</div><div class="line">2018/04/03 23:51:16  [x] Sent hello2</div><div class="line">2018/04/03 23:51:16  [x] Sent hello2</div><div class="line">2018/04/03 23:51:16  [x] Sent hello2</div><div class="line">2018/04/03 23:51:16 Now we have 10 messages in our queue.</div></pre></td></tr></table></figure>
+<p>同时查看之前启动的RabbitMQ的Dashboard，我们可以查到新建的queue已经成功，同时已经有多个Message已经准备好（Ready状态）。<br><img src="http://res.cloudinary.com/dxdsd8err/image/upload/c_scale,w_1208/v1522825653/1.pic_m080sq.jpg" alt=""></p>
 
       
     </div>
@@ -476,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/golang101_4/" rel="next" title="Golang 101系列基础篇 - Useful functions">
-                <i class="fa fa-chevron-left"></i> Golang 101系列基础篇 - Useful functions
+              <a href="/golang101_channel/" rel="next" title="Golang 101系列网络篇 - 初识Channel">
+                <i class="fa fa-chevron-left"></i> Golang 101系列网络篇 - 初识Channel
               </a>
             
           </div>
@@ -485,10 +492,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/golang101_TCP_Server/" rel="prev" title="Golang 101系列网络篇 - TCP Server">
-                Golang 101系列网络篇 - TCP Server <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -676,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac安装"><span class="nav-number">2.</span> <span class="nav-text">Mac安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac安装"><span class="nav-number">2.</span> <span class="nav-text">Mac安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go的第一个例子"><span class="nav-number">3.</span> <span class="nav-text">Go的第一个例子</span></a></li></ol></div>
             
 
           </div>
